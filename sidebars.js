@@ -3,21 +3,13 @@ module.exports = {
   defaultSidebar: [
     {
       type: 'doc',
-      id: 'installation',
-      label: 'Installation',
-    },
-    {
-      type: 'doc',
       id: 'quick-start',
       label: 'Quick Start',
     },
     {
-      type: 'category',
-      label: 'Tutorial (soon)',
-      collapsed: true,
-      items: [
-        'tutorial/intro',
-      ],
+      type: 'doc',
+      id: 'tutorial/part1-first-steps',
+      label: 'Tutorial 🚀',
     },
     {
       type: 'category',
