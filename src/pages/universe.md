@@ -24,6 +24,7 @@ And [many plugins](/plugins)
     <Plugin name="revolt" pypi="revolt" desc="Value substitutor for district42 schema" />
     <Plugin name="district42-exp-types" pypi="district42-exp-types" desc="district42 experimental types" />
     <Plugin name="d42" pypi="d42" desc="One package for district42 ecosystem" />
+    <Plugin name="aiohttp-valera-validator" pypi="aiohttp-valera-validator" desc="Request validation for aiohttp" />
 </PluginList>
 
 ## jj
