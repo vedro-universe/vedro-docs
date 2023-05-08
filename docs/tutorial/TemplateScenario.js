@@ -24,10 +24,13 @@ class TemplateScenario extends React.Component {
     const expireAfter = 3600 * 24;
 
     const now = this.getTimestamp();
+    const newNamespace = this.genRandomString(10);
+    if (typeof localStorage === "undefined") {
+      return newNamespace;
+    }
     const payload = localStorage.getItem(key);
   
     if (payload === null) {
-      const newNamespace = this.genRandomString(10);
       localStorage.setItem(key, `${newNamespace}|${now}`);
       return newNamespace;
     }
@@ -37,7 +40,6 @@ class TemplateScenario extends React.Component {
       return namespace;
     }
 
-    const newNamespace = this.genRandomString(10);
     localStorage.setItem(key, `${newNamespace}|${now}`);
     return newNamespace;
   }
