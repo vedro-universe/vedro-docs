@@ -8,7 +8,7 @@ module.exports = {
     },
     {
       type: 'doc',
-      id: 'tutorial/part1-first-steps',
+      id: 'tutorial/chapter1-first-steps',
       label: 'Tutorial 🚀',
     },
     {
