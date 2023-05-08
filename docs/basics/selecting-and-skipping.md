@@ -5,6 +5,8 @@ slug: selecting-and-skipping
 ---
 # Selecting & Skipping
 
+import TerminalOutput from '@site/src/components/TerminalOutput';
+
 ### Selecting Scenarios
 
 To run scenarios in a file or directory, use the following command:
@@ -81,10 +83,67 @@ All scenarios will run, except for scenarios with the `@vedro.skip` decorator.
 
 ### Selecting Scenarios with Specific Subjects
 
-To run scenarios with a specific subject, use the `--subject` flag:
+To execute scenarios that have a specific subject, use the --subject flag:
 
 ```shell
 $ vedro run --subject "register user"
 ```
 
-All scenarios with `subject == "register user"` will run.
+This will run all scenarios where the `subject` is equal to "register user".
+
+
+### Selecting Parameterized Scenarios
+
+If you have [parameterized scenarios](./parameterized-scenarios), you can select a specific instance of a scenario by specifying the scenario index.
+
+For example, consider the following `get_status.py` file with parameterized scenario:
+
+```python
+import vedro
+from vedro import params
+
+
+class Scenario(vedro.Scenario):
+    subject = "{subject}"
+
+    @params("get ok status", 200)
+    @params("get not found status", 404)
+    def __init__(self, subject, status):
+        self.subject = subject
+        self.status = status
+
+    ...
+
+```
+
+To run only the first scenario (with a 200 status code), execute the following command:
+
+<TerminalOutput>
+{`
+[1;37m$ vedro run scenarios/get_status.py::Scenario#1[0m[1;37m
+[0m
+[0mScenarios
+[1m* [0m[1m
+[0m [32m✔ get ok status[0m[32m
+[0m 
+[0m[1;32m# 2 scenarios, 1 passed, 0 failed, 0 skipped[0m[34m (0.71s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+To run only the second scenario (with a 404 status code), execute the following command:
+
+<TerminalOutput>
+{`
+[1;37m$ vedro run scenarios/get_status.py::Scenario#2[0m[1;37m
+[0m
+[0mScenarios
+[1m* [0m[1m
+[0m [32m✔ get not found status[0m[32m
+[0m 
+[0m[1;32m# 2 scenarios, 1 passed, 0 failed, 0 skipped[0m[34m (0.56s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+By specifying the scenario index, you can choose which parameterized scenario to run.

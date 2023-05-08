@@ -84,8 +84,8 @@
                 to: '/docs/quick-start',
               },
               {
-                label: 'Features',
-                to: '/docs/features',
+                label: 'Basics',
+                to: '/docs/basics/selecting-and-skipping',
               },
             ],
           },

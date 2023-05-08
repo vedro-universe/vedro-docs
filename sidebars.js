@@ -15,12 +15,9 @@ module.exports = {
       type: 'category',
       label: 'Basics',
       collapsed: false,
-      // link: {
-      //   type: 'generated-index',
-      //   slug: 'basics',
-      // },
       items: [
         'basics/selecting-and-skipping',
+        'basics/parameterized-scenarios',
       ],
     },
     {
