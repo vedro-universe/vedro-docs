@@ -1,6 +1,6 @@
 ---
 id: chapter1-first-steps
-title: Tutorial
+title: "Tutorial: Chapter 1. First Steps"
 toc_max_heading_level: 2
 ---
 # Tutorial: Chapter 1. First Steps
@@ -65,6 +65,8 @@ $ vedro run -vv
 
 The command will run all the test scenarios in `scenarios/` directory and display the results, indicating which tests have passed, failed, or been skipped. In this case, you should see that the "register new user" scenario has passed.
 
+The `-vv` flag increases the verbosity of the test output. In case a scenario fails, this flag provides more detailed information about the test run to help you identify and troubleshoot the issue.
+
 <TerminalOutput>
 {`
 Scenarios
@@ -80,4 +82,4 @@ Scenarios
 
 Vedro is not just a test runner, but a full-fledged framework with its own ecosystem and a set of best practices that enables you to write clear and maintainable tests.
 
-In the next chapter, we'll build upon this foundation by refining our test and exploring some best practices for writing automated tests.
+In the [next chapter](./chapter2.md), we'll build upon this foundation by refining our test and exploring some best practices for writing automated tests.
