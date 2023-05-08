@@ -2,7 +2,73 @@
 id: plugins
 title: Plugins
 ---
-# Community Plugins
+
+# Plugins
+
+## Core Plugins
+
+Built-in plugins provided by Vedro to deliver essential features
+
+import { PluginList, Plugin } from '../components/PluginList';
+
+<PluginList>
+    <Plugin key='director' name='Director' pypi='vedro'
+            desc='Manages and configures reporters for scenario execution'
+    />
+    <Plugin key='rich-reporter' name='Rich Reporter' pypi='vedro'
+            desc='Enhanced, customizable scenario reporting with rich output'
+    />
+    <Plugin key='silent-reporter' name='Silent Reporter' pypi='vedro'
+        desc='Minimizes output during scenario execution'
+    />
+    <Plugin key='pycharm-reporter' name='PyCharm Reporter' pypi='vedro'
+        desc='Outputs scenario results in a PyCharm-friendly format'
+    />
+    <Plugin key='orderer' name='Orderer' pypi='vedro'
+        desc='Configures the execution order of scenarios'
+    />
+    <Plugin key='deferrer' name='Deferrer' pypi='vedro'
+        desc='Executes deferred functions at the end of each scenario'
+    />
+    <Plugin key='artifacted' name='Artifacted' pypi='vedro'
+        desc='Manages artifacts for step and scenario results'
+    />
+    <Plugin key='interrupter' name='Interrupter' pypi='vedro'
+        desc='Stops test execution after the first failed scenario or on specified signals'
+    />
+    <Plugin key='seeder' name='Seeder' pypi='vedro'
+        desc='Sets seeds for deterministic random behavior in scenarios'
+    />
+    <Plugin key='skipper' name='Skipper' pypi='vedro'
+        desc='Allows selective scenario skipping and selection based on file/directory or subject'
+    />
+    <Plugin key='slicer' name='Slicer' pypi='vedro'
+        desc='Provides a way to distribute scenarios among multiple workers'
+    />
+    <Plugin key='tagger' name='Tagger' pypi='vedro'
+        desc='Allows scenarios to be selectively run based on user-defined tags'
+    />
+    <Plugin key='repeater' name='Repeater' pypi='vedro'
+        desc='Repeat scenarios a specified number of times'
+    />
+    <Plugin key='rerunner' name='Rerunner' pypi='vedro'
+        desc='Reruns failed scenarios a specified number of times'
+    />
+    <Plugin key='assert-rewriter' name='AssertRewriter' pypi='vedro'
+        desc='Rewrites assert statements to provide better error messages'
+    />
+    <Plugin key='dryRunner' name='DryRunner' pypi='vedro'
+        desc='Simulates scenario execution without actually executing them'
+    />
+    <Plugin key='terminator' name='Terminator' pypi='vedro'
+        desc='Handles test exit status based on test results and interruptions'
+    />
+</PluginList>
+
+
+## Community Plugins
+
+Third-party plugins, created by the Vedro community, expand the framework's capabilities by adding new features, tools, and integrations
 
 import VedroPluginList from '../components/VedroPluginList';
 
@@ -10,13 +76,11 @@ import VedroPluginList from '../components/VedroPluginList';
 
 And [more](https://github.com/topics/vedro-plugin)
 
+
 ## IDE Plugins
+
+These are plugins specifically designed to integrate Vedro into popular IDEs, providing seamless workflows and a more user-friendly experience
 
 | Plugin                                                             | Description                                               | Info          |
 |--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
 | [PyCharm Plugin](https://plugins.jetbrains.com/plugin/18227-vedro) | [PyCharm](https://www.jetbrains.com/pycharm/) integration | Version 0.1.2 |
-
-
-## Custom Plugins
-
-↗️ [Documentation](/docs/advanced-usage/writing-plugins)
