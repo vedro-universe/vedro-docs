@@ -13,25 +13,24 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Features',
+      label: 'Basics',
       collapsed: false,
-      link: {
-        type: 'generated-index',
-        slug: 'features',
-      },
+      // link: {
+      //   type: 'generated-index',
+      //   slug: 'basics',
+      // },
       items: [
-        'features/tags',
-        'features/deferred-actions',
+        'basics/selecting-and-skipping',
       ],
     },
     {
       type: 'category',
       label: 'Advanced Usage',
-      collapsed: true,
-      link: {
-        type: 'generated-index',
-        slug: 'advanced-usage',
-      },
+      collapsed: false,
+      // link: {
+      //   type: 'generated-index',
+      //   slug: 'advanced-usage',
+      // },
       items: [
         'advanced-usage/writing-plugins',
       ],
