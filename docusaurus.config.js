@@ -96,6 +96,10 @@
                 label: 'Discussions',
                 href: 'https://github.com/tsv1/vedro/discussions',
               },
+              {
+                label: 'Telegram',
+                href: 'https://t.me/vedro_universe',
+              },
             ],
           },
           {
