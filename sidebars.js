@@ -22,14 +22,10 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Advanced Usage',
+      label: 'Guides',
       collapsed: false,
-      // link: {
-      //   type: 'generated-index',
-      //   slug: 'advanced-usage',
-      // },
       items: [
-        'advanced-usage/writing-plugins',
+        'guides/writing-plugins',
       ],
     },
     {

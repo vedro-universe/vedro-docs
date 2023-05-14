@@ -1,6 +1,5 @@
 ---
 id: writing-plugins
-title: Writing Plugins
 slug: writing-plugins
 ---
 # Writing Plugins
@@ -72,6 +71,8 @@ ScenarioSkippedEvent     ScenarioRunEvent
           \                     \ /
            \                     /
             \                   /
+            ScenarioReportedEvent
+                      |
                 CleanupEvent
 ```
 
@@ -295,6 +296,25 @@ class CustomPlugin(Plugin):
     def on_step_failed(self, event: StepFailedEvent) -> None:
         step_result: StepResult = event.step_result
         print("on_step_failed", step_result)
+
+```
+
+### ScenarioReportedEvent
+
+The `ScenarioReported` event is triggered after each individual scenario has ended. This event occurs regardless of whether the scenario passed, failed, or was skipped. It provides a `AggregatedResult` object, which contains the results of the scenario that has just completed.
+
+```python
+from vedro.core import Dispatcher, Plugin, AggregatedResult
+from vedro.events import ScenarioReportedEvent
+
+
+class CustomPlugin(Plugin):
+    def subscribe(self, dispatcher: Dispatcher) -> None:
+        dispatcher.listen(ScenarioReportedEvent, self.on_scenario_reported)
+
+    def on_scenario_reported(self, event: ScenarioReportedEvent) -> None:
+        aggregated_result: AggregatedResult = event.aggregated_result
+        print("aggregated_result", aggregated_result)
 
 ```
 
