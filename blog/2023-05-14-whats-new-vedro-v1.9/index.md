@@ -1,0 +1,162 @@
+---
+slug: whats-new-vedro-v1.9
+tags: [vedro, changelog]
+hide_table_of_contents: false
+---
+
+# What's New In Vedro v1.9
+
+import TerminalOutput from '@site/src/components/TerminalOutput';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Welcome to all Vedro users and enthusiasts! Today marks a special day as we unveil [Vedro v1.9](https://pypi.org/project/vedro/), a step forward in our continuous journey to enhance your testing experiences. This edition brings forth an array of new features, designed to simplify plugin management, enrich reporting, and more. Let's take a closer look at what this update has in store!
+
+<!--truncate-->
+
+## Simplifying Plugin Management
+
+This update introduces a new command, that simplifies the process of managing plugins.
+
+```shell
+$ vedro plugin install vedro-valera-validator
+```
+
+This command not only installs the plugin, but also enables it in your `vedro.cfg.py` file:
+
+```python
+import vedro_valera_validator
+import vedro
+
+class Config(vedro.Config):
+
+    class Plugins(vedro.Config.Plugins):
+
+        class ValeraValidator(vedro_valera_validator.ValeraValidator):
+            enabled = True
+
+```
+
+To provide more insights into the plugin ecosystem, we've added another command:
+
+```shell
+$ vedro plugin top
+```
+
+This command shows you the most popular [Vedro plugins](./plugins):
+
+<TerminalOutput>
+{`
+[38;5;244m┏━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓[0m
+[38;5;244m┃[0m[1m [0m[1mPackage               [0m[1m [0m[38;5;244m┃[0m[1m [0m[1mDescription                   [0m[1m [0m[38;5;244m┃[0m[1m [0m[1mURL                                    [0m[1m [0m[38;5;244m┃[0m[1m [0m[1mPopularity[0m[1m [0m[38;5;244m┃[0m
+[38;5;244m┡━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩[0m
+[38;5;244m│[0m[34m [0m[34mvedro-gitlab-reporter [0m[34m [0m[38;5;244m│[0m GitLab reporter with           [38;5;244m│[0m pypi.org/project/vedro-gitlab-reporter  [38;5;244m│[0m       2728 [38;5;244m│[0m
+[38;5;244m│[0m[34m                        [0m[38;5;244m│[0m collapsable sections           [38;5;244m│[0m                                         [38;5;244m│[0m            [38;5;244m│[0m
+[38;5;244m│[0m[34m [0m[34mvedro-allure-reporter [0m[34m [0m[38;5;244m│[0m Allure reporter                [38;5;244m│[0m pypi.org/project/vedro-allure-reporter  [38;5;244m│[0m       2646 [38;5;244m│[0m
+[38;5;244m│[0m[34m [0m[34mvedro-valera-validator[0m[34m [0m[38;5;244m│[0m Validator                      [38;5;244m│[0m pypi.org/project/vedro-valera-validator [38;5;244m│[0m       2038 [38;5;244m│[0m
+[38;5;244m│[0m[34m [0m[34mvedro-interactive     [0m[34m [0m[38;5;244m│[0m Interactive mode               [38;5;244m│[0m pypi.org/project/vedro-interactive      [38;5;244m│[0m        733 [38;5;244m│[0m
+[38;5;244m│[0m[34m [0m[34mvedro-advanced-tags   [0m[34m [0m[38;5;244m│[0m Vedro tags with boolean logic  [38;5;244m│[0m pypi.org/project/vedro-advanced-tags    [38;5;244m│[0m        356 [38;5;244m│[0m
+[38;5;244m└────────────────────────┴────────────────────────────────┴─────────────────────────────────────────┴────────────┘[0m
+`}</TerminalOutput>
+
+## Enhancing the Reporting Experience
+
+We've made improvements to the reporting experience in this release. The RichReporter now displays execution time in a more user-friendly format:
+
+<Tabs>
+  <TabItem value="humanized_duration" label="Now" default>
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [32m✔ register new user[0m[32m
+[0m 
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (5m 3s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+  <TabItem value="duration" label="Then">
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [32m✔ register new user[0m[32m
+[0m 
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (303.47s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+</Tabs>
+
+We also introduce a new parameter, `show_steps`, which displays steps even when the scenario is successful:
+
+```python
+class RichReporter(vedro.plugins.director.rich.RichReporter):
+    show_steps = True
+```
+
+With `show_steps` enabled, your reports will be more detailed:
+
+<Tabs>
+  <TabItem value="with_steps" label="Show Steps" default>
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [32m✔ register new user[0m[32m
+[0m   [32m✔ given_creds[0m[32m
+[0m   [32m✔ when_guest_registers[0m[32m
+[0m   [32m✔ then_it_should_return_success_response[0m[32m
+[0m   [32m✔ and_it_should_return_user_info[0m[32m
+[0m 
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.70s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+  <TabItem value="without_steps" label="Hide Steps">
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [32m✔ register new user[0m[32m
+[0m 
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.70s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+</Tabs>
+
+## Introducing Parameterized Scenario Decorators
+
+Last but certainly not least, Vedro v1.9 brings the advantage of [Relaxed Grammar Restrictions On Decorators](https://peps.python.org/pep-0614/), allowing you to skip individual parameterized scenarios:
+
+```python
+import vedro
+from vedro import params, skip
+
+class Scenario(vedro.Scenario):
+    subject = "login as {user}"
+
+    @params("Bob")
+    @params[skip]("Alice")
+    def __init__(self, user):
+        self.user = user
+```
+
+In this example, the scenario for the user "Alice" will be skipped, while the scenario for "Bob" will be executed.
+
+---
+
+That's all for the updates in this release! We hope these new features and improvements will make your testing experience even better. As always, your feedback is valuable to us, so feel free to reach out with any comments or suggestions. Happy testing!

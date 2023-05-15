@@ -18,7 +18,6 @@
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
-        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -69,6 +68,11 @@
           {
             href: '/universe',
             label: 'Universe',
+            position: 'left',
+          },
+          {
+            to: 'blog',
+            label: 'Blog',
             position: 'left',
           },
         ],
