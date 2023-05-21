@@ -1,0 +1,182 @@
+---
+id: chapter2-data-models
+toc_max_heading_level: 2
+---
+# Chapter 2 — Data Models
+
+import TemplateScenario from './TemplateScenario';
+import { recap, generate, validate, substitute } from './FirstScenario';
+import TerminalOutput from '@site/src/components/TerminalOutput';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Quick Recap
+
+Taking a brief look back at our progress, in the [initial chapter](./chapter1-first-steps.md), we successfully crafted our first test scenario for the chat service. The purpose of the test was to confirm the proper functionality of the user registration process.
+
+<TemplateScenario block={recap} />
+
+Now it's time to enhance our test while exploring best practices for crafting automated tests.
+
+## Introducing Data Models
+
+When we run the above test a second time, it fails because the username "bob" is already registered.
+
+```shell
+$ vedro run -vv
+```
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [31m✗ register new user[0m[31m
+[0m   [32m✔ given_new_user[0m[32m
+[0m   [32m✔ when_guest_registers[0m[32m
+[0m   [31m✗ then_it_should_return_success_response[0m[31m
+[0m[31m╭─[0m[31m──────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m────────────────────────[0m[31m─╮[0m
+[31m│[0m [2;33m./scenarios/[0m[1;33mfirst_scenario.py[0m:[94m17[0m in [92mthen_it_should_return_success_response[0m [31m           │[0m
+[31m│[0m                                                                                       [31m│[0m
+[31m│[0m   [2m14 [0m[2m│   │   [0m[96mself[0m.response = httpx.post([33mf[0m[33m"[0m[33m{[0mAPI_URL[33m}[0m[33m/auth/register[0m[33m"[0m, json=[96mself[0m.user)   [31m│[0m
+[31m│[0m   [2m15 [0m[2m│   [0m                                                                             [31m│[0m
+[31m│[0m   [2m16 [0m[2m│   [0m[94mdef[0m [92mthen_it_should_return_success_response[0m([96mself[0m):                            [31m│[0m
+[31m│[0m [31m❱ [0m17 [2m│   │   [0m[94massert[0m [96mself[0m.response.status_code == [94m200[0m                                  [31m│[0m
+[31m│[0m   [2m18 [0m                                                                                 [31m│[0m
+[31m╰───────────────────────────────────────────────────────────────────────────────────────╯[0m
+[1;91mAssertionError: [0massert [1;36m400[0m == [1;36m200[0m
+ +  where [1;36m400[0m = [1m<[0m[1;95mResponse[0m[39m [0m[1;39m[[0m[1;36m400[0m[39m Bad Request[0m[1;39m][0m[39m>.status_code[0m
+ 
+ 
+[0m[1;31m# 1 scenario, 0 passed, 1 failed, 0 skipped[0m[34m (0.28s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+This issue surfaces due to the hardcoded data used in our test. To maintain the independence of each test, we must introduce variability, which is achievable through data models. In this context, we will use the [d42 library](https://d42.vedro.io/docs/quick-start) to define, generate, validate, and substitute data based on the models we design.
+
+Let's compare hardcoded data and a data model.
+
+**Hardcoded Data:**
+
+```python
+username = "bob"
+password = "qweqwe"
+```
+
+**Data Model:**
+
+```python
+from string import ascii_lowercase
+from d42 import schema
+
+NewUserSchema = schema.dict({
+    "username": schema.str.alphabet(ascii_lowercase).len(3, 12),
+    "password": schema.str.len(6, ...),
+})
+```
+
+In this data model:
+- `username` is a string containing between 3 to 12 lowercase letters
+- `password` is a string with a minimum of 6 characters
+
+## Data Generation
+
+Our new data model [allows the generation](https://d42.vedro.io/docs/features/generation) of unique data for each test:
+
+```python
+from d42 import fake
+
+fake(NewUserSchema)
+# {'username': 'mwpd', 'password': 'EMiqcS2L9 x6UgxUuirjT9'}
+
+fake(NewUserSchema)
+# {'username': 'kqnhsrqito', 'password': 'XXlYxBaiXAvzj5Yp9pdR'}
+```
+
+Implementing this in our test scenario eliminates the problem of data dependency:
+
+<TemplateScenario block={generate} />
+
+To keep our data models organized, we can save them in the `schemas/` directory. In this case, we can created a file  `user.py` inside the schemas directory and place the `NewUserSchema` definition there.
+
+## Data Validation
+
+The beauty of data models is their ability to not only generate data but also [validate it](https://d42.vedro.io/docs/features/validation). The validation process checks that the received response fits our defined data model:
+
+<Tabs>
+  <TabItem value="correct-fields" label="🍏 Correct fields" default>
+
+```python
+response_body = {
+    "username": "bob",
+    "password": "qweqwe"
+}
+assert response_body == NewUserSchema
+```
+
+  </TabItem>
+  <TabItem value="incorrect-username" label="🍎 Incorrect username">
+
+```python
+response_body = {
+    # highlight-next-line
+    "username": "x",
+    "password": "qweqwe"
+}
+assert response_body == NewUserSchema
+
+# valera.ValidationException:
+#  - Value <class 'str'> at _['username'] must have at least 3 elements, but it has 1 element
+```
+
+  </TabItem>
+  <TabItem value="incorrect-password" label="🍎 Incorrect password">
+
+```python
+response_body = {
+    "username": "bob",
+    # highlight-next-line
+
+}
+assert response_body == NewUserSchema
+
+# valera.ValidationException:
+#  - Key _['password'] does not exist
+```
+
+  </TabItem>
+</Tabs>
+
+This validation step ensures that the response has the correct structure and field types:
+
+<TemplateScenario block={validate} />
+
+The test now not only checks that the fields `username` and `password` exist and that they are strings, but also that they meet the criteria defined in our data model.
+
+For even more granular validation, we can refine the schema by [substituting](https://d42.vedro.io/docs/features/substitution) our generated values. This allows us to validate not just the type, but also the specific values of the fields:
+
+```python
+NewUserSchema % {
+    "username": "bob",
+    "password": "qweqwe",
+}
+```
+
+This will substitute the values using the `%` operator, which is similar to [printf-style string formatting in Python](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting). The result of the substitution will be a refined schema:
+
+```python
+schema.dict({
+    'username': schema.str('bob').alphabet('abcdefghijklmnopqrstuvwxyz').len(3, 12),
+    'password': schema.str('qweqwe').len(6, ...)
+})
+```
+
+Applying this refinement to our test scenario:
+
+<TemplateScenario block={substitute} />
+
+## Wrap-up
+
+In this chapter, we've successfully enhanced our test by incorporating data models. Not only does this make our tests more robust by removing data dependency, but it also makes them easier to maintain and extend.
+
+In the next chapters, we'll dive deeper into advanced test scenarios, explore test organization, and further explore best practices in test automation.

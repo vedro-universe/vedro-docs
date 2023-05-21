@@ -1,13 +1,14 @@
 ---
 id: chapter1-first-steps
-title: "Tutorial: Chapter 1. First Steps"
 toc_max_heading_level: 2
 ---
-# Tutorial: Chapter 1. First Steps
+# Chapter 1 — First Steps
 
 import TemplateScenario from './TemplateScenario';
 import { subject, given, when, then } from './FirstScenario';
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Intro
 
@@ -22,13 +23,38 @@ Here's an overview of the key API endpoints that we'll be working with:
 | <code style={{ background: "#d8f2fb" }}>POST /chats/<chat_id>/messages</code> | Send a message to a chat with the specified chat_id. <br/> A new chat will be created if it doesn't already exist |
 | <code style={{ background: "#caeac8" }}>GET /chats/<chat_id>/messages</code>  | Retrieve messages for a chat with the specified chat_id                                                           |
 
-To make sure we don't get sidetracked by installing dependencies while we're learning, let's go ahead and install a package that will take care of everything for us.
+To ensure an uninterrupted learning experience without getting sidetracked by dependency installations, let's proceed with installing everything we need.
+
+<Tabs>
+  <TabItem value="quick-install" label="Quick" default>
+
+For a swift installation of all necessary components, simply copy and paste this command into your terminal:
 
 ```shell
 $ pip install git+https://github.com/vedro-universe/chat-api-tutorial
 ```
 
-## Let’s do it
+  </TabItem>
+  <TabItem value="manual-install" label="Manual">
+
+If you prefer to manually install the components, follow these step-by-step instructions:
+
+```shell
+# Step 1: Create a new directory and navigate into it
+$ mkdir -p chat-api-tutorial/scenarios
+$ cd chat-api-tutorial
+
+# Step 2: Install the required packages using pip
+$ pip install vedro httpx
+
+# Step 3: Install the necessary plugins
+$ vedro plugin install vedro-valera-validator
+```
+
+  </TabItem>
+</Tabs>
+
+## Let’s Do It
 
 Once everything is set up, we can proceed to write our first test. Vedro framework is based on scenario tests, which allows us to simulate user interactions and validate their outcomes (or side effects). As interactions with the chat service require authentication, and to authenticate we need a registered account, our first scenario will focus on the registration of a new user. This initial test will help us ensure that the registration process works correctly and provides the necessary access to the chat platform.
 
