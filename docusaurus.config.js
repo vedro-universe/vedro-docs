@@ -89,7 +89,7 @@
               },
               {
                 label: 'Tutorial',
-                to: '/docs/tutorial/chapter1-first-steps',
+                to: '/docs/tutorial/api/chapter1-first-steps',
               },
             ],
           },

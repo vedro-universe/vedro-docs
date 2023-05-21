@@ -11,8 +11,8 @@ module.exports = {
       label: 'Tutorial 🚀',
       collapsed: false,
       items: [
-        'tutorial/chapter1-first-steps',
-        'tutorial/chapter2-data-models',
+        'tutorial/api/chapter1-first-steps',
+        'tutorial/api/chapter2-data-models',
       ],
     },
     {

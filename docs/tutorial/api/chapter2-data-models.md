@@ -112,6 +112,8 @@ response_body = {
     "password": "qweqwe"
 }
 assert response_body == NewUserSchema
+
+# No Errors
 ```
 
   </TabItem>
@@ -174,6 +176,15 @@ schema.dict({
 Applying this refinement to our test scenario:
 
 <TemplateScenario block={substitute} />
+
+Or just:
+
+```python
+    ...
+
+    def and_then_it_should_return_created_user(self):
+        assert self.response.json() == NewUserSchema % self.user
+```
 
 ## Wrap-up
 
