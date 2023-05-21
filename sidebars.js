@@ -25,6 +25,7 @@ module.exports = {
       label: 'Guides',
       collapsed: false,
       items: [
+        'guides/using-plugins',
         'guides/writing-plugins',
       ],
     },
