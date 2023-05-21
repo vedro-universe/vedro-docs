@@ -108,4 +108,4 @@ Scenarios
 
 Vedro is not just a test runner, but a full-fledged framework with its own ecosystem and a set of best practices that enables you to write clear and maintainable tests.
 
-In the [next chapter](./chapter2.md), we'll build upon this foundation by refining our test and exploring some best practices for writing automated tests.
+In the [next chapter](./chapter2-data-models.md), we'll build upon this foundation by refining our test and exploring some best practices for writing automated tests.

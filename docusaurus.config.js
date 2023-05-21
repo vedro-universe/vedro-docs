@@ -88,8 +88,8 @@
                 to: '/docs/quick-start',
               },
               {
-                label: 'Basics',
-                to: '/docs/basics/selecting-and-skipping',
+                label: 'Tutorial',
+                to: '/docs/tutorial/chapter1-first-steps',
               },
             ],
           },

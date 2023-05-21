@@ -104,7 +104,7 @@ To keep our data models organized, we can save them in the `schemas/` directory.
 The beauty of data models is their ability to not only generate data but also [validate it](https://d42.vedro.io/docs/features/validation). The validation process checks that the received response fits our defined data model:
 
 <Tabs>
-  <TabItem value="correct-fields" label="🍏 Correct fields" default>
+  <TabItem value="correct-fields" label="🍏 OK" default>
 
 ```python
 response_body = {
@@ -115,7 +115,7 @@ assert response_body == NewUserSchema
 ```
 
   </TabItem>
-  <TabItem value="incorrect-username" label="🍎 Incorrect username">
+  <TabItem value="incorrect-username" label="🍎 Incorrect Username">
 
 ```python
 response_body = {
@@ -130,13 +130,13 @@ assert response_body == NewUserSchema
 ```
 
   </TabItem>
-  <TabItem value="incorrect-password" label="🍎 Incorrect password">
+  <TabItem value="incorrect-password" label="🍎 Incorrect Password">
 
 ```python
 response_body = {
-    "username": "bob",
+    "username": "alice",
     # highlight-next-line
-
+    "pass": "qweqwe"
 }
 assert response_body == NewUserSchema
 
