@@ -167,4 +167,27 @@ class Scenario(vedro.Scenario):
     # highlight-end
 `.trimStart();
 
-export { subject, given, when, then, recap, generate, validate, substitute };
+const final = `
+import vedro
+import httpx
+from schemas.user import NewUserSchema
+
+API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+
+class Scenario(vedro.Scenario):
+    subject = "register new user"
+
+    def given_new_user(self):
+        self.user = fake(NewUserSchema)
+
+    def when_guest_registers(self):
+        self.response = httpx.post(f"{API_URL}/auth/register", json=self.user)
+
+    def then_it_should_return_success_response(self):
+        assert self.response.status_code == 200
+
+    def and_then_it_should_return_created_user(self):
+        assert self.response.json() == NewUserSchema % self.user
+`.trimStart();
+
+export { subject, given, when, then, recap, generate, validate, substitute, final };

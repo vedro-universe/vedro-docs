@@ -13,6 +13,7 @@ module.exports = {
       items: [
         'tutorial/api/chapter1-first-steps',
         'tutorial/api/chapter2-data-models',
+        'tutorial/api/chapter3-title',
       ],
     },
     {
@@ -27,7 +28,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Guides',
-      collapsed: false,
+      collapsed: true,
       items: [
         'guides/using-plugins',
         'guides/writing-plugins',
