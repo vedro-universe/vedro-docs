@@ -4,6 +4,12 @@ slug: writing-plugins
 ---
 # Writing Plugins
 
+:::caution
+
+Please note that this documentation page is currently undergoing finalization and improvements
+
+:::
+
 Vedro is designed with an event-driven architecture, making it highly extensible and customizable. The event-based nature of Vedro plugins allows developers to tap into various points in the testing process and execute custom actions based on specific events.
 
 In an event-driven system, components communicate with each other through events, which are essentially notifications that represent a change in the system's state or occurrence of an action. When an event occurs, any subscribed listener receives a notification and can react accordingly.
