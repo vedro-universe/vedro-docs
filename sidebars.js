@@ -13,7 +13,7 @@ module.exports = {
       items: [
         'tutorial/api/chapter1-first-steps',
         'tutorial/api/chapter2-data-models',
-        'tutorial/api/chapter3-title',
+        'tutorial/api/chapter3-contexts',
       ],
     },
     {

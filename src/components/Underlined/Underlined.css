@@ -1,0 +1,17 @@
+/* https://stackoverflow.com/a/51148652 */
+.underlined {
+  position: relative;
+}
+
+.underlined:after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  border: solid 2px #cb1829;
+  border-color: #cb1829 transparent transparent transparent;
+  border-radius: 50%;
+  clip-path: inset(0 0 50% 0);
+}
