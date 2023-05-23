@@ -1,6 +1,5 @@
 ---
 id: writing-plugins
-slug: writing-plugins
 ---
 # Writing Plugins
 

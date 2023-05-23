@@ -1,11 +1,10 @@
 ---
 id: parameterized-scenarios
-title: Parameterized Scenarios
-slug: parameterized-scenarios
 ---
-# Parameterized Scenarios
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+
+# Parameterized Scenarios
 
 To create a parameterized scenario in Vedro, you'll need to use the `@vedro.params` decorator. This decorator allows you to pass different parameters to the scenario, which will then be executed multiple times with the provided parameters.
 

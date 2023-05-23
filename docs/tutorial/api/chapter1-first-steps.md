@@ -2,7 +2,6 @@
 id: chapter1-first-steps
 toc_max_heading_level: 2
 ---
-# Chapter 1 — First Steps
 
 import TemplateScenario from './TemplateScenario';
 import { registerScenarioSubject, registerScenarioGiven,
@@ -11,6 +10,8 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
+
+# Chapter 1 — First Steps
 
 <TableOfContents current="chapter1" />
 

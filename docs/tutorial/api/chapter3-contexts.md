@@ -2,8 +2,6 @@
 id: chapter3-contexts
 ---
 
-# Chapter 3 — Contexts
-
 import TemplateScenario from './TemplateScenario';
 import { registerScenarioFinal, loginScenarioWithoutContext, registeredUserContext,
          loginScenarioWithContext, loginScenarioValidateToken } from './snippets';
@@ -12,6 +10,8 @@ import Underlined from '@site/src/components/Underlined';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
+
+# Chapter 3 — Contexts
 
 <TableOfContents current="chapter3" />
 

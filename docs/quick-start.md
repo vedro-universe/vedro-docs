@@ -1,13 +1,12 @@
 ---
 id: quick-start
-title: Quick Start
-slug: quick-start
 ---
-# Quick Start
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+# Quick Start
 
 Vedro is a powerful tool for creating scenario-based tests that simulate user interactions and validate outcomes. This guide will help you get started with Vedro by demonstrating how to create a test that decodes a base64 encoded string using the [httpbin.org](https://httpbin.org/) API.
 

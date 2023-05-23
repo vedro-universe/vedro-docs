@@ -1,11 +1,10 @@
 ---
 id: selecting-and-skipping
-title: "Selecting & Skipping"
-slug: selecting-and-skipping
 ---
-# Selecting & Skipping
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+
+# Selecting & Skipping
 
 ### Selecting Scenarios
 
