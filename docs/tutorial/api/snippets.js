@@ -1,4 +1,4 @@
-const subject = `
+const registerScenarioSubject = `
 import vedro
 
 class Scenario(vedro.Scenario):
@@ -7,7 +7,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const given = `
+const registerScenarioGiven = `
 import vedro
 
 class Scenario(vedro.Scenario):
@@ -22,7 +22,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const when = `
+const registerScenarioWhen = `
 import vedro
 # highlight-start
 import httpx
@@ -46,7 +46,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const then = `
+const registerScenarioThen = `
 import vedro
 import httpx
 
@@ -72,7 +72,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const recap = `
+const registerScenarioRecap = `
 import vedro
 import httpx
 
@@ -95,7 +95,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const generate = `
+const registerScenarioGenerate = `
 import vedro
 import httpx
 # highlight-start
@@ -118,7 +118,7 @@ class Scenario(vedro.Scenario):
 
 `.trimStart();
 
-const validate = `
+const registerScenarioValidate = `
 import vedro
 import httpx
 from schemas.user import NewUserSchema
@@ -141,7 +141,7 @@ class Scenario(vedro.Scenario):
     # highlight-end
 `.trimStart();
 
-const substitute = `
+const registerScenarioSubstitute = `
 import vedro
 import httpx
 from schemas.user import NewUserSchema
@@ -167,7 +167,7 @@ class Scenario(vedro.Scenario):
     # highlight-end
 `.trimStart();
 
-const final = `
+const registerScenarioFinal = `
 import vedro
 import httpx
 from schemas.user import NewUserSchema
@@ -190,4 +190,110 @@ class Scenario(vedro.Scenario):
         assert self.response.json() == NewUserSchema % self.user
 `.trimStart();
 
-export { subject, given, when, then, recap, generate, validate, substitute, final };
+const loginScenarioWithoutContext = `
+import vedro
+import httpx
+from schemas.user import NewUserSchema
+
+API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+
+class Scenario(vedro.Scenario):
+    subject = "login as registered user"
+
+    def given_user(self):
+        self.user = fake(NewUserSchema)
+
+    # highlight-start
+    def when_user_logins(self):
+        self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
+    # highlight-end
+
+    def then_it_should_return_success_response(self):
+        assert self.response.status_code == 200
+`.trimStart();
+
+const registeredUserContext = `
+# ./contexts/registered_user.py
+import vedro
+import httpx
+
+API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+
+@vedro.context
+def registered_user(user):
+    response = httpx.post(f"{API_URL}/auth/register", user)
+    response.raise_for_status()
+    return
+`.trimStart();
+
+const loginScenarioWithContext = `
+import vedro
+import httpx
+from schemas.user import NewUserSchema
+# highlight-start
+from contexts.registered_user import registered_user
+# highlight-end
+
+API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+
+class Scenario(vedro.Scenario):
+    subject = "login as registered user"
+
+    def given_user(self):
+        self.user = fake(NewUserSchema)
+        # highlight-start
+        registered_user(self.user)
+        # highlight-end
+
+    def when_user_logins(self):
+        self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
+
+    def then_it_should_return_success_response(self):
+        assert self.response.status_code == 200
+
+`.trimStart();
+
+const loginScenarioValidateToken = `
+import vedro
+import httpx
+from schemas.user import NewUserSchema
+from contexts.registered_user import registered_user
+# highlight-start
+from schemas.token import AuthTokenSchema
+# highlight-end
+
+API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+
+class Scenario(vedro.Scenario):
+    subject = "login as registered user"
+
+    def given_user(self):
+        self.user = fake(NewUserSchema)
+        registered_user(self.user)
+
+    def when_user_logins(self):
+        self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
+
+    # highlight-start
+    def and_it_should_return_created_token(self):
+        assert self.response.json() == AuthTokenSchema % {
+            "username": self.user["username"]
+        }
+    # highlight-end
+`.trimStart();
+
+export {
+  registerScenarioSubject,
+  registerScenarioGiven,
+  registerScenarioWhen,
+  registerScenarioThen,
+  registerScenarioRecap,
+  registerScenarioGenerate,
+  registerScenarioValidate,
+  registerScenarioSubstitute,
+  registerScenarioFinal,
+  loginScenarioWithoutContext,
+  registeredUserContext,
+  loginScenarioWithContext,
+  loginScenarioValidateToken
+};

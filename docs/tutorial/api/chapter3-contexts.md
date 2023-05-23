@@ -5,8 +5,8 @@ id: chapter3-contexts
 # Chapter 3 — Contexts
 
 import TemplateScenario from './TemplateScenario';
-import { final } from './FirstScenario';
-import { firstAttempt, context, withContext, withTokenValidation } from './SecondScenario';
+import { registerScenarioFinal, loginScenarioWithoutContext, registeredUserContext,
+         loginScenarioWithContext, loginScenarioValidateToken } from './snippets';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Underlined from '@site/src/components/Underlined';
 import Tabs from '@theme/Tabs';
@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 In the previous chapters, we crafted our first scenario focused on registering a new user:
 
-<TemplateScenario block={final} />
+<TemplateScenario block={registerScenarioFinal} />
 
 After creating an account, we can now move on to the next scenario — the user authentication process.
 
@@ -24,7 +24,7 @@ After creating an account, we can now move on to the next scenario — the user 
 
 Authentication, in our case, requires sending a `POST /auth/login` request with `username` and `password` in the JSON body. At first glance, it might seem like we could use an approach similar to our registration scenario:
 
-<TemplateScenario block={firstAttempt} />
+<TemplateScenario block={loginScenarioWithoutContext} />
 
 However, this scenario failed, returning a 400 status code with an error message stating, <Underlined>"User does not exist"</Underlined>. This error occurs because we attempted to authenticate a user who had not yet been registered. This highlights a critical point: we must first put our application in the right state before executing the primary action.
 
@@ -36,7 +36,7 @@ A context in Vedro is essentially a function that helps set up the environment o
 
 Let's see how to create a context.
 
-<TemplateScenario block={context} />
+<TemplateScenario block={registeredUserContext} />
 
 :::info
 
@@ -46,7 +46,7 @@ To efficiently manage contexts, they're typically stored in a `contexts/` direct
 
 With this context at our disposal, we can ensure the creation of a user before attempting to authenticate them. We use the context in the "given" step to register a user before trying to log them in. Here's how it looks in practice:
 
-<TemplateScenario block={withContext} />
+<TemplateScenario block={loginScenarioWithContext} />
 
 Now, the scenario passes as expected because the user is registered before we attempt to authenticate them.
 
@@ -82,7 +82,7 @@ This schema has the following components:
 
 With this definition in place, we can now incorporate the schema into our scenario.
 
-<TemplateScenario block={withTokenValidation} />
+<TemplateScenario block={loginScenarioValidateToken} />
 
 With this addition, our scenario now also verifies the structure of the response, ensuring that our API behaves as expected and returns data that adheres to the defined contract.
 

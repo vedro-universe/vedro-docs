@@ -5,7 +5,8 @@ toc_max_heading_level: 2
 # Chapter 2 — Data Models
 
 import TemplateScenario from './TemplateScenario';
-import { recap, generate, validate, substitute } from './FirstScenario';
+import { registerScenarioRecap, registerScenarioGenerate,
+         registerScenarioValidate, registerScenarioSubstitute } from './snippets';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -14,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 Taking a brief look back at our progress, in the [initial chapter](./chapter1-first-steps.md), we successfully crafted our first test scenario for the chat service. The test's purpose was to confirm the proper functionality of the user registration process.
 
-<TemplateScenario block={recap} />
+<TemplateScenario block={registerScenarioRecap} />
 
 Now, it's time to enhance our test while exploring best practices for crafting automated tests.
 
@@ -96,7 +97,7 @@ fake(NewUserSchema)
 
 Implementing this in our test scenario eliminates the problem of data dependency:
 
-<TemplateScenario block={generate} />
+<TemplateScenario block={registerScenarioGenerate} />
 
 To keep our data models organized, we should save them in the `schemas/` directory. In this case, we have created a file named `user.py` inside the schemas directory and placed the `NewUserSchema` definition there.
 
@@ -152,7 +153,7 @@ assert response_body == NewUserSchema
 
 This validation step ensures that the response has the correct structure and field types:
 
-<TemplateScenario block={validate} />
+<TemplateScenario block={registerScenarioValidate} />
 
 The test now checks not only that the `username` and `password` fields exist and are strings, but also that they meet the criteria defined in our data model.
 
@@ -192,7 +193,7 @@ schema.dict({
 
 We can apply this refinement to our test scenario:
 
-<TemplateScenario block={substitute} />
+<TemplateScenario block={registerScenarioSubstitute} />
 
 Or simply:
 

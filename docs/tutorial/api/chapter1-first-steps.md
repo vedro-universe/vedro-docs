@@ -5,7 +5,8 @@ toc_max_heading_level: 2
 # Chapter 1 — First Steps
 
 import TemplateScenario from './TemplateScenario';
-import { subject, given, when, then } from './FirstScenario';
+import { registerScenarioSubject, registerScenarioGiven,
+         registerScenarioWhen, registerScenarioThen } from './snippets';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -62,25 +63,25 @@ Once everything is set up, we can proceed to write our first test. Vedro framewo
 
 A scenario starts with a **subject** that represents the user's intention to achieve a desired outcome.
 
-<TemplateScenario block={subject} />
+<TemplateScenario block={registerScenarioSubject} />
 
 ### Given
 
 The path to achieving this goal consists of a series of steps. First, there are the **arrange steps**, where all necessary data is prepared for the primary action to be taken. This might involve setting up initial conditions, gathering relevant inputs, or configuring the environment for the test.
 
-<TemplateScenario block={given} />
+<TemplateScenario block={registerScenarioGiven} />
 
 ### When
 
 Next, there is the **primary action (act)** step. In this step, the user interacts with the application, system, or component being tested. This interaction could be in the form of an API call, a button click, or any other event that triggers the desired functionality. The primary action is a crucial part of the scenario, as it sets the stage for evaluating whether the application is behaving as expected.
 
-<TemplateScenario block={when} />
+<TemplateScenario block={registerScenarioWhen} />
 
 ### Then
 
 Finally, there are the **assert steps**, where the application's responses or side effects are checked to see if they match what is expected. This involves examining output data, verifying system states, or even observing the application's behavior to ensure that the desired outcome has been achieved. The assert steps provide validation and confidence that the application is functioning correctly and meeting the user's intentions.
 
-<TemplateScenario block={then} />
+<TemplateScenario block={registerScenarioThen} />
 
 In the context of our chat service, the arrange step sets up the required data, such as the user credentials. The act step simulates the user interaction, like registering a new user through an API call. Finally, the assert step checks the application's response to ensure the user registration was successful and the system behaves as expected. These components work together to create a robust and effective test scenario.
 
