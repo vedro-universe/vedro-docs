@@ -10,6 +10,9 @@ import { registerScenarioSubject, registerScenarioGiven,
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TableOfContents from './TableOfContents';
+
+<TableOfContents current="chapter1" />
 
 ## Intro
 

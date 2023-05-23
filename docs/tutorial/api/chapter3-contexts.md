@@ -11,6 +11,9 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import Underlined from '@site/src/components/Underlined';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TableOfContents from './TableOfContents';
+
+<TableOfContents current="chapter3" />
 
 ## Quick Recap
 
