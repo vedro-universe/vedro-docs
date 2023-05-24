@@ -30,3 +30,8 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .token-line.theme-code-block-highlighted-line {
   background-color: #2f343d;
 }
+
+.word-wrap code {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+}

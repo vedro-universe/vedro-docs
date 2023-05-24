@@ -36,6 +36,14 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Integrations',
+      collapsed: true,
+      items: [
+        'integrations/valera-validator',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Best Practices (soon)',
       collapsed: true,
       items: [
