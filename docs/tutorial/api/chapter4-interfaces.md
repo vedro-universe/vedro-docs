@@ -110,7 +110,7 @@ The interface can be easily used in our scenarios and contexts:
 # ./contexts/registered_user.py
 import vedro
 # highlight-next-line
-from interfaces import ChatAPI
+from interfaces.chat_api import ChatApi
 
 @vedro.context
 def registered_user(user):
@@ -130,7 +130,7 @@ from schemas.user import NewUserSchema
 from contexts.registered_user import registered_user
 from schemas.token import AuthTokenSchema
 # highlight-next-line
-from interfaces import ChatAPI
+from interfaces.chat_api import ChatApi
 
 class Scenario(vedro.Scenario):
     subject = "login as registered user"
@@ -139,7 +139,7 @@ class Scenario(vedro.Scenario):
         self.user = fake(NewUserSchema)
         registered_user(self.user)
 
-    def when_user_logins(self):
+    def when_user_logs_in(self):
         # highlight-next-line
         self.response = ChatAPI().login(self.user)
 

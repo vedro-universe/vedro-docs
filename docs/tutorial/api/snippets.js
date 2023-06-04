@@ -204,7 +204,7 @@ class Scenario(vedro.Scenario):
         self.user = fake(NewUserSchema)
 
     # highlight-start
-    def when_user_logins(self):
+    def when_user_logs_in(self):
         self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
     # highlight-end
 
@@ -245,7 +245,7 @@ class Scenario(vedro.Scenario):
         registered_user(self.user)
         # highlight-end
 
-    def when_user_logins(self):
+    def when_user_logs_in(self):
         self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
 
     def then_it_should_return_success_response(self):
@@ -271,7 +271,7 @@ class Scenario(vedro.Scenario):
         self.user = fake(NewUserSchema)
         registered_user(self.user)
 
-    def when_user_logins(self):
+    def when_user_logs_in(self):
         self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
 
     def then_it_should_return_success_response(self):
