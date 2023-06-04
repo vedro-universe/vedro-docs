@@ -1,6 +1,8 @@
 ---
 id: chapter1-first-steps
 toc_max_heading_level: 2
+pagination_prev: tutorial/tutorial
+pagination_next: tutorial/api/chapter2-data-models
 ---
 
 import TemplateScenario from './TemplateScenario';

@@ -1,5 +1,7 @@
 ---
 id: chapter4-interfaces
+pagination_prev: tutorial/api/chapter3-contexts
+pagination_next: basics/selecting-and-skipping
 ---
 
 import Tabs from '@theme/Tabs';

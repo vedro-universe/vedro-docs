@@ -1,5 +1,7 @@
 ---
 id: chapter3-contexts
+pagination_prev: tutorial/api/chapter2-data-models
+pagination_next: tutorial/api/chapter4-interfaces
 ---
 
 import TemplateScenario from './TemplateScenario';

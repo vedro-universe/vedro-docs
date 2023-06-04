@@ -1,5 +1,6 @@
 ---
 id: tutorial
+pagination_next: tutorial/api/chapter1-first-steps
 ---
 
 # Tutorial
