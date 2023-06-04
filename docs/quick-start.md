@@ -16,7 +16,7 @@ Vedro is a powerful tool for creating scenario-based tests that simulate user in
 To install [vedro](https://pypi.org/project/vedro/)  and the [httpx](https://www.python-httpx.org/) library, which we will use to make HTTP requests in our test, simply run the following command in your terminal:
 
 ```shell
-$ pip3 install vedro httpx
+$ pip install vedro httpx
 ```
 
 ## Your First Test

@@ -119,6 +119,7 @@ response_body = {
 }
 assert response_body == NewUserSchema
 
+# highlight-next-line
 # No Errors
 ```
 
@@ -134,6 +135,7 @@ response_body = {
 assert response_body == NewUserSchema
 
 # valera.ValidationException:
+# highlight-next-line
 #  - Value <class 'str'> at _['username'] must have at least 3 elements, but it has 1 element
 ```
 
@@ -149,6 +151,7 @@ response_body = {
 assert response_body == NewUserSchema
 
 # valera.ValidationException:
+# highlight-next-line
 #  - Key _['password'] does not exist
 ```
 

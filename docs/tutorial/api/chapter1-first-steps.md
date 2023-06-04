@@ -45,14 +45,10 @@ $ pip install git+https://github.com/vedro-universe/chat-api-tutorial
 If you prefer to manually install the components, follow these step-by-step instructions:
 
 ```shell
-# Step 1: Create a new directory and navigate into it
-$ mkdir -p chat-api-tutorial/scenarios
-$ cd chat-api-tutorial
-
-# Step 2: Install the required packages using pip
+# Install the required packages using pip
 $ pip install vedro httpx
 
-# Step 3: Install the necessary plugins
+# Install the necessary plugins
 $ vedro plugin install vedro-valera-validator
 ```
 

@@ -31,11 +31,11 @@ Authentication, in our case, requires sending a `POST /auth/login` request with 
 
 However, this scenario failed, returning a 400 status code with an error message stating, <Underlined>"User does not exist"</Underlined>. This error occurs because we attempted to authenticate a user who had not yet been registered. This highlights a critical point: we must first put our application in the right state before executing the primary action.
 
-This is where the concept of **contexts** in Vedro comes into play.
+This is where the concept of **contexts** comes into play.
 
 ## Understanding Vedro Contexts
 
-A context in Vedro is essentially a function that helps set up the environment or state for our scenario. It ensures that all prerequisites for a given scenario are met before execution.
+A **context** in Vedro is essentially a function that helps set up the environment or state for our scenario. It ensures that all prerequisites for a given scenario are met before execution.
 
 Let's see how to create a context.
 
@@ -92,3 +92,5 @@ With this addition, our scenario now also verifies the structure of the response
 ## Summary
 
 In summary, contexts in Vedro are a robust tool for managing prerequisite conditions for your scenarios, leading to clean, reliable, and maintainable tests. As we progress, we'll encounter more complex scenarios where contexts will truly shine.
+
+In the [next chapter](./chapter4-interfaces.md), we will further refine our codebase by introducing the concept of interfaces, providing a unified approach to interacting with our application and reducing code repetition.

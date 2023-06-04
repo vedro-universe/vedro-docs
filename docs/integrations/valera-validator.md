@@ -37,14 +37,14 @@ $ pip3 install vedro-valera-validator
 ```python
 # ./vedro.cfg.py
 import vedro
-import vedro_valera_validator as valera_validator
+import vedro_valera_validator
 
 
 class Config(vedro.Config):
 
     class Plugins(vedro.Config.Plugins):
 
-        class ValeraValidator(valera_validator.ValeraValidator):
+        class ValeraValidator(vedro_valera_validator.ValeraValidator):
             enabled = True
 ```
 

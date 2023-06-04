@@ -221,7 +221,7 @@ API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
 
 @vedro.context
 def registered_user(user):
-    response = httpx.post(f"{API_URL}/auth/register", user)
+    response = httpx.post(f"{API_URL}/auth/register", json=user)
     response.raise_for_status()
     return
 `.trimStart();
@@ -273,6 +273,9 @@ class Scenario(vedro.Scenario):
 
     def when_user_logins(self):
         self.response = httpx.post(f"{API_URL}/auth/login", json=self.user)
+
+    def then_it_should_return_success_response(self):
+        assert self.response.status_code == 200
 
     # highlight-start
     def and_it_should_return_created_token(self):

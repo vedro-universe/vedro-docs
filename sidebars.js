@@ -7,14 +7,9 @@ module.exports = {
       label: 'Quick Start',
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'tutorial/tutorial',
       label: 'Tutorial 🚀',
-      collapsed: false,
-      items: [
-        'tutorial/api/chapter1-first-steps',
-        'tutorial/api/chapter2-data-models',
-        'tutorial/api/chapter3-contexts',
-      ],
     },
     {
       type: 'category',
