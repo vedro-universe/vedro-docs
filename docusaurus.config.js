@@ -30,6 +30,10 @@
     locales: ['en'],
   },
 
+  plugins: [
+    'plugin-image-zoom',
+  ],
+
   themes: [
     [
       '@easyops-cn/docusaurus-search-local',
@@ -124,6 +128,13 @@
       },
       prism: {
         theme: require('prism-react-renderer/themes/oceanicNext'),
+      },
+      imageZoom: {
+        selector: '.markdown img',
+        options: {
+          margin: 60,
+          background: 'rgba(25, 18, 25, 0.9)',
+        },
       },
     }),
 });

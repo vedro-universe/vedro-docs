@@ -35,6 +35,7 @@ module.exports = {
       collapsed: true,
       items: [
         'integrations/valera-validator',
+        'integrations/allure-reporter',
       ],
     },
     {
