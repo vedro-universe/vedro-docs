@@ -4,9 +4,10 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
-# What's New In Vedro v1.7
-
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import SubscribeTelegramTip from '../_subscribe_telegram.md';
+
+# What's New In Vedro v1.7
 
 We're excited to announce [Vedro v1.7](https://pypi.org/project/vedro/), our latest release. This update brings new features and important fixes to enhance your testing experience. Let's take a closer look at what's new.
 
@@ -87,3 +88,7 @@ We've addressed a bug related to the type of the `@context` decorator. The corre
 ### [Core] Deferrer and Artifacted Order Fixed
 
 The registration order of the Deferrer and Artifacted plugins was found to be incorrect, which could have led to potential issues. We've corrected this in Vedro v1.7 to ensure smoother plugin operation.
+
+---
+
+<SubscribeTelegramTip />

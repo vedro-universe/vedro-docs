@@ -4,11 +4,12 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
-# What's New In Vedro v1.9
-
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import SubscribeTelegramTip from '../_subscribe_telegram.md';
+
+# What's New In Vedro v1.9
 
 Welcome to all Vedro users and enthusiasts! Today marks a special day as we unveil [Vedro v1.9](https://pypi.org/project/vedro/), a step forward in our continuous journey to enhance your testing experiences. This edition brings forth an array of new features, designed to simplify plugin management, enrich reporting, and more. Let's take a closer look at what this update has in store!
 
@@ -160,3 +161,5 @@ In this example, the scenario for the user "Alice" will be skipped, while the sc
 ---
 
 That's all for the updates in this release! We hope these new features and improvements will make your testing experience even better. As always, your feedback is valuable to us, so feel free to reach out with any comments or suggestions. Happy testing!
+
+<SubscribeTelegramTip />

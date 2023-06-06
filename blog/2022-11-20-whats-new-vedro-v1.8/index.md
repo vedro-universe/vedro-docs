@@ -4,11 +4,12 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
-# What's New In Vedro v1.8
-
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import SubscribeTelegramTip from '../_subscribe_telegram.md';
+
+# What's New In Vedro v1.8
 
 We are thrilled to announce the release of [Vedro v1.8](https://pypi.org/project/vedro/)! This update brings a host of new features and improvements to the framework, enhancing its capabilities and making it even more flexible and user-friendly. Let's delve into the latest features and see how they can improve your testing workflow.
 
@@ -233,3 +234,7 @@ Scenarios
 [0m
 `}
 </TerminalOutput>
+
+---
+
+<SubscribeTelegramTip />
