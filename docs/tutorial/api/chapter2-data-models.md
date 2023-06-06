@@ -105,7 +105,11 @@ Implementing this in our test scenario eliminates the problem of data dependency
 
 <TemplateScenario block={registerScenarioGenerate} />
 
+:::info
+
 To keep our data models organized, we should save them in the `schemas/` directory. In this case, we have created a file named `user.py` inside the schemas directory and placed the `NewUserSchema` definition there.
+
+:::
 
 ## Data Validation
 

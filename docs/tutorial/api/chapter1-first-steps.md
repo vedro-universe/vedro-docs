@@ -9,8 +9,6 @@ import TemplateScenario from './TemplateScenario';
 import { registerScenarioSubject, registerScenarioGiven,
          registerScenarioWhen, registerScenarioThen } from './snippets';
 import TerminalOutput from '@site/src/components/TerminalOutput';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
 
 # Chapter 1 — First Steps
@@ -32,20 +30,6 @@ Here's an overview of the key API endpoints that we'll be working with:
 
 To ensure an uninterrupted learning experience without getting sidetracked by dependency installations, let's proceed with installing everything we need.
 
-<Tabs>
-  <TabItem value="quick-install" label="Quick" default>
-
-For a swift installation of all necessary components, simply copy and paste this command into your terminal:
-
-```shell
-$ pip install git+https://github.com/vedro-universe/chat-api-tutorial
-```
-
-  </TabItem>
-  <TabItem value="manual-install" label="Manual">
-
-If you prefer to manually install the components, follow these step-by-step instructions:
-
 ```shell
 # Install the required packages using pip
 $ pip install vedro httpx
@@ -53,9 +37,6 @@ $ pip install vedro httpx
 # Install the necessary plugins
 $ vedro plugin install vedro-valera-validator
 ```
-
-  </TabItem>
-</Tabs>
 
 ## Let’s Do It
 

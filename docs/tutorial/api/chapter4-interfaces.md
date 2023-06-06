@@ -4,6 +4,8 @@ pagination_prev: tutorial/api/chapter3-contexts
 pagination_next: basics/selecting-and-skipping
 ---
 
+import TemplateScenario from './TemplateScenario';
+import { configApiUrl } from './snippets';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
@@ -22,15 +24,7 @@ The [cabina](https://pypi.org/project/cabina/) library is an excellent tool for 
 
 Let's move our `API_URL` to a separate configuration file:
 
-```python
-# ./config.py
-import cabina
-
-class Config(cabina.Config):
-    class Api(cabina.Section):
-        URL = "https://<api_url>"
-
-```
+<TemplateScenario block={configApiUrl} />
 
 This change creates a [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) for our API URL. If we need to change the URL in the future, we just have to update it in this configuration file.
 
@@ -50,6 +44,8 @@ def registered_user(user):
     response.raise_for_status()
     return
 ```
+
+Also replace in scenarios...
 
 ## Interfaces
 
@@ -117,7 +113,7 @@ from interfaces.chat_api import ChatApi
 @vedro.context
 def registered_user(user):
     # highlight-next-line
-    response = ChatAPI().register(user)
+    response = ChatApi().register(user)
     response.raise_for_status()
     return
 ```
@@ -128,6 +124,7 @@ def registered_user(user):
 
 ```python
 import vedro
+from d42 import fake
 from schemas.user import NewUserSchema
 from contexts.registered_user import registered_user
 from schemas.token import AuthTokenSchema
@@ -143,7 +140,7 @@ class Scenario(vedro.Scenario):
 
     def when_user_logs_in(self):
         # highlight-next-line
-        self.response = ChatAPI().login(self.user)
+        self.response = ChatApi().login(self.user)
 
     def then_it_should_return_success_response(self):
         assert self.response.status_code == 200

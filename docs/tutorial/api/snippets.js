@@ -99,6 +99,7 @@ const registerScenarioGenerate = `
 import vedro
 import httpx
 # highlight-start
+from d42 import fake
 from schemas.user import NewUserSchema
 # highlight-end
 
@@ -121,6 +122,7 @@ class Scenario(vedro.Scenario):
 const registerScenarioValidate = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 
 class Scenario(vedro.Scenario):
@@ -144,6 +146,7 @@ class Scenario(vedro.Scenario):
 const registerScenarioSubstitute = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 
 class Scenario(vedro.Scenario):
@@ -170,6 +173,7 @@ class Scenario(vedro.Scenario):
 const registerScenarioFinal = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 
 API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
@@ -193,6 +197,7 @@ class Scenario(vedro.Scenario):
 const loginScenarioWithoutContext = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 
 API_URL = "https://chat-api-tutorial.vedro.io/$namespace$"
@@ -229,6 +234,7 @@ def registered_user(user):
 const loginScenarioWithContext = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 # highlight-start
 from contexts.registered_user import registered_user
@@ -256,6 +262,7 @@ class Scenario(vedro.Scenario):
 const loginScenarioValidateToken = `
 import vedro
 import httpx
+from d42 import fake
 from schemas.user import NewUserSchema
 from contexts.registered_user import registered_user
 # highlight-start
@@ -285,6 +292,15 @@ class Scenario(vedro.Scenario):
     # highlight-end
 `.trimStart();
 
+const configApiUrl = `
+# ./config.py
+import cabina
+
+class Config(cabina.Config):
+    class Api(cabina.Section):
+        URL = "https://chat-api-tutorial.vedro.io/$namespace$"
+`.trimStart();
+
 export {
   registerScenarioSubject,
   registerScenarioGiven,
@@ -298,5 +314,6 @@ export {
   loginScenarioWithoutContext,
   registeredUserContext,
   loginScenarioWithContext,
-  loginScenarioValidateToken
+  loginScenarioValidateToken,
+  configApiUrl,
 };
