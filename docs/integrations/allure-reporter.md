@@ -4,6 +4,7 @@ id: allure-reporter
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Allure Reporter
 
@@ -159,10 +160,7 @@ class Scenario(vedro.Scenario):
     tags = ["API"]
 ```
 
-import AllureTagsImage from './allure/allure_tags.png';
-
-<img src={AllureTagsImage} width="250px" />
-
+<Screenshot src={require('./allure/allure_tags.png')} />
 
 ### Artifacts
 
@@ -220,9 +218,7 @@ def generated_profile_picture(filename="picture.png") -> Image:
 
 This will attach the generated profile picture to the Allure report as an artifact.
 
-import AllureArtifactImage from './allure/allure_artifact.png';
-
-<img src={AllureArtifactImage} width="250px" />
+<Screenshot src={require('./allure/allure_artifact.png')} />
 
 ### Scope
 
@@ -234,9 +230,7 @@ class AllureReporter(allure_reporter.AllureReporter):
 
 The scope can be attached to your Allure report. Note, this is set to `False` by default.
 
-import AllureScopeImage from './allure/allure_scope.png';
-
-<img src={AllureScopeImage} width="250px" />
+<Screenshot src={require('./allure/allure_scope.png')} />
 
 ### Global Labels
 
