@@ -4,7 +4,7 @@
   title: 'Vedro',
   tagline: 'Pragmatic BDD Framework',
   url: 'https://vedro.io',
-  baseUrl: process.env.DEV_MODE ? '/' : '/en/',
+  baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
