@@ -8,15 +8,48 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Allure Reporter
 
-[Allure Framework](https://docs.qameta.io/allure/) is a flexible, lightweight, multi-language test report tool that offers a concise representation of test results in a clean web report.
+[Allure Reporter](https://pypi.org/project/vedro-allure-reporter/) is a plugin for [Vedro](https://pypi.org/project/vedro/) that provides integration with the [Allure Framework](https://docs.qameta.io/allure/), a flexible, lightweight, multi-language test report tool. The Allure Framework offers a concise representation of test results in a clean, easily understandable web report format.
 
 ## Installation
 
-To install the [Allure Reporter](https://pypi.org/project/vedro-allure-reporter/), use a plugin manager like this:
+<Tabs>
+  <TabItem value="quick" label="Quick" default>
+
+For a quick installation, you can use a plugin manager like so:
 
 ```shell
 $ vedro plugin install vedro-allure-reporter
 ```
+
+  </TabItem>
+  <TabItem value="manual" label="Manual">
+
+If you prefer a manual approach, follow these steps:
+
+1. Install the package using pip:
+
+```shell
+$ pip3 install vedro-allure-reporter
+```
+
+2. Then, enable the plugin in the `vedro.cfg.py` configuration file:
+
+```python
+# ./vedro.cfg.py
+import vedro
+import vedro_allure_reporter
+
+
+class Config(vedro.Config):
+
+    class Plugins(vedro.Config.Plugins):
+
+        class AllureReporter(vedro_allure_reporter.AllureReporter):
+            enabled = True
+```
+
+  </TabItem>
+</Tabs>
 
 ## Basic Usage
 
@@ -38,7 +71,7 @@ This command will serve up the report ([demo](https://allure-framework.github.io
 
 :::info
 
-If you are using [Allure TestOps](https://docs.qameta.io/allure-testops/), you can upload your report using [allurectl](https://docs.qameta.io/allure-testops/ecosystem/allurectl/).
+If you are using [Allure TestOps](https://docs.qameta.io/allure-testops/), you can upload your report using [allurectl](https://docs.qameta.io/allure-testops/ecosystem/allurectl/)
 
 <details>
   <summary>Show more...</summary>
@@ -77,12 +110,10 @@ from vedro_allure_reporter import allure_labels, Story, Epic, Feature
 class Scenario(vedro.Scenario):
     subject = "update profile picture"
 
+    ...
 ```
 
 In addition to the built-in labels, Allure also allows you to create custom labels:
-
-<Tabs>
-  <TabItem value="scenario" label="Scenario" default>
 
 ```python
 import vedro
@@ -92,29 +123,8 @@ from vedro_allure_reporter import allure_labels, AllureLabel
 class Scenario(vedro.Scenario):
     subject = "update profile picture"
 
+    ...
 ```
-
-  </TabItem>
-  <TabItem value="parameterized_scenario" label="Parameterized">
-
-```python
-import vedro
-from vedro import params
-from vedro_allure_reporter import allure_labels, AllureLabel
-
-smoke = allure_labels(AllureLabel("smoke", "true"))
-
-class Scenario(vedro.Scenario):
-    subject = "update profile picture {format}"
-
-    @params[smoke]("png")
-    @params[smoke]("jpg")
-    def __init__(self, format):
-        self.format = format
-```
-
-  </TabItem>
-</Tabs>
 
 ## Configuration
 
@@ -183,7 +193,7 @@ from pathlib import Path
 
 @vedro.context
 def generated_profile_picture(filename="picture.png") -> Image:
-    image = Image.new("RGB", size=(100, 100), color=(0, 0, 255))
+    image = Image.new("RGB", size=(100, 100))
     image.save(filename, format="png")
 
     artifact = FileArtifact(filename, "image/png", Path(filename))
@@ -204,7 +214,7 @@ from io import BytesIO
 @vedro.context
 def generated_profile_picture(filename="picture.png") -> Image:
     binary = BytesIO()
-    image = Image.new("RGB", size=(100, 100), color=(0, 0, 255))
+    image = Image.new("RGB", size=(100, 100))
     image.save(binary, format="png")
 
     artifact = MemoryArtifact(filename, "image/png", binary.getvalue())
