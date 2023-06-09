@@ -95,6 +95,6 @@ With this addition, our scenario now also verifies the structure of the response
 
 ## Summary
 
-In summary, contexts in Vedro are a robust tool for managing prerequisite conditions for your scenarios, leading to clean, reliable, and maintainable tests. As we progress, we'll encounter more complex scenarios where contexts will truly shine.
+In summary, contexts in Vedro are a robust tool for managing prerequisite conditions, leading to clean, reliable, and maintainable tests. As we progress, we'll encounter more complex scenarios where contexts will truly shine.
 
 In the [next chapter](./chapter4-interfaces.md), we will further refine our codebase by introducing the concept of interfaces, providing a unified approach to interacting with our application and reducing code repetition.

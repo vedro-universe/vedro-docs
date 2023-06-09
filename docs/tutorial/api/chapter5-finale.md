@@ -129,6 +129,8 @@ class Scenario(vedro.Scenario):
 
 ## Finale
 
-As a final part, try to implement the last happy path scenario that covers [retrieving messages](https://chat-api-tutorial.vedro.io/docs#/default/get_messages). If you encounter any difficulties, don't hesitate to check out the [repository](https://github.com/vedro-universe/tutorial-chat-api-server/tree/main/tests) which contains the implemented ["get message"](https://github.com/vedro-universe/tutorial-chat-api-server/blob/main/tests/scenarios/get_messages/get_message.py) scenario, along with other scenarios.
+As the final part of this tutorial, try to implement the last "happy path" scenario that covers [retrieving messages](https://chat-api-tutorial.vedro.io/docs#/default/get_messages). If you encounter any difficulties, don't hesitate to check out the [repository](https://github.com/vedro-universe/tutorial-chat-api-server/tree/main/tests) which contains the implemented ["get message"](https://github.com/vedro-universe/tutorial-chat-api-server/blob/main/tests/scenarios/get_messages/get_message.py) scenario, among others.
 
-Thank you for participating in this tutorial. Happy testing!
+Thank you for participating in this tutorial. Throughout this guide, you've learned how to use Vedro effectively to write test scenarios for your API, from the basics to more complex, real-world scenarios.
+
+Although this guide has come to an end, remember that it's only the beginning of your journey with Vedro and API testing. The world of testing is wide and varied, with many different techniques and strategies to explore. Keep experimenting, keep learning, and most importantly, keep testing!
