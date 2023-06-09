@@ -84,9 +84,11 @@ In this data model:
 - `username` is a string containing between 3 to 12 lowercase letters
 - `password` is a string with a minimum of 6 characters
 
+_(these specifications are based on the method documentation available at [chat-api-tutorial.vedro.io/docs](https://chat-api-tutorial.vedro.io/docs#/default/auth_register))_
+
 ## Data Generation
 
-Our new data model [allows the generation](https://d42.vedro.io/docs/features/generation) of unique data for each test:
+Our new data model allows the [generation](https://d42.vedro.io/docs/features/generation) of unique data for each test:
 
 ```python
 from d42 import fake

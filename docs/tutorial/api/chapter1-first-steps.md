@@ -17,16 +17,16 @@ import TableOfContents from './TableOfContents';
 
 ## Intro
 
-The best way to learn is by doing, so let's get some hands-on experience and cover a straightforward service with automated tests - a chat platform that allows registered users to communicate with each other. To get started, we'll take a look at the API documentation, which outlines the various requests and data formats needed to interact with the chat service.
+The best way to learn is by doing, so let's get some hands-on experience and cover a straightforward service with automated tests - a chat platform that allows registered users to communicate with each other. To get started, we'll take a look at the [API documentation](https://chat-api-tutorial.vedro.io/docs), which outlines the various requests and data formats needed to interact with the chat service.
 
 Here's an overview of the key API endpoints that we'll be working with:
 
 | Method      | Description |
 | ----------- | ----------- |
-| <code style={{ background: "#d8f2fb" }}>POST /auth/register</code>            | Register a new user with a username and password                                                                  |
-| <code style={{ background: "#d8f2fb" }}>POST /auth/login</code>               | Authenticate an existing user                                                                                     |
-| <code style={{ background: "#d8f2fb" }}>POST /chats/<chat_id>/messages</code> | Send a message to a chat with the specified chat_id. <br/> A new chat will be created if it doesn't already exist |
-| <code style={{ background: "#caeac8" }}>GET /chats/<chat_id>/messages</code>  | Retrieve messages for a chat with the specified chat_id                                                           |
+| <code style={{ background: "#caeac8" }}>POST /auth/register</code>            | Register a new user with a username and password                                                                  |
+| <code style={{ background: "#caeac8" }}>POST /auth/login</code>               | Authenticate an existing user                                                                                     |
+| <code style={{ background: "#caeac8" }}>POST /chats/<chat_id>/messages</code> | Send a message to a chat with the specified chat_id. <br/> A new chat will be created if it doesn't already exist |
+| <code style={{ background: "#d8f2fb" }}>GET /chats/<chat_id>/messages</code>  | Retrieve messages for a chat with the specified chat_id                                                           |
 
 To ensure an uninterrupted learning experience without getting sidetracked by dependency installations, let's proceed with installing everything we need.
 
@@ -40,7 +40,7 @@ $ vedro plugin install vedro-valera-validator
 
 ## Let’s Do It
 
-Once everything is set up, we can proceed to write our first test. Vedro framework is based on scenario tests, which allows us to simulate user interactions and validate their outcomes (or side effects). As interactions with the chat service require authentication, and to authenticate we need a registered account, our first scenario will focus on the registration of a new user. This initial test will help us ensure that the registration process works correctly and provides the necessary access to the chat platform.
+Once everything is set up, we can proceed to write our first test. Vedro framework is based on scenario tests, which allows us to simulate user interactions and validate their outcomes (or side effects). As interactions with the chat service require authentication, and to authenticate we need a registered account, our first scenario will focus on the registration of a new user. This initial test will help us ensure that the _registration process_ works correctly and provides the necessary access to the chat platform.
 
 ### Subject
 

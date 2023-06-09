@@ -19,6 +19,7 @@ class TableOfContents extends React.Component {
       {label: "Chapter 2 — Data Models", link: "./chapter2-data-models"},
       {label: "Chapter 3 — Contexts", link: "./chapter3-contexts"},
       {label: "Chapter 4 — Interfaces", link: "./chapter4-interfaces"},
+      {label: "Chapter 5 — Finale", link: "./chapter5-finale"},
     ]
     return (
       <div>

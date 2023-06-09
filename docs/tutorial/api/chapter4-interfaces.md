@@ -1,7 +1,7 @@
 ---
 id: chapter4-interfaces
 pagination_prev: tutorial/api/chapter3-contexts
-pagination_next: basics/selecting-and-skipping
+pagination_next: tutorial/api/chapter5-finale
 ---
 
 import TemplateScenario from './TemplateScenario';
@@ -14,7 +14,7 @@ import TableOfContents from './TableOfContents';
 
 <TableOfContents current="chapter4" />
 
-Before we dive further into writing more of the tests for our Chat API, let's pause and take some time to refine our existing tests. A few minor tweaks and improvements can go a long way in creating maintainable and efficient test code.
+Before we dive further into writing more of the tests for our [Chat API](https://chat-api-tutorial.vedro.io/docs), let's pause and take some time to refine our existing tests. A few minor tweaks and improvements can go a long way in creating maintainable and efficient test code.
 
 ## Config
 
@@ -67,7 +67,7 @@ To avoid this, we can employ the concept of **interfaces**.
 
 In Vedro, an **interface** is a class providing a structured, unified way to interact with various touchpoints of your application, such as public methods of classes and modules, REST API, or GUI.
 
-Let's define an interface for our Chat API, grouping all related operations:
+Let's define an interface for our [Chat API](https://chat-api-tutorial.vedro.io/docs), grouping all related operations:
 
 ```python
 # ./interfaces/chat_api.py
