@@ -36,6 +36,7 @@ module.exports = {
       items: [
         'integrations/valera-validator',
         'integrations/allure-reporter',
+        'integrations/httpx-client',
       ],
     },
     {

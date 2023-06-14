@@ -66,7 +66,7 @@ class Scenario(vedro.Scenario):
         self.response = httpx.get("/api/users/1")
 
     def then_it_should_return_user(self):
-        assert self.response.body == {
+        assert self.response.json() == {
             "id": 1,
             "name": "Bob",
             "created_at": "2020-01-01T00:00:00",
@@ -106,7 +106,7 @@ class Scenario(vedro.Scenario):
 
     def then_it_should_return_user(self):
         # highlight-start
-        assert self.response.body == from_native({
+        assert self.response.json() == from_native({
         # highlight-end
             "id": 1,
             "name": "Bob",

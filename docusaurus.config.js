@@ -65,11 +65,11 @@
             label: 'Plugins',
             position: 'left',
           },
-          {
-            href: '/universe',
-            label: 'Universe',
-            position: 'left',
-          },
+          // {
+          //   href: '/universe',
+          //   label: 'Universe',
+          //   position: 'left',
+          // },
           {
             to: 'blog',
             label: 'Blog',

@@ -15,6 +15,9 @@ In previous chapters, we have covered various authentication scenarios. Now, it'
 In order to [send a message](https://chat-api-tutorial.vedro.io/docs#/default/send_message), we need two pieces of information: the message text and an authorization token. Our scenario will look something like this:
 
 ```python
+import vedro
+from interfaces import ChatApi
+
 class Scenario(vedro.Scenario):
     subject = "send message"
 
@@ -47,7 +50,6 @@ class ChatApi(vedro.Interface):
     def send(self, message, token):
         url = f"{self.api_url}/chats/{message['chat_id']}/messages"
         response = httpx.post(url, json=message, headers={"X-Auth-Token": token})
-        response.body = response.json()
         return response
 
 ```
@@ -98,11 +100,9 @@ Finally, let's group everything together:
 # ./scenarios/send_message.py
 import vedro
 from d42 import fake
-from contexts.logged_in_user import logged_in_user
-from contexts.registered_user import registered_user
-from interfaces.chat_api import ChatApi
-from schemas.message import MessageSchema, NewMessageSchema
-from schemas.user import NewUserSchema
+from contexts import logged_in_user, registered_user
+from interfaces import ChatApi
+from schemas import MessageSchema, NewMessageSchema, NewUserSchema
 
 class Scenario(vedro.Scenario):
     subject = "send message"
