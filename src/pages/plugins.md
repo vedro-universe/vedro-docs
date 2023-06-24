@@ -1,15 +1,35 @@
 ---
 id: plugins
-title: Plugins
 ---
+
+import { PluginList, Plugin } from '@site/src/components/PluginList';
+import VedroPluginList from '@site/src/components/VedroPluginList';
 
 # Plugins
 
+## Community Plugins
+
+Third-party plugins, created by the Vedro community, expand the framework's capabilities by adding new features, tools, and integrations.
+
+<VedroPluginList />
+
+:::tip
+
+Interested in creating your own plugins? Learn how to do so [here](./docs/guides/writing-plugins)
+
+:::
+
+## IDE Plugins
+
+These are plugins specifically designed to integrate Vedro into popular IDEs, providing seamless workflows and a more user-friendly experience.
+
+| Plugin                                                             | Description                                               | Info          |
+|--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
+| [PyCharm Plugin](https://plugins.jetbrains.com/plugin/18227-vedro) | [PyCharm](https://www.jetbrains.com/pycharm/) integration | Version 0.1.2 |
+
 ## Core Plugins
 
-Built-in plugins provided by Vedro to deliver essential features
-
-import { PluginList, Plugin } from '../components/PluginList';
+Built-in plugins provided by Vedro to deliver essential features.
 
 <PluginList>
     <Plugin key='director' name='Director' pypi='vedro'
@@ -64,23 +84,3 @@ import { PluginList, Plugin } from '../components/PluginList';
         desc='Handles test exit status based on test results and interruptions'
     />
 </PluginList>
-
-
-## Community Plugins
-
-Third-party plugins, created by the Vedro community, expand the framework's capabilities by adding new features, tools, and integrations
-
-import VedroPluginList from '../components/VedroPluginList';
-
-<VedroPluginList />
-
-And [more](https://github.com/topics/vedro-plugin)
-
-
-## IDE Plugins
-
-These are plugins specifically designed to integrate Vedro into popular IDEs, providing seamless workflows and a more user-friendly experience
-
-| Plugin                                                             | Description                                               | Info          |
-|--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
-| [PyCharm Plugin](https://plugins.jetbrains.com/plugin/18227-vedro) | [PyCharm](https://www.jetbrains.com/pycharm/) integration | Version 0.1.2 |

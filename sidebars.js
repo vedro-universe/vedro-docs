@@ -16,17 +16,25 @@ module.exports = {
       label: 'Basics',
       collapsed: false,
       items: [
-        'basics/selecting-and-skipping',
-        'basics/parameterized-scenarios',
+        'basics/selecting-and-ignoring',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Features',
+      collapsed: false,
+      items: [
+        'features/skipping-scenarios',
+        'features/parameterized-scenarios',
+        'features/scenario-ordering',
       ],
     },
     {
       type: 'category',
       label: 'Guides',
-      collapsed: true,
+      collapsed: false,
       items: [
         'guides/using-plugins',
-        'guides/writing-plugins',
       ],
     },
     {

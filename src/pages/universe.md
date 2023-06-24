@@ -6,8 +6,8 @@ title: Universe
 
 ## vedro
 
-import { PluginList, Plugin } from '../components/PluginList';
-import VedroPluginList from '../components/VedroPluginList';
+import { PluginList, Plugin } from '@site/src/components/PluginList';
+import VedroPluginList from '@site/src/components/VedroPluginList';
 
 <PluginList>
     <Plugin name="vedro" pypi="vedro" desc="Pragmatic BDD Framework" />

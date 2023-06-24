@@ -1,7 +1,7 @@
 ---
 id: chapter5-finale
 pagination_prev: tutorial/api/chapter4-interfaces
-pagination_next: basics/selecting-and-skipping
+pagination_next: basics/selecting-and-ignoring
 ---
 
 import TableOfContents from './TableOfContents';
