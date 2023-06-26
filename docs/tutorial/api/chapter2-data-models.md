@@ -31,7 +31,7 @@ When we run the above test a second time, it fails because the username "bob" is
 
 <TerminalOutput>
 {`
-[1;37m$ vedro run -vv[0m[1;37m
+[1;37m$ vedro run[0m[1;37m
 [0m
 [0mScenarios
 [1m* [0m[1m

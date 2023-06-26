@@ -70,12 +70,12 @@ In the context of our chat service, the arrange step sets up the required data, 
 
 To run the test, use the `vedro run` command:
 ```shell
-$ vedro run -vv
+$ vedro run -v
 ```
 
 The command will run all the test scenarios in `scenarios/` directory and display the results, indicating which tests have passed, failed, or been skipped. In this case, you should see that the "register new user" scenario has passed.
 
-The `-vv` flag increases the verbosity of the test output. In case a scenario fails, this flag provides more detailed information about the test run to help you identify and troubleshoot the issue.
+The `-v` flag increases the verbosity of the test output. In case a scenario fails, this flag provides more detailed information about the test run to help you identify and troubleshoot the issue.
 
 <TerminalOutput>
 {`

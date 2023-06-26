@@ -154,7 +154,7 @@ If scenario fails, `vedro-httpx` provides a beautifully formatted output of the 
 
 <TerminalOutput>
 {`
-[1;37m$ vedro run -vvv[0m[1;37m
+[1;37m$ vedro run -v[0m[1;37m
 [1;37m...[0m[1;37m
 [0m
 [1;91mAssertionError: [0massert [1;36m201[0m == [1;36m200[0m
@@ -183,7 +183,7 @@ If scenario fails, `vedro-httpx` provides a beautifully formatted output of the 
 
 <TerminalOutput>
 {`
-[1;37m$ vedro run -vvv[0m[1;37m
+[1;37m$ vedro run -v[0m[1;37m
 [1;37m...[0m[1;37m
 [0m
 [1;91mAssertionError: [0massert [1;36m201[0m == [1;36m200[0m
