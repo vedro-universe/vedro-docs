@@ -17,6 +17,7 @@ module.exports = {
       collapsed: false,
       items: [
         'basics/selecting-and-ignoring',
+        'basics/reporting-system',
       ],
     },
     {
@@ -40,11 +41,12 @@ module.exports = {
     {
       type: 'category',
       label: 'Integrations',
-      collapsed: true,
+      collapsed: false,
       items: [
         'integrations/valera-validator',
         'integrations/allure-reporter',
         'integrations/httpx-client',
+        'integrations/pycharm-plugin',
       ],
     },
     {

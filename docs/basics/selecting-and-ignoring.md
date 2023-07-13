@@ -3,8 +3,6 @@ id: selecting-and-ignoring
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Selecting & Ignoring
 

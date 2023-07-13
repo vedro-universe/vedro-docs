@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Valera Validator
 
-[Valera Validator](https://pypi.org/project/valera) is a package designed for data validation based on [d42 (district42) schemas](https://d42.vedro.io/docs/quick-start). Valera provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
+[vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) is a plugin for the Vedro framework that utilizes the [valera validator](https://pypi.org/project/valera), a package designed for data validation based on [d42 (district42) schemas](https://d42.vedro.io/docs/quick-start). Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
 
 ## Setting Up
 

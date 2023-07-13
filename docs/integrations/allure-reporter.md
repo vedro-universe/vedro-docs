@@ -8,7 +8,7 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Allure Reporter
 
-[Allure Reporter](https://pypi.org/project/vedro-allure-reporter/) is a plugin for [Vedro](https://pypi.org/project/vedro/) that provides integration with the [Allure Framework](https://docs.qameta.io/allure/), a flexible, lightweight, multi-language test report tool. The Allure Framework offers a concise representation of test results in a clean, easily understandable web report format.
+[Allure Reporter](https://pypi.org/project/vedro-allure-reporter/) is a plugin for Vedro that provides integration with the [Allure Framework](https://docs.qameta.io/allure/), a flexible, lightweight, multi-language test report tool. The Allure Framework offers a concise representation of test results in a clean, easily understandable web report format.
 
 ## Installation
 
@@ -250,7 +250,7 @@ from vedro_allure_reporter import AllureLabel
 
 class AllureReporter(allure_reporter.AllureReporter):
     labels = [
-        AllureLabel("owner", "me"),
+        AllureLabel("microservice", "profile"),
     ]
 ```
 
@@ -263,4 +263,18 @@ You can use this configuration option to add custom labels to each scenario.
 
 These command-line arguments can be used to override the default configurations specified in the `vedro.cfg.py` file.
 
-By leveraging the power of the Allure Reporter and its various configurations, you can create comprehensive and insightful test reports. These provide valuable information about your testing efforts. Whether you need to categorize scenarios, attach artifacts, or customize labels, the Allure Reporter has you covered. Your test results will not only be more detailed but also easier to understand and analyze.
+### Running Scenarios with Labels
+
+Vedro Allure Reporter allows running specific scenarios annotated with particular [Allure labels](https://docs.qameta.io/allure-testops/faq/labels/).
+
+To filter and execute scenarios based on specific Allure labels, use the `--allure-labels` argument followed by the label name and its corresponding value:
+
+```shell
+$ vedro run --allure-labels label1=val1 label2=val2 ...
+```
+
+For example, to run scenarios exclusively labelled with the `Epic` _"User Profile Management"_ and the `Feature` _"Updating Profile Details"_, use the following command:
+
+```shell
+$ vedro run --allure-labels epic="User Profile Management" feature="Updating Profile Details"
+```
