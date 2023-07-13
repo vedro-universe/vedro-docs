@@ -2,8 +2,6 @@
 id: selecting-and-ignoring
 ---
 
-import TerminalOutput from '@site/src/components/TerminalOutput';
-
 # Selecting & Ignoring
 
 Depending on the requirements of the development cycle, it's often necessary to select specific test scenarios to run and ignore others.  Vedro provides command-line arguments and decorators to precisely control test execution.

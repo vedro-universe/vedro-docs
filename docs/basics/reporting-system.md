@@ -49,7 +49,20 @@ class Config(vedro.Config):
   </TabItem>
 </Tabs>
 
-(screenshot)
+Output:
+
+<TerminalOutput>
+{`
+[0mScenarios
+[1m* auth / login[0m[1m
+[0m [32m✔ login as registered user[0m[38;5;244m (0.21s)[0m[38;5;244m
+[0m [32m✔ try to login as nonexisting user[0m[38;5;244m (0.11s)[0m[38;5;244m
+[0m [32m✔ try to login with incorrect password[0m[38;5;244m (0.22s)[0m[38;5;244m
+[0m 
+[0m[1;32m# 3 scenarios, 3 passed, 0 failed, 0 skipped[0m[34m (0.53s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
 Moreover, you can pair this with `--show-steps` to show timings for individual test steps as follows:
 
@@ -57,7 +70,22 @@ Moreover, you can pair this with `--show-steps` to show timings for individual t
 $ vedro run --show-timings --show-steps
 ```
 
-(screenshot)
+Output:
+
+<TerminalOutput>
+{`
+[0mScenarios
+[1m* auth / login[0m[1m
+[0m [32m✔ login as registered user[0m[38;5;244m (0.36s)[0m[38;5;244m
+[0m   [32m✔ given_user[0m[38;5;244m (0.19s)[0m[38;5;244m
+[0m   [32m✔ when_user_logs_in[0m[38;5;244m (0.18s)[0m[38;5;244m
+[0m   [32m✔ then_it_should_return_success_response[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m   [32m✔ and_it_should_return_created_token[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m 
+[0m[1;32m# 1 scenarios, 1 passed, 0 failed, 0 skipped[0m[34m (0.36s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
 ### Show Paths
 
@@ -92,7 +120,21 @@ class Config(vedro.Config):
   </TabItem>
 </Tabs>
 
-(screenshot)
+<TerminalOutput>
+{`
+[0mScenarios
+[1m* auth / login[0m[1m
+[0m [32m✔ login as registered user[0m[32m
+[0m   [38;5;244m> scenarios/auth/login/login_as_registered_user.py[0m[38;5;244m
+[0m [32m✔ try to login as nonexisting user[0m[32m
+[0m   [38;5;244m> scenarios/auth/login/try_to_login_as_nonexisting_user.py[0m[38;5;244m
+[0m [32m✔ try to login with incorrect password[0m[32m
+[0m   [38;5;244m> scenarios/auth/login/try_to_login_with_incorrect_password.py[0m[38;5;244m
+[0m 
+[0m[1;32m# 3 scenarios, 3 passed, 0 failed, 0 skipped[0m[34m (0.81s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
 ### Show Scenario Spinner
 
@@ -126,8 +168,6 @@ class Config(vedro.Config):
 
   </TabItem>
 </Tabs>
-
-(screenshot)
 
 <!-- :::info
 This is just a sampling of the many configuration options available in RichReporter. For a comprehensive list, please visit the [RichReporter options](./rich-options) page.

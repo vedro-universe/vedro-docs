@@ -41,7 +41,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Integrations',
-      collapsed: false,
+      collapsed: true,
       items: [
         'integrations/valera-validator',
         'integrations/allure-reporter',
