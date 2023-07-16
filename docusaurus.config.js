@@ -2,7 +2,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
   title: 'Vedro',
-  tagline: 'Pragmatic BDD Framework',
+  tagline: 'Pragmatic Testing Framework',
   url: 'https://vedro.io',
   baseUrl: '/',
   trailingSlash: false,
@@ -97,13 +97,13 @@
             title: 'Community',
             items: [
               {
-                label: 'Discussions',
-                href: 'https://github.com/tsv1/vedro/discussions',
-              },
-              {
                 label: 'Telegram',
                 href: 'https://t.me/vedro_universe',
               },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/vedro_universe',
+              }
             ],
           },
           {

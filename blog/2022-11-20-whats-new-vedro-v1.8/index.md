@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import SubscribeTelegramTip from '../_subscribe_telegram.md';
+import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New In Vedro v1.8
 
@@ -237,4 +237,4 @@ Scenarios
 
 ---
 
-<SubscribeTelegramTip />
+<SubscribeTip />

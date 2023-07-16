@@ -31,6 +31,7 @@ $ vedro run --show-timings
   <TabItem value="config_file" label="Config File">
 
 ```python
+# ./vedro.cfg.py
 import vedro
 import vedro.plugins.director.rich as rich_reporter
 
@@ -102,6 +103,7 @@ $ vedro run --show-paths
   <TabItem value="config_file" label="Config File">
 
 ```python
+# ./vedro.cfg.py
 import vedro
 import vedro.plugins.director.rich as rich_reporter
 
@@ -151,6 +153,7 @@ $ vedro run --show-scenario-spinner
   <TabItem value="config_file" label="Config File">
 
 ```python
+# ./vedro.cfg.py
 import vedro
 import vedro.plugins.director.rich as rich_reporter
 

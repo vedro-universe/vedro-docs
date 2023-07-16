@@ -5,7 +5,7 @@ hide_table_of_contents: false
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
-import SubscribeTelegramTip from '../_subscribe_telegram.md';
+import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New In Vedro v1.7
 
@@ -91,4 +91,4 @@ The registration order of the Deferrer and Artifacted plugins was found to be in
 
 ---
 
-<SubscribeTelegramTip />
+<SubscribeTip />

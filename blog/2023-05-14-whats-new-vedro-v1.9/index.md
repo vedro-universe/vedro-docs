@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import SubscribeTelegramTip from '../_subscribe_telegram.md';
+import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New In Vedro v1.9
 
@@ -162,4 +162,4 @@ In this example, the scenario for the user "Alice" will be skipped, while the sc
 
 That's all for the updates in this release! We hope these new features and improvements will make your testing experience even better. As always, your feedback is valuable to us, so feel free to reach out with any comments or suggestions. Happy testing!
 
-<SubscribeTelegramTip />
+<SubscribeTip />
