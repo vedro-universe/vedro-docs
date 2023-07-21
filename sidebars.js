@@ -28,6 +28,7 @@ module.exports = {
         'features/skipping-scenarios',
         'features/parameterized-scenarios',
         'features/scenario-ordering',
+        'features/fail-fast',
       ],
     },
     {
@@ -47,6 +48,7 @@ module.exports = {
         'integrations/allure-reporter',
         'integrations/httpx-client',
         'integrations/pycharm-plugin',
+        'integrations/gitlab-reporter',
       ],
     },
     {
