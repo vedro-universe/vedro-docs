@@ -103,6 +103,10 @@
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/vedro_universe',
+              },
+              {
+                label: 'Instagram',
+                href: 'https://www.instagram.com/vedro_universe',
               }
             ],
           },
