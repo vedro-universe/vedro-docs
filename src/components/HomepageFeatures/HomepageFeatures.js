@@ -1,11 +1,12 @@
-import React from 'react';
+import Link from '@docusaurus/Link';
+import { faCheck, faMagic, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagic, faPlug, faCheck } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
+import React from 'react';
 
 // fix flashing icons
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 import styles from './HomepageFeatures.module.css';
@@ -25,7 +26,7 @@ const FeatureList = [
     icon: faPlug,
     description: (
       <>
-        Unleash the power of plugins. Including integrations with <a href='https://plugins.jetbrains.com/plugin/18227-vedro' target='_blank'>PyCharm</a>, <a href='https://github.com/vedro-universe/vedro-allure-reporter' target='_blank'>Allure</a> and <a href='https://github.com/vedro-universe/vedro-gitlab-reporter' target='_blank'>GitLab</a>
+        Unleash the power of plugins. Including integrations with <Link to='docs/integrations/pycharm-plugin' target='_blank'>PyCharm</Link>, <Link to='/docs/integrations/allure-reporter' target='_blank'>Allure</Link> and <Link to='/docs/integrations/gitlab-reporter' target='_blank'>GitLab</Link>
       </>
     ),
   },
