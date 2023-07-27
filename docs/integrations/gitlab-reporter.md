@@ -5,10 +5,13 @@ id: gitlab-reporter
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
+import VideoPreview from '@site/src/components/VideoPreview';
 
 # GitLab Reporter
 
-[GitLab Reporter](https://pypi.org/project/vedro-gitlab-reporter/) is a Vedro plugin that enhances the readability and navigability of your test reports. By utilizing [GitLab's collapsible sections](https://docs.gitlab.com/ee/ci/jobs/#custom-collapsible-sections), it provides a more organized and efficient way to review your reports. This allows you to collapse different elements of your reports such as steps, variables, or the test scope, streamlining the understanding and management of the information.
+[GitLab Reporter](https://pypi.org/project/vedro-gitlab-reporter/) is a Vedro plugin that enhances the readability and navigability of your test reports. By utilizing [GitLab's collapsible sections](https://docs.gitlab.com/ee/ci/jobs/#custom-collapsible-sections), it provides a more organized and efficient way to review your reports.
+
+The plugin allows you to collapse different elements of your reports, such as steps, variables, or the test scope, making it easier to manage and comprehend the information.
 
 ## Installation
 
@@ -62,24 +65,42 @@ In the command above, the {steps, vars, scope} parameters dictate what elements 
 
 ### Steps Mode
 
-In the steps mode, exceptions in the report will be displayed while the steps are collapsed. This means that you can opt to show or hide variables within each step, enhancing the readability of your report.
+In the steps mode, exceptions in the report will be displayed while the steps are collapsed. This mode enhances the readability of your report by giving you the option to show or hide variables within each step.
 
 ```shell
 $ vedro run -r gitlab --gitlab-collapsable steps
 ```
 
+<VideoPreview
+  src={require('./gitlab/collapsable_steps.mov')}
+  preview={require('./gitlab/collapsable_steps.png')}
+  width="650px"
+/>
+
 ### Vars Mode
 
-The vars mode operates differently. In this mode, the plugin will show both exceptions and step names while collapsing the variables. This allows you to selectively show or hide variable values, giving you greater control over the details included in your report.
+The vars mode operates differently. In this mode, the plugin will show both exceptions and step names while collapsing the variables. This mode provides greater control over the report details by allowing you to selectively show or hide variable values.
 
 ```shell
 $ vedro run -r gitlab --gitlab-collapsable vars
 ```
 
+<VideoPreview
+  src={require('./gitlab/collapsable_vars.mov')}
+  preview={require('./gitlab/collapsable_vars.png')}
+  width="650px"
+/>
+
 ### Scope Mode
 
-Alternatively, in the scope mode, exceptions and step names are displayed while the scope is collapsed. This means you can choose to show or hide the test scope within your report, thereby maintaining a high-level overview of the test while maintaining the option to delve into more detail when necessary.
+Alternatively, in the scope mode, exceptions and step names are displayed while the scope is collapsed.  This provides you with the flexibility to show or hide the test scope within your report, allowing for a high-level overview of the test while retaining the option to delve into more detail when necessary.
 
 ```shell
 $ vedro run -r gitlab --gitlab-collapsable scope
 ```
+
+<VideoPreview
+  src={require('./gitlab/collapsable_scope.mov')}
+  preview={require('./gitlab/collapsable_scope.png')}
+  width="650px"
+/>
