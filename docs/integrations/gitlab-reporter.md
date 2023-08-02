@@ -5,7 +5,7 @@ id: gitlab-reporter
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
-import VideoPreview from '@site/src/components/VideoPreview';
+import VideoEmbed from '@site/src/components/VideoEmbed';
 
 # GitLab Reporter
 
@@ -71,10 +71,11 @@ In the steps mode, exceptions in the report will be displayed while the steps ar
 $ vedro run -r gitlab --gitlab-collapsable steps
 ```
 
-<VideoPreview
+<VideoEmbed
   src={require('./gitlab/collapsable_steps.mov')}
   preview={require('./gitlab/collapsable_steps.png')}
-  width="650px"
+  width="700px"
+  height="525px"
 />
 
 ### Vars Mode
@@ -85,10 +86,11 @@ The vars mode operates differently. In this mode, the plugin will show both exce
 $ vedro run -r gitlab --gitlab-collapsable vars
 ```
 
-<VideoPreview
+<VideoEmbed
   src={require('./gitlab/collapsable_vars.mov')}
   preview={require('./gitlab/collapsable_vars.png')}
-  width="650px"
+  width="700px"
+  height="525px"
 />
 
 ### Scope Mode
@@ -99,8 +101,9 @@ Alternatively, in the scope mode, exceptions and step names are displayed while 
 $ vedro run -r gitlab --gitlab-collapsable scope
 ```
 
-<VideoPreview
+<VideoEmbed
   src={require('./gitlab/collapsable_scope.mov')}
   preview={require('./gitlab/collapsable_scope.png')}
-  width="650px"
+  width="700px"
+  height="525px"
 />
