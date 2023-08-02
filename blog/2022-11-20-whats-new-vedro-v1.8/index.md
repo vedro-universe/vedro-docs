@@ -9,15 +9,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import SubscribeTip from '../_subscribe_for_updates.md';
 
-# What's New In Vedro v1.8
+# What's New in Vedro v1.8
 
 We are thrilled to announce the release of [Vedro v1.8](https://pypi.org/project/vedro/)! This update brings a host of new features and improvements to the framework, enhancing its capabilities and making it even more flexible and user-friendly. Let's delve into the latest features and see how they can improve your testing workflow.
 
 <!--truncate-->
 
-## New Features
-
-### Introducing the Orderer Plugin
+## Introducing the Orderer Plugin
 
 The Orderer plugin offers a new way to customize the execution order of scenarios. You can now run your scenarios in a stable (default), reversed, or random order. Each order type is easily set with a command-line argument.
 
@@ -99,7 +97,7 @@ Scenarios
 
 By providing these different ordering options, the plugin adds an extra layer of flexibility to your testing workflow.
 
-### DryRunner: Test Without Running
+## DryRunner: Test Without Running
 
 The DryRunner plugin allows for scenario execution without actually running them. This feature is useful when you want to validate complex selections or simply count the number of tests.
 
@@ -112,7 +110,7 @@ $ vedro run scenarios/sign_up/ \
 ```
 
 
-### Conditional Scenario Skip with Skipper
+## Conditional Scenario Skip with Skipper
 
 Skipper introduces the `@skip_if` decorator, enabling you to skip scenarios based on certain conditions. This is useful when you have scenarios that only apply to specific environments or versions.
 
@@ -136,7 +134,7 @@ class Scenario(vedro.Scenario):
         assert self.original == b"text"
 ```
 
-### Rich Reporter: Hiding Namespaces
+## Rich Reporter: Hiding Namespaces
 
 The RichReporter now offers a `--hide-namespaces` parameter, allowing you to hide directory names in the output. This feature is particularly valuable when running scenarios in random order or across different directories. By hiding directory names, the output becomes cleaner and more focused, eliminating unnecessary clutter and enhancing readability.
 
@@ -185,7 +183,7 @@ Scenarios
   </TabItem>
 </Tabs>
 
-### PyCharm Reporter: Silent Mode
+## PyCharm Reporter: Silent Mode
 
 The PyCharm Reporter now includes a `--pycharm-no-output` parameter, which suppresses console output. This is helpful when you're using the [PyCharm plugin](https://plugins.jetbrains.com/plugin/18227-vedro) with another reporter:
 
@@ -193,7 +191,7 @@ The PyCharm Reporter now includes a `--pycharm-no-output` parameter, which suppr
 $ vedro run -r rich pycharm --pycharm-no-output --hide-namespaces
 ```
 
-### Interrupter: Fail Fast
+## Interrupter: Fail Fast
 
 With v1.8, a short alias (`-f`) has been added for `--fail-fast`, making it quicker and easier to use this option.
 
@@ -201,7 +199,7 @@ With v1.8, a short alias (`-f`) has been added for `--fail-fast`, making it quic
 $ vedro run -f
 ```
 
-### Graceful Interruptions
+## Graceful Interruptions
 
 Vedro now handles interruptions more gracefully. For example, if you hit `ctrl+c`, the interruption will be neatly displayed:
 

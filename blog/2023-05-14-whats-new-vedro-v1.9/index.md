@@ -9,9 +9,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import SubscribeTip from '../_subscribe_for_updates.md';
 
-# What's New In Vedro v1.9
+# What's New in Vedro v1.9
 
-Welcome to all Vedro users and enthusiasts! Today marks a special day as we unveil [Vedro v1.9](https://pypi.org/project/vedro/), a step forward in our continuous journey to enhance your testing experiences. This edition brings forth an array of new features, designed to simplify plugin management, enrich reporting, and more. Let's take a closer look at what this update has in store!
+Greetings to all Vedro users. Today we are introducing [Vedro v1.9](https://pypi.org/project/vedro/), an update aimed at improving your testing experiences. This new version notably focuses on two primary improvements: the simplification of plugin management and the enhancement of reporting capabilities. Let's now examine this update in detail.
 
 <!--truncate-->
 
@@ -44,7 +44,7 @@ To provide more insights into the plugin ecosystem, we've added another command:
 $ vedro plugin top
 ```
 
-This command shows you the most popular [Vedro plugins](./plugins):
+This command shows you the most popular [Vedro plugins](/plugins):
 
 <TerminalOutput>
 {`
@@ -160,6 +160,6 @@ In this example, the scenario for the user "Alice" will be skipped, while the sc
 
 ---
 
-That's all for the updates in this release! We hope these new features and improvements will make your testing experience even better. As always, your feedback is valuable to us, so feel free to reach out with any comments or suggestions. Happy testing!
+That's all for the updates in this release! We hope these new features and improvements will make your testing experience even better.
 
 <SubscribeTip />

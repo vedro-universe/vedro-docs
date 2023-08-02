@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import SubscribeTip from '../_subscribe_for_updates.md';
 
-# What's New In Vedro v1.7
+# What's New in Vedro v1.7
 
 We're excited to announce [Vedro v1.7](https://pypi.org/project/vedro/), our latest release. This update brings new features and important fixes to enhance your testing experience. Let's take a closer look at what's new.
 
