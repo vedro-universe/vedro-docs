@@ -48,10 +48,9 @@
         disableSwitch: true,
       },
       navbar: {
-        title: 'Vedro',
         logo: {
           alt: 'Logo',
-          src: 'img/vedro.png',
+          src: 'img/vedro-logo.png',
         },
         items: [
           {
