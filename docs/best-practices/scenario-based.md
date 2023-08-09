@@ -4,7 +4,7 @@ id: scenario-based
 
 import Screenshot from '@site/src/components/Screenshot';
 
-# Scenario Based Tests
+# Scenario-Based Tests
 
 ## The Nature of Interactions
 
