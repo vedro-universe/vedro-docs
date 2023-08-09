@@ -139,7 +139,7 @@ This is a great way to stay updated with the latest and most widely-used plugins
 As your project grows, it's possible that you'll install and use numerous plugins, which can become difficult to manage or keep track of. Luckily, the Vedro plugin manager provides a simple command to list all installed plugins, along with their status (enabled or disabled):
 
 ```shell
-vedro plugin list
+$ vedro plugin list
 ```
 
 Running this command will yield a list of all installed plugins in your project, along with their status:

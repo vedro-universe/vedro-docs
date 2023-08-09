@@ -114,7 +114,7 @@
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/tsv1/vedro',
+                href: 'https://github.com/vedro-universe/vedro',
               },
               {
                 label: 'PyPi',

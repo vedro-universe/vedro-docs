@@ -5,11 +5,12 @@ class Screenshot extends React.Component {
   render() {
     const src = this.props.src.default;
     const width = this.props.width || "250px";
+    const shadow = this.props.shadow || "rgba(0, 0, 0, 0.35) 0px 5px 15px";
     return (
       <a target="_blank" href={src}>
         <img src={src} style={{
             width,
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow: shadow,
             cursor: "zoom-in",
           }}
         />

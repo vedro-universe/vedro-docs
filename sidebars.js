@@ -42,7 +42,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Integrations',
-      collapsed: true,
+      collapsed: false,
       items: [
         'integrations/valera-validator',
         'integrations/allure-reporter',
@@ -53,9 +53,10 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Best Practices (soon)',
-      collapsed: true,
+      label: 'Best Practices',
+      collapsed: false,
       items: [
+        'best-practices/scenario-based',
         'best-practices/best-practice',
       ],
     },
