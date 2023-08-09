@@ -56,7 +56,7 @@ module.exports = {
       label: 'Best Practices',
       collapsed: false,
       items: [
-        'best-practices/scenario-based',
+        'best-practices/scenario-based-tests',
         'best-practices/best-practice',
       ],
     },

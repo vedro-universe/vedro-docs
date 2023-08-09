@@ -1,5 +1,5 @@
 ---
-id: scenario-based
+id: scenario-based-tests
 ---
 
 import Screenshot from '@site/src/components/Screenshot';
@@ -37,7 +37,7 @@ class Scenario(vedro.Scenario):
         self.page = opened_url_shortener()
 
     def given_original_url(self):
-        self.page.fill_url("https://vedro.io/docs/best-practices/scenario-based")
+        self.page.fill_url("https://vedro.io/docs/quick-start")
 
     def when_user_shortens_url(self):
         self.page.click_shorten_button()
