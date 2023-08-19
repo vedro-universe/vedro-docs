@@ -37,6 +37,7 @@ module.exports = {
       collapsed: false,
       items: [
         'guides/using-plugins',
+        'guides/testing-exceptions',
       ],
     },
     {
