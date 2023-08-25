@@ -3,29 +3,27 @@ id: testing-exceptions
 ---
 # Testing Exceptions
 
-Exceptions are not just error messages that appear when something goes wrong. Exceptions signal specific conditions that might deviate from the program's usual flow. In essence, they are integral to understanding the behavior of a system.
+Exceptions are not just error messages that appear when something goes wrong. Exceptions signal specific conditions that might deviate from a program's usual flow. Fundamentally, they are integral to understanding the behavior of a system.
 
 ## Why Test Exceptions?
 
-### 1. Verifying the Exception Raised
+### 1. Verify the Exception Raised
 
 It's essential to test exceptions to ensure that the system raises the expected exception under certain conditions or with specific inputs. These verifications ensure that the program can correctly detect and respond to anomalies.
 
 ### 2. Check Exception Messages
 
-Clear and accurate exception messages are crucial for debugging. By testing exceptions, we confirm that these messages provide the necessary information to engineers about the underlying issue.
+Clear, accurate exception messages are crucial for debugging. By testing exceptions, we confirm that these messages provide the necessary information to engineers about the underlying issue.
 
 ### 3. Validate Control Flow
 
-In some programming paradigms, exceptions have roles beyond just signaling errors. For example, in Python, exceptions can act as a control flow mechanism. Python's `StopIteration` exception, which is raised when no more items exist in an iterator, is a case in point. It informs the `for` loop about the end of iteration. 
-
-While there's [debate over the use of exceptions for control flow](https://stackoverflow.com/questions/729379/why-not-use-exceptions-as-regular-flow-of-control), this practice is not uncommon in Python.
+While using exceptions for control flow is a [topic of debate](https://stackoverflow.com/questions/729379/why-not-use-exceptions-as-regular-flow-of-control), it's not uncommon in Python. For example, iterators raise `StopIteration` exceptions when they have no more items to return, and the `for` statement relies on this exception to stop iterating.
 
 ## Testing Exceptions in Vedro
 
 Vedro provides the `catched` function designed to assist in testing exceptions.
 
-Below is an example where we're testing the scenario of attempting to open a non-existing file. We expect a `FileNotFoundError` to be raised, and the test verifies both the type of the exception and its message.
+Below is an example where we test the scenario of attempting to open a non-existing file. We expect a `FileNotFoundError` to be raised, and the test verifies the exception's type and message.
 
 ```python
 import vedro
@@ -47,16 +45,16 @@ class Scenario(vedro.Scenario):
 ```
 
 The `exc_info` object encapsulates details about the exception. If an exception is raised within the `catched` block, the following attributes are populated:
-- `type` — represents the type of the raised exception
-- `value` —  holds the instance of the raised exception
-- `traceback` — a [traceback object](https://docs.python.org/3/library/types.html#types.TracebackType) containing details about the exception's origin and context
+- `type` — the type of the exception that was raised
+- `value` —  the actual exception instance
+- `traceback` — the [traceback object](https://docs.python.org/3/library/types.html#types.TracebackType) containing details about the exception's context
 
 If no exception is raised, all these attributes are set to `None`.
 
 ## Explicit Over Implicit
 
-Clarity in testing is essential. Vedro follows the philosophy ["Explicit is better than implicit"](https://peps.python.org/pep-0020/). It's worth noting that the `catched` function doesn't automatically verify if an exception was raised. Engineers must include this verification explicitly in the test. This approach ensures that tests are transparent and free from assumptions.
+One of the guiding principles of Vedro is ["Explicit is better than implicit"](https://peps.python.org/pep-0020/). This philosophy extends to exception testing as well. The `catched` context manager does not implicitly check whether an exception has occurred or not. Engineers must explicitly include this verification in the test. This approach ensures that tests are transparent and free from assumptions.
 
 ## Conclusion
 
-In conclusion, while exceptions may seem like disturbances disrupting the smooth flow of a program, they are vital to understanding a system's behavior. Testing exceptions goes beyond error management; it's about understanding and validating the program's responses to various scenarios.
+In conclusion, while exceptions may seem like disturbances disrupting the smooth flow of a program, they are vital to understanding a system's behavior.
