@@ -39,10 +39,10 @@ class Scenario(vedro.Scenario):
 
 The scenario is tagged with the following labels:
 
-- **AUTH_REGISTER**: Denotes the feature related to authentication registration.
-- **API**: Highlights the component being tested.
-- **KAFKA**: Indicates the messaging system involved.
-- **P0**: Signifies its high priority.
+- `AUTH_REGISTER` — Denotes the feature related to authentication registration
+- `API` — Highlights the component being tested
+- `KAFKA` — Indicates the messaging system involved
+- `P0` — Signifies its high priority
 
 These tags facilitate effortless identification, execution, and management of this specific test across various dimensions.
 
@@ -54,9 +54,6 @@ For instance, to run all tests tagged with `API`, you can use the following comm
 
 ```shell
 $ vedro run --tags "API"
-
-# or short form
-$ vedro run -t "API"
 ```
 
 Moreover, you can employ [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) to combine tags and create complex filtering conditions. For example, to run scenarios that include either the `API` or `UI` tag but do not include the `P0` tag, you can use the following command:
@@ -106,7 +103,5 @@ Using tags for test management brings numerous advantages that contribute to mor
 - **Efficient Test Discovery**: The `--dry-run` feature and tag-based querying simplify the test discovery process. Unlike directory-based approaches, where navigating through folders can be cumbersome, tagging enables quick test preview and selection, saving time especially in large projects.
 
 - **Contextual Test Reporting**: Tagging tests enhances reporting capabilities. When tests fail, their tags can provide immediate context, helping you to easily identify patterns or specific features that require attention, leading to a more targeted and efficient debugging process.
-
-## Conclusion
 
 While directories may suffice for initial test organization, their limitations quickly become apparent as the project scales. Implementing a tagging system can significantly improve the organization, maintainability, and effectiveness of your test suite, becoming a powerful tool for quality assurance in larger, more complex projects.
