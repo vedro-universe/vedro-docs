@@ -29,6 +29,7 @@ module.exports = {
         'features/parameterized-scenarios',
         'features/scenario-ordering',
         'features/fail-fast',
+        'features/tags',
       ],
     },
     {

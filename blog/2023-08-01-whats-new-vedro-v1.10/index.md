@@ -86,10 +86,10 @@ class Scenario(vedro.Scenario):
 
 The Tagger plugin now supports the use of [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) when specifying tags. This enhancement provides greater flexibility and control in executing scenarios based on certain criteria.
 
-For instance, if you want to run scenarios that either include the `API` or `CLI` tag but do not include the `P0` tag, you can use:
+For instance, if you want to run scenarios that either include the `API` or `UI` tag but do not include the `P0` tag, you can use:
 
 ```shell
-$ vedro run --tags "(API or CLI) and (not P0)"
+$ vedro run --tags "(API or UI) and (not P0)"
 ```
 
 ---
