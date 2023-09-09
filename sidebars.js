@@ -9,7 +9,7 @@ module.exports = {
     {
       type: 'doc',
       id: 'tutorial/tutorial',
-      label: 'Tutorial 🚀',
+      label: 'Tutorial',
     },
     {
       type: 'category',
@@ -30,6 +30,7 @@ module.exports = {
         'features/scenario-ordering',
         'features/fail-fast',
         'features/tags',
+        'features/scope',
       ],
     },
     {

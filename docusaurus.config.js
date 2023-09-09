@@ -71,7 +71,7 @@
           // },
           {
             to: 'blog',
-            label: 'Blog',
+            label: 'What\'s New',
             position: 'left',
           },
         ],
