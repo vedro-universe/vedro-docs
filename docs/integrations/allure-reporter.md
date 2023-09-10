@@ -2,6 +2,7 @@
 id: allure-reporter
 ---
 
+import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
@@ -238,7 +239,7 @@ class AllureReporter(allure_reporter.AllureReporter):
     attach_scope = True
 ```
 
-The scope can be attached to your Allure report. Note, this is set to `False` by default.
+The <Link to="/docs/features/scope" target='_blank'>Scope</Link> can be attached to your Allure report. Note, this is set to `False` by default.
 
 <Screenshot src={require('./allure/allure_scope.png')} />
 

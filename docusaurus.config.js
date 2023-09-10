@@ -17,9 +17,16 @@
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          showLastUpdateTime: false,
+        },
+        blog: {
+          blogTitle: 'What\'s New',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        sitemap: {
+          changefreq: 'daily',
         },
       }),
     ],
@@ -64,11 +71,6 @@
             label: 'Plugins',
             position: 'left',
           },
-          // {
-          //   href: '/universe',
-          //   label: 'Universe',
-          //   position: 'left',
-          // },
           {
             to: 'blog',
             label: 'What\'s New',

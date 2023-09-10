@@ -2,6 +2,7 @@
 id: gitlab-reporter
 ---
 
+import Link from '@docusaurus/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
@@ -95,7 +96,7 @@ $ vedro run -r gitlab --gitlab-collapsable vars
 
 ### Scope Mode
 
-Alternatively, in the scope mode, exceptions and step names are displayed while the scope is collapsed.  This provides you with the flexibility to show or hide the test scope within your report, allowing for a high-level overview of the test while retaining the option to delve into more detail when necessary.
+Alternatively, in the scope mode, exceptions and step names are displayed while the <Link to="/docs/features/scope" target='_blank'>Scope</Link> is collapsed.  This provides you with the flexibility to show or hide the test Scope within your report, allowing for a high-level overview of the test while retaining the option to delve into more detail when necessary.
 
 ```shell
 $ vedro run -r gitlab --gitlab-collapsable scope
