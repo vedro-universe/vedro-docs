@@ -1,6 +1,9 @@
 ---
 id: testing-exceptions
 ---
+
+import Link from '@site/src/components/Link';
+
 # Testing Exceptions
 
 Exceptions are not just error messages that appear when something goes wrong. Exceptions signal specific conditions that might deviate from a program's usual flow. Fundamentally, they are integral to understanding the behavior of a system.
@@ -17,7 +20,7 @@ Clear, accurate exception messages are crucial for debugging. By testing excepti
 
 ### 3. Validate Control Flow
 
-While using exceptions for control flow is a [topic of debate](https://stackoverflow.com/questions/729379/why-not-use-exceptions-as-regular-flow-of-control), it's not uncommon in Python. For example, iterators raise `StopIteration` exceptions when they have no more items to return, and the `for` statement relies on this exception to stop iterating.
+While using exceptions for control flow is a <Link to="https://stackoverflow.com/questions/729379/why-not-use-exceptions-as-regular-flow-of-control">topic of debate</Link>, it's not uncommon in Python. For example, iterators raise `StopIteration` exceptions when they have no more items to return, and the `for` statement relies on this exception to stop iterating.
 
 ## Testing Exceptions in Vedro
 
@@ -47,13 +50,13 @@ class Scenario(vedro.Scenario):
 The `exc_info` object encapsulates details about the exception. If an exception is raised within the `catched` block, the following attributes are populated:
 - `type` — the type of the exception that was raised
 - `value` —  the actual exception instance
-- `traceback` — the [traceback object](https://docs.python.org/3/library/types.html#types.TracebackType) containing details about the exception's context
+- `traceback` — the <Link to="https://docs.python.org/3/library/types.html#types.TracebackType">traceback object</Link> containing details about the exception's context
 
 If no exception is raised, all these attributes are set to `None`.
 
 ## Explicit Over Implicit
 
-One of the guiding principles of Vedro is ["Explicit is better than implicit"](https://peps.python.org/pep-0020/). This philosophy extends to exception testing as well. The `catched` context manager does not implicitly check whether an exception has occurred or not. Engineers must explicitly include this verification in the test. This approach ensures that tests are transparent and free from assumptions.
+One of the guiding principles of Vedro is <Link to="https://peps.python.org/pep-0020/">"Explicit is better than implicit"</Link>. This philosophy extends to exception testing as well. The `catched` context manager does not implicitly check whether an exception has occurred or not. Engineers must explicitly include this verification in the test. This approach ensures that tests are transparent and free from assumptions.
 
 ## Conclusion
 

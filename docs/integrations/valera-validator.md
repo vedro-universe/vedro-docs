@@ -5,10 +5,11 @@ id: valera-validator
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Link from '@site/src/components/Link';
 
 # Valera Validator
 
-[vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) is a plugin for the Vedro framework that utilizes the [valera validator](https://pypi.org/project/valera), a package designed for data validation based on [d42 (district42) schemas](https://d42.vedro.io/docs/quick-start). Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
+<Link to="https://pypi.org/project/vedro-valera-validator/">vedro-valera-validator</Link> is a plugin for the Vedro framework that utilizes the <Link to="https://pypi.org/project/valera">valera validator</Link>, a package designed for data validation based on <Link to="https://d42.vedro.io/docs/quick-start">d42 (district42) schemas</Link>. Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
 
 ## Setting Up
 
@@ -87,7 +88,7 @@ With the valera package, data validation becomes more comprehensive and insightf
 
 :::note
 
-As [d42](https://pypi.org/project/d42/) is a dependency of the [vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) plugin, there's no need to install it separately. It's automatically installed alongside the plugin.
+As <Link to="https://pypi.org/project/d42/">d42</Link> is a dependency of the <Link to="https://pypi.org/project/vedro-valera-validator/">vedro-valera-validator</Link> plugin, there's no need to install it separately. It's automatically installed alongside the plugin.
 
 :::
 
@@ -156,4 +157,4 @@ Provided validation exception indicates that the `created_at` value and `is_dele
 
 ## More Info
 
-You can find more about how to use valera and d42 (district42) schemas in your projects in the [official documentation](https://d42.vedro.io/docs/quick-start). With valera, data validation becomes less of a challenge and more of a strength.
+You can find more about how to use valera and d42 (district42) schemas in your projects in the <Link to="https://d42.vedro.io/docs/quick-start">official documentation</Link>. With valera, data validation becomes less of a challenge and more of a strength.

@@ -5,6 +5,7 @@ pagination_next: basics/selecting-and-ignoring
 ---
 
 import TableOfContents from './TableOfContents';
+import Link from '@site/src/components/Link';
 
 # Chapter 5 — Finale
 
@@ -12,7 +13,7 @@ import TableOfContents from './TableOfContents';
 
 In previous chapters, we have covered various authentication scenarios. Now, it's time to delve into how to send messages.
 
-In order to [send a message](https://chat-api-tutorial.vedro.io/docs#/default/send_message), we need two pieces of information: the message text and an authorization token. Our scenario will look something like this:
+In order to <Link to="https://chat-api-tutorial.vedro.io/docs#/default/send_message">send a message</Link>, we need two pieces of information: the message text and an authorization token. Our scenario will look something like this:
 
 ```python
 import vedro
@@ -129,7 +130,7 @@ class Scenario(vedro.Scenario):
 
 ## Finale
 
-As the final part of this tutorial, try to implement the last "happy path" scenario that covers [retrieving messages](https://chat-api-tutorial.vedro.io/docs#/default/get_messages). If you encounter any difficulties, don't hesitate to check out the [repository](https://github.com/vedro-universe/tutorial-chat-api-server/tree/main/tests) which contains the implemented ["get message"](https://github.com/vedro-universe/tutorial-chat-api-server/blob/main/tests/scenarios/get_messages/get_message.py) scenario, among others.
+As the final part of this tutorial, try to implement the last "happy path" scenario that covers <Link to="https://chat-api-tutorial.vedro.io/docs#/default/get_messages">retrieving messages</Link>. If you encounter any difficulties, don't hesitate to check out the <Link to="https://github.com/vedro-universe/tutorial-chat-api-server/tree/main/tests">repository</Link> which contains the implemented <Link to="https://github.com/vedro-universe/tutorial-chat-api-server/blob/main/tests/scenarios/get_messages/get_message.py">"get message"</Link> scenario, among others.
 
 Thank you for participating in this tutorial. Throughout this guide, you've learned how to use Vedro effectively to write test scenarios for your API, from the basics to more complex, real-world scenarios.
 

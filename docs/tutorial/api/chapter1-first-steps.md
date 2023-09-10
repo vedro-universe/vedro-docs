@@ -10,6 +10,7 @@ import { registerScenarioSubject, registerScenarioGiven,
          registerScenarioWhen, registerScenarioThen } from './snippets';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import TableOfContents from './TableOfContents';
+import Link from '@site/src/components/Link';
 
 # Chapter 1 — First Steps
 
@@ -17,7 +18,7 @@ import TableOfContents from './TableOfContents';
 
 ## Intro
 
-The best way to learn is by doing, so let's get some hands-on experience and cover a straightforward service with automated tests - a chat platform that allows registered users to communicate with each other. To get started, we'll take a look at the [API documentation](https://chat-api-tutorial.vedro.io/docs), which outlines the various requests and data formats needed to interact with the chat service.
+The best way to learn is by doing, so let's get some hands-on experience and cover a straightforward service with automated tests - a chat platform that allows registered users to communicate with each other. To get started, we'll take a look at the <Link to="https://chat-api-tutorial.vedro.io/docs">API documentation</Link>, which outlines the various requests and data formats needed to interact with the chat service.
 
 Here's an overview of the key API endpoints that we'll be working with:
 

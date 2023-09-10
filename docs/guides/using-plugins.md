@@ -4,10 +4,11 @@ toc_max_heading_level: 2
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Link from '@site/src/components/Link';
 
 # Using Plugins
 
-In the software development sphere, the saying "*Explicit is better than implicit*" frequently echoes amongst Python developers. This idea, taken from the [The Zen of Python](https://peps.python.org/pep-0020/) — a collection of guiding principles for writing computer programs — champions clarity, simplicity, and above all, explicitness. It suggests that code should be written in such a way that its function and intent are clear to the reader. The Vedro framework takes this principle to heart in its approach to plugin configuration.
+In the software development sphere, the saying "*Explicit is better than implicit*" frequently echoes amongst Python developers. This idea, taken from the <Link to="https://peps.python.org/pep-0020/">The Zen of Python</Link> — a collection of guiding principles for writing computer programs — champions clarity, simplicity, and above all, explicitness. It suggests that code should be written in such a way that its function and intent are clear to the reader. The Vedro framework takes this principle to heart in its approach to plugin configuration.
 
 ## Explicit Configuration
 
@@ -15,7 +16,7 @@ In most frameworks or libraries, enabling a plugin is often a matter of simply i
 
 Vedro, on the other hand, takes a different approach — one that is rooted in the Pythonic principle of explicitness. In Vedro, to enable a plugin, you need to explicitly configure it in your `vedro.cfg.py` file. This means you have to intentionally activate each plugin, specifying its use and underlining its role in your codebase.
 
-For instance, after installing the [vedro-allure-reporter](https://pypi.org/project/vedro-valera-validator/) plugin:
+For instance, after installing the <Link to="https://pypi.org/project/vedro-valera-validator/">vedro-allure-reporter</Link> plugin:
 
 ```shell
 pip3 install vedro_allure_reporter

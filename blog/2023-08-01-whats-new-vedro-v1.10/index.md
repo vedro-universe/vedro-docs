@@ -4,6 +4,7 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
+import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,7 +12,7 @@ import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.10
 
-[Vedro v1.10](https://pypi.org/project/vedro/) is here, introducing a host of powerful features and improvements designed to enhance your testing experience and speed up your development cycle. Let's dive in!
+<Link to="https://pypi.org/project/vedro/">Vedro v1.10</Link> is here, introducing a host of powerful features and improvements designed to enhance your testing experience and speed up your development cycle. Let's dive in!
 
 <!--truncate-->
 
@@ -84,7 +85,7 @@ class Scenario(vedro.Scenario):
 
 ## Logic Tag Matcher: Advanced Tag Filtering
 
-The Tagger plugin now supports the use of [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) when specifying tags. This enhancement provides greater flexibility and control in executing scenarios based on certain criteria.
+The Tagger plugin now supports the use of <Link to="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean logic</Link> when specifying tags. This enhancement provides greater flexibility and control in executing scenarios based on certain criteria.
 
 For instance, if you want to run scenarios that either include the `API` or `UI` tag but do not include the `P0` tag, you can use:
 

@@ -4,6 +4,7 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
+import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,7 +12,7 @@ import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.9
 
-Greetings to all Vedro users. Today we are introducing [Vedro v1.9](https://pypi.org/project/vedro/), an update aimed at improving your testing experiences. This new version notably focuses on two primary improvements: the simplification of plugin management and the enhancement of reporting capabilities. Let's now examine this update in detail.
+Greetings to all Vedro users. Today we are introducing <Link to="https://pypi.org/project/vedro/">Vedro v1.9</Link>, an update aimed at improving your testing experiences. This new version notably focuses on two primary improvements: the simplification of plugin management and the enhancement of reporting capabilities. Let's now examine this update in detail.
 
 <!--truncate-->
 
@@ -44,7 +45,7 @@ To provide more insights into the plugin ecosystem, we've added another command:
 $ vedro plugin top
 ```
 
-This command shows you the most popular [Vedro plugins](/plugins):
+This command shows you the most popular <Link to="/plugins">Vedro plugins</Link>:
 
 <TerminalOutput>
 {`
@@ -141,7 +142,7 @@ Scenarios
 
 ## Introducing Parameterized Scenario Decorators
 
-Last but certainly not least, Vedro v1.9 brings the advantage of [Relaxed Grammar Restrictions On Decorators](https://peps.python.org/pep-0614/), allowing you to skip individual parameterized scenarios:
+Last but certainly not least, Vedro v1.9 brings the advantage of <Link to="https://peps.python.org/pep-0614/">Relaxed Grammar Restrictions On Decorators</Link>, allowing you to skip individual parameterized scenarios:
 
 ```python
 import vedro

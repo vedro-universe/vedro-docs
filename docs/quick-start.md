@@ -5,15 +5,16 @@ id: quick-start
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Link from '@site/src/components/Link';
 
 # Quick Start
 
-Vedro is a powerful tool for creating scenario-based tests that simulate user interactions and validate outcomes. This guide will help you get started with Vedro by demonstrating how to create a test that decodes a base64 encoded string using the [httpbin.org](https://httpbin.org/) API.
+Vedro is a powerful tool for creating scenario-based tests that simulate user interactions and validate outcomes. This guide will help you get started with Vedro by demonstrating how to create a test that decodes a base64 encoded string using the <Link to="https://httpbin.org/">httpbin.org</Link> API.
 
 
 ## Installation
 
-To install [vedro](https://pypi.org/project/vedro/)  and the [httpx](https://www.python-httpx.org/) library, which we will use to make HTTP requests in our test, simply run the following command in your terminal:
+To install <Link to="https://pypi.org/project/vedro/">vedro</Link> and the <Link to="https://www.python-httpx.org/">httpx</Link> library, which we will use to make HTTP requests in our test, simply run the following command in your terminal:
 
 ```shell
 $ pip install vedro httpx
@@ -75,7 +76,7 @@ class Scenario(vedro.Scenario):
   </TabItem>
 </Tabs>
 
-In this test, we use the [httpbin.org](https://httpbin.org) API to decode a base64 encoded string. We define a `Scenario` class with a `subject` representing the user's intention to decode the string and three methods:
+In this test, we use the <Link to="https://httpbin.org">httpbin.org</Link> API to decode a base64 encoded string. We define a `Scenario` class with a `subject` representing the user's intention to decode the string and three methods:
 
 1. `given_encoded_string` — Sets up the initial conditions for the test (in this case, the encoded string)
 2. `when_user_decodes_string` — Performs the primary action (sending an HTTP GET request to the API)

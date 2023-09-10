@@ -12,17 +12,24 @@ class Link extends React.Component {
   };
 
   render() {
-    const { to, children, className, target } = this.props;
+    const { to, children, className } = this.props;
 
     if (!to || !children || typeof children !== "string") {
       return null;
     }
+
+    let target = this.props.target;
+    if (!target) {
+      target = to.startsWith("http://") || to.startsWith("https://") ? "_blank" : "_self";
+    }
+    const rel = (target === "_blank") ? "noopener noreferrer" : undefined;
 
     return (
       <DocLink
         className={className}
         to={to}
         target={target}
+        rel={rel}
         data-umami-event="goto"
         data-umami-event-url={to}
         data-umami-event-id={children}

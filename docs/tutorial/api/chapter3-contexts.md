@@ -12,6 +12,7 @@ import Underlined from '@site/src/components/Underlined';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
+import Link from '@site/src/components/Link';
 
 # Chapter 3 — Contexts
 
@@ -23,7 +24,7 @@ In the previous chapters, we crafted our first scenario focused on registering a
 
 <TemplateScenario block={registerScenarioFinal} />
 
-After creating an account, we can now move on to the next scenario — the user [authentication process](https://chat-api-tutorial.vedro.io/docs#/default/auth_login).
+After creating an account, we can now move on to the next scenario — the user <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">authentication process</Link>.
 
 ## Setting the Stage for Authentication
 
@@ -63,7 +64,7 @@ Contexts not only allow us to set prerequisites for our scenarios but also provi
 
 ## Final Touch: Dealing with Token
 
-While our scenario for logging in as a registered user is now functioning correctly, there's an important aspect we still need to handle — the token. As part of the [login process](https://chat-api-tutorial.vedro.io/docs#/default/auth_login), the `/auth/login` method returns a token, a key component in subsequent authenticated user actions. Therefore, validating this token in our scenario is a critical step.
+While our scenario for logging in as a registered user is now functioning correctly, there's an important aspect we still need to handle — the token. As part of the <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">login process</Link>, the `/auth/login` method returns a token, a key component in subsequent authenticated user actions. Therefore, validating this token in our scenario is a critical step.
 
 First, we need to define a schema for this token:
 
@@ -85,7 +86,7 @@ This schema has the following components:
 2. The `token` field is a 40-character string composed of hexadecimal characters (0-9, a-f).
 3. The `created_at` field is a positive integer representing a Unix timestamp.
 
-_(these specifications are based on the method documentation available at [chat-api-tutorial.vedro.io/docs](https://chat-api-tutorial.vedro.io/docs#/default/auth_register))_
+_(these specifications are based on the method documentation available at <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_register">chat-api-tutorial.vedro.io/docs</Link>)_
 
 With this definition in place, we can now incorporate the schema into our scenario.
 

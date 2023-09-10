@@ -4,12 +4,13 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
+import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.7
 
-We're excited to announce [Vedro v1.7](https://pypi.org/project/vedro/), our latest release. This update brings new features and important fixes to enhance your testing experience. Let's take a closer look at what's new.
+We're excited to announce <Link to="https://pypi.org/project/vedro/">Vedro v1.7</Link>, our latest release. This update brings new features and important fixes to enhance your testing experience. Let's take a closer look at what's new.
 
 <!--truncate-->
 

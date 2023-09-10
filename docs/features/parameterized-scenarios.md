@@ -3,6 +3,7 @@ id: parameterized-scenarios
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Link from '@site/src/components/Link';
 
 # Parameterized Scenarios
 
@@ -39,7 +40,7 @@ In this example, the scenario is executed with two distinct parameters: `status=
 
 ### Subject Interpolation
 
-You can also incorporate interpolation into the scenario's subject. The subject is a descriptive string for the scenario and can include placeholders for parameter values. To interpolate these values, use the [format string syntax](https://docs.python.org/3/library/string.html#format-string-syntax).
+You can also incorporate interpolation into the scenario's subject. The subject is a descriptive string for the scenario and can include placeholders for parameter values. To interpolate these values, use the <Link to="https://docs.python.org/3/library/string.html#format-string-syntax">format string syntax</Link>.
 
 ```python
 import vedro

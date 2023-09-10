@@ -10,7 +10,7 @@ import VideoEmbed from '@site/src/components/VideoEmbed';
 
 # GitLab Reporter
 
-[GitLab Reporter](https://pypi.org/project/vedro-gitlab-reporter/) is a Vedro plugin that enhances the readability and navigability of your test reports. By utilizing [GitLab's collapsible sections](https://docs.gitlab.com/ee/ci/jobs/#custom-collapsible-sections), it provides a more organized and efficient way to review your reports.
+<Link to="https://pypi.org/project/vedro-gitlab-reporter/">GitLab Reporter</Link> is a Vedro plugin that enhances the readability and navigability of your test reports. By utilizing <Link to="https://docs.gitlab.com/ee/ci/jobs/#custom-collapsible-sections">GitLab's collapsible sections</Link>, it provides a more organized and efficient way to review your reports.
 
 The plugin allows you to collapse different elements of your reports, such as steps, variables, or the test scope, making it easier to manage and comprehend the information.
 

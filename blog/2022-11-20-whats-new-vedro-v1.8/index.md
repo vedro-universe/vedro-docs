@@ -4,6 +4,7 @@ tags: [vedro, changelog]
 hide_table_of_contents: false
 ---
 
+import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,7 +12,7 @@ import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.8
 
-We are thrilled to announce the release of [Vedro v1.8](https://pypi.org/project/vedro/)! This update brings a host of new features and improvements to the framework, enhancing its capabilities and making it even more flexible and user-friendly. Let's delve into the latest features and see how they can improve your testing workflow.
+We are thrilled to announce the release of <Link to="https://pypi.org/project/vedro/">Vedro v1.8</Link>! This update brings a host of new features and improvements to the framework, enhancing its capabilities and making it even more flexible and user-friendly. Let's delve into the latest features and see how they can improve your testing workflow.
 
 <!--truncate-->
 
@@ -185,7 +186,7 @@ Scenarios
 
 ## PyCharm Reporter: Silent Mode
 
-The PyCharm Reporter now includes a `--pycharm-no-output` parameter, which suppresses console output. This is helpful when you're using the [PyCharm plugin](https://plugins.jetbrains.com/plugin/18227-vedro) with another reporter:
+The PyCharm Reporter now includes a `--pycharm-no-output` parameter, which suppresses console output. This is helpful when you're using the <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm plugin</Link> with another reporter:
 
 ```shell
 $ vedro run -r rich pycharm --pycharm-no-output --hide-namespaces

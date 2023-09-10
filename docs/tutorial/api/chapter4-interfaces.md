@@ -9,24 +9,25 @@ import { configApiUrl } from './snippets';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
+import Link from '@site/src/components/Link';
 
 # Chapter 4 — Interfaces
 
 <TableOfContents current="chapter4" />
 
-Before we dive further into writing more of the tests for our [Chat API](https://chat-api-tutorial.vedro.io/docs), let's pause and take some time to refine our existing tests. A few minor tweaks and improvements can go a long way in creating maintainable and efficient test code.
+Before we dive further into writing more of the tests for our <Link to="https://chat-api-tutorial.vedro.io/docs">Chat API</Link>, let's pause and take some time to refine our existing tests. A few minor tweaks and improvements can go a long way in creating maintainable and efficient test code.
 
 ## Config
 
 Firstly, let's focus on the `API_URL` currently repeated across various files. Rather than hardcoding the URL into every file, we can consolidate it into a single central configuration file.
 
-The [cabina](https://pypi.org/project/cabina/) library is an excellent tool for managing configurations. It's used by Vedro for framework and plugin configurations, so it is readily available without the need for additional installations.
+The <Link to="https://pypi.org/project/cabina/">cabina</Link> library is an excellent tool for managing configurations. It's used by Vedro for framework and plugin configurations, so it is readily available without the need for additional installations.
 
 Let's move our `API_URL` to a separate configuration file:
 
 <TemplateScenario block={configApiUrl} />
 
-This change creates a [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) for our API URL. If we need to change the URL in the future, we just have to update it in this configuration file.
+This change creates a <Link to="https://en.wikipedia.org/wiki/Single_source_of_truth">single source of truth</Link> for our API URL. If we need to change the URL in the future, we just have to update it in this configuration file.
 
 Here's how we can utilize it in our code:
 
@@ -67,7 +68,7 @@ To avoid this, we can employ the concept of **interfaces**.
 
 In Vedro, an **interface** is a class providing a structured, unified way to interact with various touchpoints of your application, such as public methods of classes and modules, REST API, or GUI.
 
-Let's define an interface for our [Chat API](https://chat-api-tutorial.vedro.io/docs), grouping all related operations:
+Let's define an interface for our <Link to="https://chat-api-tutorial.vedro.io/docs">Chat API</Link>, grouping all related operations:
 
 ```python
 # ./interfaces/chat_api.py

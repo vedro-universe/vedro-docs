@@ -3,6 +3,7 @@ id: scenario-based-tests
 ---
 
 import Screenshot from '@site/src/components/Screenshot';
+import Link from '@site/src/components/Link';
 
 # Scenario-Based Tests
 
@@ -47,13 +48,13 @@ class Scenario(vedro.Scenario):
         assert shortened_url
 ```
 
-It's worth noting that Vedro's scenario anatomy directly follows the [AAA (Arrange-Act-Assert) pattern](https://robertmarshall.dev/blog/arrange-act-and-assert-pattern-the-three-as-of-unit-testing/).
+It's worth noting that Vedro's scenario anatomy directly follows the <Link to="https://robertmarshall.dev/blog/arrange-act-and-assert-pattern-the-three-as-of-unit-testing/">AAA (Arrange-Act-Assert) pattern</Link>.
 
 ## The Power of the Scenario-Based Approach
 
 Adopting a scenario-based approach provides significant advantages. It emphasizes simplicity, readability, and maintainability, allowing tests to be easily written and understood. Even complex test cases can be broken down into simpler, manageable scenarios, making it easier for teams to collaborate, understand each other's work, and maintain high code quality over time.
 
-To harness the full potential of the scenario-based approach, Vedro builds upon the [inverted pyramid concept](http://webwisewording.com/inverted-pyramid/). This concept mirrors the way we naturally perceive and process information, moving from a broad overview to specific details. It takes into account the reader's cognitive load, presenting the most vital information first and then descending into the intricate details.
+To harness the full potential of the scenario-based approach, Vedro builds upon the <Link to="https://www.webwisewording.com/inverted-pyramid/">inverted pyramid concept</Link>. This concept mirrors the way we naturally perceive and process information, moving from a broad overview to specific details. It takes into account the reader's cognitive load, presenting the most vital information first and then descending into the intricate details.
 
 <Screenshot src={require('./scenario-based/inverted_pyramid.png')} width="350px" shadow="none" /><br/>
 <br/>
@@ -102,7 +103,7 @@ class Scenario(vedro.Scenario):
         ...
 ```
 
-An added benefit of this structure is that steps can be integrated into reporting systems, like [Allure](https://vedro.io/docs/integrations/allure-reporter). This makes the tracking of test execution and results more visual and organized, adding an extra layer of utility and traceability to the testing process.
+An added benefit of this structure is that steps can be integrated into reporting systems, like [Allure](/docs/integrations/allure-reporter). This makes the tracking of test execution and results more visual and organized, adding an extra layer of utility and traceability to the testing process.
 
 <Screenshot src={require('./scenario-based/allure_example.png')} width="550px" /><br/>
 <br/>

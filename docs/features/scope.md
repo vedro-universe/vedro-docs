@@ -3,6 +3,7 @@ id: scope
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Link from '@site/src/components/Link';
 
 # Scenario Scope
 
@@ -14,7 +15,7 @@ In Vedro, the Scope serves as a snapshot of important variables, capturing their
 
 To better understand how the Scope works, consider the following real-world example.
 
-Imagine a scenario that tests sending a chat message. The process begins with a logged-in user, sends a message via the [ChatApi](https://chat-api-tutorial.vedro.io/docs#/default/send_message) and then verifies that the received response meets expectations.
+Imagine a scenario that tests sending a chat message. The process begins with a logged-in user, sends a message via the <Link to="https://chat-api-tutorial.vedro.io/docs#/default/send_message">ChatApi</Link> and then verifies that the received response meets expectations.
 
 ```python
 import vedro

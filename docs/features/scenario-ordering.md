@@ -3,6 +3,7 @@ id: scenario-ordering
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Link from '@site/src/components/Link';
 
 # Scenario Ordering
 
@@ -10,7 +11,7 @@ The order in which scenarios are executed can significantly impact the testing p
 
 ## Stable Order
 
-The Stable Order approach ensures that scenarios are executed in the same order every time, [regardless of the file system or operating system](https://utcc.utoronto.ca/~cks/space/blog/unix/ReaddirOrder).
+The Stable Order approach ensures that scenarios are executed in the same order every time, <Link to="https://utcc.utoronto.ca/~cks/space/blog/unix/ReaddirOrder">regardless of the file system or operating system</Link>.
 
 By default, Vedro executes scenarios in Stable Order. Therefore, there's no need to specify `--order-stable` when running tests.
 

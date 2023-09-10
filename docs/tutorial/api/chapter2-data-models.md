@@ -12,6 +12,7 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
+import Link from '@site/src/components/Link';
 
 # Chapter 2 — Data Models
 
@@ -57,7 +58,7 @@ When we run the above test a second time, it fails because the username "bob" is
 `}
 </TerminalOutput>
 
-This issue arises due to the hardcoded data used in our test. To maintain the independence of each test, we must introduce variability, achievable through data models. In this context, we will use the [d42 library](https://d42.vedro.io/docs/quick-start) to define, generate, validate, and substitute data based on the models we design.
+This issue arises due to the hardcoded data used in our test. To maintain the independence of each test, we must introduce variability, achievable through data models. In this context, we will use the <Link to="https://d42.vedro.io/docs/quick-start">d42 library</Link> to define, generate, validate, and substitute data based on the models we design.
 
 Let's compare hardcoded data and a data model.
 
@@ -84,11 +85,11 @@ In this data model:
 - `username` is a string containing between 3 to 12 lowercase letters
 - `password` is a string with a minimum of 6 characters
 
-_(these specifications are based on the method documentation available at [chat-api-tutorial.vedro.io/docs](https://chat-api-tutorial.vedro.io/docs#/default/auth_register))_
+_(these specifications are based on the method documentation available at <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_register">chat-api-tutorial.vedro.io/docs</Link>)_
 
 ## Data Generation
 
-Our new data model allows the [generation](https://d42.vedro.io/docs/features/generation) of unique data for each test:
+Our new data model allows the <Link to="https://d42.vedro.io/docs/features/generation">generation</Link> of unique data for each test:
 
 ```python
 from d42 import fake
@@ -115,7 +116,7 @@ To keep our data models organized, we should save them in the `schemas/` directo
 
 ## Data Validation
 
-The beauty of data models is their ability not only to generate data but also [validate it](https://d42.vedro.io/docs/features/validation). The validation process ensures that the received response fits our defined data model:
+The beauty of data models is their ability not only to generate data but also <Link to="https://d42.vedro.io/docs/features/validation">validate it</Link>. The validation process ensures that the received response fits our defined data model:
 
 <Tabs>
   <TabItem value="correct-fields" label="🍏 OK" default>
@@ -172,7 +173,7 @@ This validation step ensures that the response has the correct structure and fie
 
 The test now checks not only that the `username` and `password` fields exist and are strings, but also that they meet the criteria defined in our data model.
 
-For even more granular validation, we can refine the schema by [substituting](https://d42.vedro.io/docs/features/substitution) our generated values. This allows us to validate not just the type, but also the specific values of the fields:
+For even more granular validation, we can refine the schema by <Link to="https://d42.vedro.io/docs/features/substitution">substituting</Link> our generated values. This allows us to validate not just the type, but also the specific values of the fields:
 
 ```python
 NewUserSchema % {
@@ -181,7 +182,7 @@ NewUserSchema % {
 }
 ```
 
-This will substitute the values using the `%` operator, similar to [printf-style string formatting in Python](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting). The result of the substitution will be a refined schema:
+This will substitute the values using the `%` operator, similar to <Link to="https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting">printf-style string formatting in Python</Link>. The result of the substitution will be a refined schema:
 
 <Tabs>
   <TabItem value="substituted" label="Substituted" default>

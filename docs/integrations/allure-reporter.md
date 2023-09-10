@@ -9,7 +9,7 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Allure Reporter
 
-[Allure Reporter](https://pypi.org/project/vedro-allure-reporter/) is a plugin for Vedro that provides integration with the [Allure Framework](https://docs.qameta.io/allure/), a flexible, lightweight, multi-language test report tool. The Allure Framework offers a concise representation of test results in a clean, easily understandable web report format.
+<Link to="https://pypi.org/project/vedro-allure-reporter/">Allure Reporter</Link> is a plugin for Vedro that provides integration with the <Link to="https://docs.qameta.io/allure/">Allure Framework</Link>, a flexible, lightweight, multi-language test report tool. The Allure Framework offers a concise representation of test results in a clean, easily understandable web report format.
 
 ## Installation
 
@@ -62,17 +62,17 @@ $ vedro run -r rich allure
 
 This command executes your tests and saves the report data in the `./allure_reports` directory.
 
-To generate a report from the saved data, use the [Allure command-line tool](https://docs.qameta.io/allure/#_installing_a_commandline) as follows:
+To generate a report from the saved data, use the <Link to="https://docs.qameta.io/allure/#_installing_a_commandline">Allure command-line tool</Link> as follows:
 
 ```shell
 $ allure serve ./allure_reports
 ```
 
-This command will serve up the report ([demo](https://allure-framework.github.io/allure-demo/5/)).
+This command will serve up the report (<Link to="https://allure-framework.github.io/allure-demo/5/">demo</Link>).
 
 :::info
 
-If you are using [Allure TestOps](https://docs.qameta.io/allure-testops/), you can upload your report using [allurectl](https://docs.qameta.io/allure-testops/ecosystem/allurectl/)
+If you are using <Link to="https://docs.qameta.io/allure-testops/">Allure TestOps</Link>, you can upload your report using <Link to="https://docs.qameta.io/allure-testops/ecosystem/allurectl/">allurectl</Link>
 
 <details>
   <summary>Show more...</summary>
@@ -266,7 +266,7 @@ These command-line arguments can be used to override the default configurations 
 
 ### Running Scenarios with Labels
 
-Vedro Allure Reporter allows running specific scenarios annotated with particular [Allure labels](https://docs.qameta.io/allure-testops/faq/labels/).
+Vedro Allure Reporter allows running specific scenarios annotated with particular <Link to="https://docs.qameta.io/allure-testops/faq/labels/">Allure labels</Link>.
 
 To filter and execute scenarios based on specific Allure labels, use the `--allure-labels` argument followed by the label name and its corresponding value:
 

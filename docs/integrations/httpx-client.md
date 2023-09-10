@@ -5,10 +5,11 @@ id: httpx-client
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Link from '@site/src/components/Link';
 
 # HTTPX Client
 
-[vedro-httpx](https://pypi.org/project/vedro-httpx/) is a plugin designed for the Vedro testing framework. Its main goal is to simplify the process of sending HTTP requests via [HTTPX](https://www.python-httpx.org/), a fully-featured HTTP client that supports both synchronous and asynchronous APIs, as well as HTTP/1.1 and HTTP/2 protocols.
+<Link to="https://pypi.org/project/vedro-httpx/">vedro-httpx</Link> is a plugin designed for the Vedro testing framework. Its main goal is to simplify the process of sending HTTP requests via <Link to="https://www.python-httpx.org/">HTTPX</Link>, a fully-featured HTTP client that supports both synchronous and asynchronous APIs, as well as HTTP/1.1 and HTTP/2 protocols.
 
 ## Setup
 
@@ -96,7 +97,7 @@ The `_request` function is used to send HTTP requests. It passes the arguments d
 
 :::tip
 
-For a comprehensive understanding of the `AsyncClient.request` method and its various parameters, see the official [HTTPX documentation](https://www.python-httpx.org/api/#asyncclient)
+For a comprehensive understanding of the `AsyncClient.request` method and its various parameters, see the official <Link to="https://www.python-httpx.org/api/#asyncclient">HTTPX documentation</Link>
 
 :::
 
@@ -203,7 +204,7 @@ If scenario fails, `vedro-httpx` provides a beautifully formatted output of the 
 
 :::note
 
-This feature requires [Vedro](https://pypi.org/project/vedro/) v1.9.1 or higher
+This feature requires <Link to="https://pypi.org/project/vedro/">Vedro</Link> v1.9.1 or higher
 
 :::
 
@@ -252,4 +253,4 @@ class AuthAPI(SyncHTTPInterface):
 
 This approach provides full flexibility in using the HTTPX `AsyncClient` directly, allowing you to control additional parameters such as SSL verification.
 
-For more information and available parameters, check out the official [HTTPX documentation](https://www.python-httpx.org/api/#asyncclient).
+For more information and available parameters, check out the official <Link to="https://www.python-httpx.org/api/#asyncclient">HTTPX documentation</Link>.

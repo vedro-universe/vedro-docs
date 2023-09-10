@@ -3,6 +3,7 @@ id: tags
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
+import Link from '@site/src/components/Link';
 
 # Tags
 
@@ -12,7 +13,7 @@ Software projects often grow like snowballs, accumulating complexity as they evo
 
 In a project's initial stages, organizing tests into directories is usually sufficient. This method offers a straightforward way to group tests based on single characteristics like the feature under test or the interacting component. However, as the project grows and tests become more complex and numerous, the single-axis organizational structure provided by directories becomes insufficient for effective test management.
 
-For instance, suppose you're working on a high-priority test to verify a crucial authentication feature in your API that writes login events to a [Kafka](https://kafka.apache.org/) message broker. Where should this test be placed?
+For instance, suppose you're working on a high-priority test to verify a crucial authentication feature in your API that writes login events to a <Link to="https://kafka.apache.org/">Kafka</Link> message broker. Where should this test be placed?
 
 1. In a directory named `authentication/` because it tests that particular feature?
 2. In another directory named `api/` because it focuses on the API component?
@@ -25,7 +26,7 @@ As a project scales, so must its test management strategy. A more robust solutio
 
 ### Defining Tags
 
-[Vedro](https://vedro.io) elegantly addresses this challenge through the concept of **tags**. Tags serve as unique identifiers for logical groups, allowing for a more flexible way to manage tests.
+Vedro elegantly addresses this challenge through the concept of **tags**. Tags serve as unique identifiers for logical groups, allowing for a more flexible way to manage tests.
 
 Defining tags for a test scenario is straightforward. Here's an example to illustrate:
 
@@ -56,7 +57,7 @@ For instance, to run all tests tagged with `API`, you can use the following comm
 $ vedro run --tags "API"
 ```
 
-Moreover, you can employ [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) to combine tags and create complex filtering conditions. For example, to run scenarios that include either the `API` or `UI` tag but do not include the `P0` tag, you can use the following command:
+Moreover, you can employ <Link to="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean logic</Link> to combine tags and create complex filtering conditions. For example, to run scenarios that include either the `API` or `UI` tag but do not include the `P0` tag, you can use the following command:
 
 ```shell
 $ vedro run --tags "(API or UI) and (not P0)"

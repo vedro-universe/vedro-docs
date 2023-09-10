@@ -5,15 +5,16 @@ id: pycharm-plugin
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
+import Link from '@site/src/components/Link';
 
 # PyCharm Plugin
 
-[Vedro PyCharm plugin](https://plugins.jetbrains.com/plugin/18227-vedro) streamlines the process of executing and analyzing individual and parameterized scenarios right within your IDE, reducing the need to context-switch between your terminal and the PyCharm environment.
+<Link to="https://plugins.jetbrains.com/plugin/18227-vedro">Vedro PyCharm plugin</Link> streamlines the process of executing and analyzing individual and parameterized scenarios right within your IDE, reducing the need to context-switch between your terminal and the PyCharm environment.
 
 ## Installation
 
 There are two ways to install the plugin:
-1. **From the Marketplace**: Go to the [plugin page](https://plugins.jetbrains.com/plugin/18227-vedro) and install it directly from there
+1. **From the Marketplace**: Go to the <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">plugin page</Link> and install it directly from there
 2. **From PyCharm**: Navigate to `Preferences -> Plugins -> Marketplace` in the PyCharm menu. From there, search for "Vedro" in the marketplace, then click the "Install" button
 
 <Screenshot src={require('./pycharm/install.png')} />

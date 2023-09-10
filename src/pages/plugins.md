@@ -4,6 +4,7 @@ id: plugins
 
 import { PluginList, Plugin } from '@site/src/components/PluginList';
 import VedroPluginList from '@site/src/components/VedroPluginList';
+import Link from '@site/src/components/Link';
 
 # Plugins
 
@@ -25,7 +26,7 @@ These are plugins specifically designed to integrate Vedro into popular IDEs, pr
 
 | Plugin                                                             | Description                                               | Info          |
 |--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
-| [PyCharm Plugin](https://plugins.jetbrains.com/plugin/18227-vedro) | [PyCharm](https://www.jetbrains.com/pycharm/) integration | Version 0.1.2 |
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link> | PyCharm integration | Version 0.2.2 |
 
 ## Core Plugins
 
