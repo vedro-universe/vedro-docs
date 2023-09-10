@@ -1,6 +1,6 @@
-import Link from '@docusaurus/Link';
 import { faCheck, faMagic, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from '@site/src/components/Link';
 import clsx from 'clsx';
 import React from 'react';
 
@@ -26,7 +26,7 @@ const FeatureList = [
     icon: faPlug,
     description: (
       <>
-        Unleash the power of plugins. Including integrations with <Link to='docs/integrations/pycharm-plugin' target='_blank'>PyCharm</Link>, <Link to='/docs/integrations/allure-reporter' target='_blank'>Allure</Link> and <Link to='/docs/integrations/gitlab-reporter' target='_blank'>GitLab</Link>
+        Unleash the power of plugins. Including integrations with <Link to='/docs/integrations/pycharm-plugin' target='_blank'>PyCharm</Link>, <Link to='/docs/integrations/allure-reporter' target='_blank'>Allure</Link> and <Link to='/docs/integrations/gitlab-reporter' target='_blank'>GitLab</Link>
       </>
     ),
   },

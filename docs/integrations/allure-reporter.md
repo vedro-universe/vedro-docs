@@ -2,7 +2,7 @@
 id: allure-reporter
 ---
 
-import Link from '@docusaurus/Link';
+import Link from '@site/src/components/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';

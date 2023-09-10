@@ -1,10 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
-import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import React from 'react';
 
-import HomepageFeatures from '../components/HomepageFeatures';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Link from '@site/src/components/Link';
 
 import styles from './index.module.css';
 
@@ -18,7 +18,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="docs/quick-start">
+            to="/docs/quick-start"
+          >
             Get Started →
           </Link>
         </div>
@@ -28,7 +29,6 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout>
       <HomepageHeader />

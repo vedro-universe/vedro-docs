@@ -1,5 +1,5 @@
+import Link from '@site/src/components/Link';
 import React from 'react';
-import Link from '@docusaurus/Link';
 
 class TableOfContents extends React.Component {
 
