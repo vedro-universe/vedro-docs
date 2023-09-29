@@ -1,5 +1,6 @@
 ---
 id: valera-validator
+title: Schema Validator
 ---
 
 import TerminalOutput from '@site/src/components/TerminalOutput';
@@ -7,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Link from '@site/src/components/Link';
 
-# Valera Validator
+# Schema Validator
 
 <Link to="https://pypi.org/project/vedro-valera-validator/">vedro-valera-validator</Link> is a plugin for the Vedro framework that utilizes the <Link to="https://pypi.org/project/valera">valera validator</Link>, a package designed for data validation based on <Link to="https://d42.vedro.io/docs/quick-start">d42 (district42) schemas</Link>. Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
 

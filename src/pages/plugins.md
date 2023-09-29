@@ -14,9 +14,11 @@ Third-party plugins, created by the Vedro community, expand the framework's capa
 
 <VedroPluginList />
 
+And <Link to="https://pypi.org/search/?q=vedro">more..</Link>
+
 :::tip
 
-Interested in creating your own plugins? Learn how to do so [here](./docs/guides/writing-plugins)
+Interested in creating your own plugins? Learn how to do so <Link to="/docs/guides/writing-plugins">here</Link>
 
 :::
 
@@ -55,7 +57,7 @@ Built-in plugins provided by Vedro to deliver essential features.
         desc='Manages artifacts for step and scenario results'
     />
     <Plugin key='interrupter' name='Interrupter' pypi='vedro'
-        desc='Stops test execution after the first failed scenario or on specified signals'
+        desc='Halts test execution after N failed scenarios or on specified signals'
     />
     <Plugin key='seeder' name='Seeder' pypi='vedro'
         desc='Sets seeds for deterministic random behavior in scenarios'
@@ -80,6 +82,9 @@ Built-in plugins provided by Vedro to deliver essential features.
     />
     <Plugin key='dryRunner' name='DryRunner' pypi='vedro'
         desc='Simulates scenario execution without actually executing them'
+    />
+    <Plugin key='lastFailed' name='LastFailed' pypi='vedro'
+        desc='Runs only the previously failed scenarios'
     />
     <Plugin key='terminator' name='Terminator' pypi='vedro'
         desc='Handles test exit status based on test results and interruptions'
