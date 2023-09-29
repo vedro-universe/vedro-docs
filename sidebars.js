@@ -31,6 +31,7 @@ module.exports = {
         'features/fail-fast',
         'features/tags',
         'features/scope',
+        'features/parallel-execution',
       ],
     },
     {
