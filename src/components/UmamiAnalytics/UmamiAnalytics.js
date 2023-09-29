@@ -11,7 +11,7 @@ class UmamiAnalytics extends React.Component {
     script.type = 'text/javascript';
     script.defer = true;
     script.async = true;
-    script.src = 'https://analytics.vedro.io/script.js';
+    script.src = 'https://al.vedro.io/script.js';
     script.setAttribute('data-website-id', 'c74fdad7-2166-48f6-aa72-014dcfd28be0');
     document.getElementsByTagName("body")[0].appendChild(script);
   }
