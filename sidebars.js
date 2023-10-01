@@ -61,6 +61,7 @@ module.exports = {
       collapsed: false,
       items: [
         'best-practices/scenario-based-tests',
+        'best-practices/avoid-ifs',
         'best-practices/best-practice',
       ],
     },
