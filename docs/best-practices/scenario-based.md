@@ -103,7 +103,7 @@ class Scenario(vedro.Scenario):
         ...
 ```
 
-An added benefit of this structure is that steps can be integrated into reporting systems, like [Allure](/docs/integrations/allure-reporter). This makes the tracking of test execution and results more visual and organized, adding an extra layer of utility and traceability to the testing process.
+An added benefit of this structure is that steps can be integrated into reporting systems, like <Link to="/docs/integrations/allure-reporter" target="_blank">Allure</Link>. This makes the tracking of test execution and results more visual and organized, adding an extra layer of utility and traceability to the testing process.
 
 <Screenshot src={require('./scenario-based/allure_example.png')} width="550px" /><br/>
 <br/>
