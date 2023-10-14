@@ -53,6 +53,63 @@ module.exports = {
         'integrations/httpx-client',
         'integrations/pycharm-plugin',
         'integrations/gitlab-reporter',
+        {
+          type: 'category',
+          label: 'Flake8 vedro linter',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'integrations/flake8-vedro/flake8-vedro'
+          },
+          items: [
+            // 'integrations/flake8-vedro/scenario-rules',
+            // 'integrations/flake8-vedro/scenario-steps-rules'
+            {
+              type: 'category',
+              label: 'Scenario Rules',
+              collapsed: true,
+              link: {
+                type: 'doc',
+                id: 'integrations/flake8-vedro/scenario-rules'
+              },
+              items: [
+                'integrations/flake8-vedro/rules/vdr101',
+                'integrations/flake8-vedro/rules/vdr102',
+                'integrations/flake8-vedro/rules/vdr103',
+                'integrations/flake8-vedro/rules/vdr104',
+                'integrations/flake8-vedro/rules/vdr105',
+                'integrations/flake8-vedro/rules/vdr106',
+                'integrations/flake8-vedro/rules/vdr107',
+                'integrations/flake8-vedro/rules/vdr108',
+                'integrations/flake8-vedro/rules/vdr109',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Scenario Steps Rules',
+              link: {
+                type: 'doc',
+                id: 'integrations/flake8-vedro/scenario-steps-rules'
+              },
+              collapsed: true,
+              items: [
+                  'integrations/flake8-vedro/rules/vdr300',
+                  'integrations/flake8-vedro/rules/vdr301',
+                  'integrations/flake8-vedro/rules/vdr302',
+                  'integrations/flake8-vedro/rules/vdr303',
+                  'integrations/flake8-vedro/rules/vdr304',
+                  'integrations/flake8-vedro/rules/vdr305',
+                  'integrations/flake8-vedro/rules/vdr306',
+                  'integrations/flake8-vedro/rules/vdr307',
+                  'integrations/flake8-vedro/rules/vdr308',
+                  'integrations/flake8-vedro/rules/vdr309',
+                  'integrations/flake8-vedro/rules/vdr310',
+                  'integrations/flake8-vedro/rules/vdr311',
+                  'integrations/flake8-vedro/rules/vdr312',
+              ]
+            }
+          ]
+        }
       ],
     },
     {
