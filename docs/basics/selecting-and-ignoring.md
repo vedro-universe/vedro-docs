@@ -53,6 +53,10 @@ $ vedro run scenarios/login/ -i scenarios/login/try_to_login_as_nonexisting_user
 
 This command runs all scenarios in the "login/" directory, excluding the "try_to_login_as_nonexisting_user.py" scenario.
 
+:::tip
+Use the `--dry-run` argument to preview which scenarios would be executed. This feature helps in fine-tuning your test selection process without actually running the scenarios.
+:::
+
 ### Selecting Specific Scenarios
 
 To execute a specific scenario, add the `@vedro.only` decorator to the scenario class definition. This decorator tells the framework to run only the decorated scenario, ignoring all others. Here's an example:
