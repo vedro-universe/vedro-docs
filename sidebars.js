@@ -53,6 +53,7 @@ module.exports = {
         'integrations/httpx-client',
         'integrations/pycharm-plugin',
         'integrations/gitlab-reporter',
+        'integrations/flake8-vedro'
       ],
     },
     {
