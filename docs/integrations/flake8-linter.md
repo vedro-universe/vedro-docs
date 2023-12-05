@@ -53,7 +53,7 @@ Executing this command will display output highlighting linting errors:
 ./scenarios/get_book_details.py:5:5: VDR105 subject in scenario should not be empty
 ```
 
-In this output, [E302](https://www.flake8rules.com/rules/E302.html) is a standard Flake8 spacing rule, while [VDR105](https://github.com/mytestopia/flake8-vedro/blob/main/flake8_vedro/errors/errors.py#L26) is a custom rule for Vedro ensuring scenarios have defined subjects.
+In this output, [E302](https://www.flake8rules.com/rules/E302.html) is a standard Flake8 spacing rule, while [VDR105](https://github.com/mytestopia/flake8-vedro/blob/main/flake8_vedro/rules/VDR105.md) is a custom rule for Vedro ensuring scenarios have defined subjects.
 
 :::tip
 Refer to the [flake8-vedro](https://github.com/mytestopia/flake8-vedro/blob/main/README.md#rules) repository for a complete list of rules
