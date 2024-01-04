@@ -71,11 +71,6 @@
             label: 'Plugins',
             position: 'left',
           },
-          {
-            to: 'blog',
-            label: 'What\'s New',
-            position: 'left',
-          },
         ],
       },
       footer: {
@@ -92,6 +87,10 @@
                 label: 'Tutorial',
                 to: '/docs/tutorial/api/chapter1-first-steps',
               },
+              {
+                label: 'Best Practices',
+                to: 'http://docs.vedro.io/best-practices',
+              }
             ],
           },
           {
@@ -114,6 +113,10 @@
           {
             title: 'More',
             items: [
+              {
+                to: 'blog',
+                label: 'Changelog',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/vedro-universe/vedro',
