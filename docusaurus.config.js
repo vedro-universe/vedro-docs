@@ -128,7 +128,7 @@
             ],
           },
         ],
-        copyright: `Made in the middle of nowhere with ❤️<br/>© 2015-${new Date().getFullYear()}`,
+        copyright: `Made in the middle of nowhere with ❤️<br/>© ${new Date().getFullYear()}`,
       },
       prism: {
         theme: require('prism-react-renderer/themes/oceanicNext'),
