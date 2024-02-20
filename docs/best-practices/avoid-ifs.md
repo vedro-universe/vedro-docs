@@ -49,6 +49,10 @@ Both cases demonstrate that the test might not effectively verify the intended b
 
 The core of this issue is the test's reliance on output data, in this case, the warning message. Verifying outcomes based solely on output, such as a user-facing warning message, introduces significant risk. Numerous factors, including future changes in the UI, refactoring of the underlying codebase, and adjustments in internationalization and localization, can influence output data. This makes it an unreliable criterion for evaluating the correct functionality of the code being tested.
 
+:::note
+The [ternary operator](https://book.pythontips.com/en/latest/ternary_operators.html) is also a form of branching logic.
+:::
+
 ### An Attempt to Refine the Test
 
 ```python
@@ -63,7 +67,7 @@ class Scenario(vedro.Scenario):
 
     def then_it_should_check_user_age(self):
         # highlight-start
-        if self.user["age"] >= 17:
+        if self.user['age'] >= 17:
         # highlight-end
             assert self.page.exists('.movie-title') is True
         else:

@@ -88,9 +88,9 @@
                 to: '/docs/tutorial/api/chapter1-first-steps',
               },
               {
-                label: 'Best Practices',
-                to: 'http://docs.vedro.io/best-practices',
-              }
+                label: 'Experimental Features',
+                to: '/docs/exp/selective-discoverer',
+              },
             ],
           },
           {

@@ -28,7 +28,7 @@ These are plugins specifically designed to integrate Vedro into popular IDEs, pr
 
 | Plugin                                                             | Description                                               | Info          |
 |--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
-| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link> | PyCharm integration | Version 0.2.2 |
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link> | PyCharm integration | Version 0.2.3 |
 
 ## Core Plugins
 
@@ -85,6 +85,9 @@ Built-in plugins provided by Vedro to deliver essential features.
     />
     <Plugin key='lastFailed' name='LastFailed' pypi='vedro'
         desc='Runs only the previously failed scenarios'
+    />
+    <Plugin key='tempKeeper' name='TempKeeper' pypi='vedro'
+        desc='Manages temporary directories and files'
     />
     <Plugin key='terminator' name='Terminator' pypi='vedro'
         desc='Handles test exit status based on test results and interruptions'
