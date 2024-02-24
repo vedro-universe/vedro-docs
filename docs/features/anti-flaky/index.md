@@ -39,7 +39,7 @@ The best approach to handle flaky tests is to prevent them from occurring in the
 
 ### 🛠️ Boosting Test Reliability with Vedro's Best Practices
 
-Vedro promotes [best practices](https://docs.vedro.io/best-practices) that not only make tests maintainable but also stable, like writing clear tests, avoiding dependencies between tests, and ensuring each test is self-contained. By encouraging and facilitating good practices, Vedro significantly reduces the chances of introducing flaky tests in the first place.
+Vedro promotes <Link to="https://docs.vedro.io/best-practices">best practices</Link> that not only make tests maintainable but also stable, like writing clear tests, avoiding dependencies between tests, and ensuring each test is self-contained. By encouraging and facilitating good practices, Vedro significantly reduces the chances of introducing flaky tests in the first place.
 
 ### 🔄 Achieving Test Consistency Through Multiple Runs
 
@@ -104,7 +104,7 @@ While the features and best practices provided by Vedro significantly enhance te
 
 ### 🤖 Automating Flakiness Detection
 
-Vedro offers a plugin, [vedro-git-changed](https://pypi.org/project/vedro-git-changed/), which automatically identifies and runs test scenarios that have changed relative to a specified git branch. This targeted approach ensures that newly introduced or modified tests are scrutinized for flakiness before being merged.
+Vedro offers a plugin, <Link to="https://pypi.org/project/vedro-git-changed/">vedro-git-changed</Link>, which automatically identifies and runs test scenarios that have changed relative to a specified git branch. This targeted approach ensures that newly introduced or modified tests are scrutinized for flakiness before being merged.
 
 To install the plugin, use the command:
 
@@ -118,7 +118,8 @@ To run tests that have changed against the main branch, execute:
 $ vedro run --changed-against-branch=main
 ```
 
-To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here are example configurations for [GitLab CI](https://docs.gitlab.com/ee/ci/) and [GitHub Actions](https://github.com/features/actions):
+To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here are example configurations for <Link to="https://docs.gitlab.com/ee/ci/">GitLab CI</Link>
+ and <Link to="https://github.com/features/actions">GitHub Actions</Link>:
 
 <Tabs>
   <TabItem value="gitlab_ci" label="GitLab CI" default>
@@ -180,7 +181,7 @@ The `vedro-git-changed` plugin not only simplifies the process of running new or
 
 ### ✅ Enforcing Best Practices
 
-[Flake8-Vedro](https://vedro.io/docs/integrations/flake8-linter) extends the capabilities of the popular [Flake8](https://flake8.pycqa.org) linting tool by introducing rules and checks specifically tailored for Vedro test scenarios. Although it might not cover every possible best practice, it focuses on enforcing a set of rules that significantly contribute to improving test quality.
+<Link to="/docs/integrations/flake8-linter" target="_blank">Flake8-Vedro</Link> extends the capabilities of the popular <Link to="https://flake8.pycqa.org/en/latest/">Flake8</Link> linting tool by introducing rules and checks specifically tailored for Vedro test scenarios. Although it might not cover every possible best practice, it focuses on enforcing a set of rules that significantly contribute to improving test quality.
 
 To install `flake8-vedro`, run the following command:
 
