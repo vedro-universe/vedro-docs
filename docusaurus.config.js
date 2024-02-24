@@ -89,7 +89,7 @@
               },
               {
                 label: 'Experimental Features',
-                to: '/docs/exp/selective-discoverer',
+                to: '/docs/exp',
               },
             ],
           },
