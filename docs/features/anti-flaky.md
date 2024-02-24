@@ -81,7 +81,7 @@ $ vedro run --order-random
 
 ## Ensuring Test Reliability
 
-While the features and best practices provided by Vedro significantly enhance test reliability, there's an inherent challenge: ensuring all team members consistently follow these guidelines and run new or modified tests before integrating them into the codebase. Vedro addresses this challenge through automation and integration tools designed to enforce best practices and efficiently detect flakiness.
+While the features and best practices provided by Vedro significantly enhance test reliability, there is an inherent challenge: ensuring that all team members consistently follow these guidelines and run new or modified tests before integrating them into the codebase. Vedro addresses this challenge through automation and integration tools designed to enforce best practices and efficiently detect flakiness.
 
 ### 🤖 Automating Flakiness Detection
 
@@ -97,14 +97,17 @@ To run tests that have changed against the main branch, execute:
 $ vedro run --changed-against-branch=main
 ```
 
-To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here's an example configuration for a `.gitlab-ci.yml` file:
+To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here are example configurations for GitLab CI and GitHub Actions:
+
+**GitLab CI Configuration:**
 
 ```yaml
+# .gitlab-ci.yml
 run_changed_tests:
   stage: test
   image: python:3.11
   before_script:
-    - pip3 install -r requirements.txt
+    - pip install -r requirements.txt
   script:
     - vedro run --changed-against-branch=main -N 10 --order-random
   only:
@@ -114,7 +117,40 @@ run_changed_tests:
       - scenarios/**/*
 ```
 
-The `vedro-git-changed` plugin not only simplifies the process of running new or changed tests locally, but also establishes a robust quality gate within the CI pipeline. Automatically running tests multiple times in random order reduces the likelihood of undetected flakiness.
+**GitHub Actions Workflow:**
+
+```yaml
+# .github/workflows/run_changed_tests.yml
+on:
+  push:
+    branches-ignore:
+      - 'main'
+    paths:
+      - 'scenarios/**'
+
+jobs:
+  run_changed_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Changed Tests
+      run: vedro run --changed-against-branch=main -N 10 --order-random
+```
+
+The `vedro-git-changed` plugin not only simplifies the process of running new or changed tests locally but also establishes a robust quality gate within the CI pipeline. Automatically running tests multiple times in random order reduces the likelihood of undetected flakiness.
 
 ### ✅ Enforcing Best Practices
 
