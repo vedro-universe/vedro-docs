@@ -32,7 +32,7 @@ module.exports = {
         'features/tags',
         'features/scope',
         'features/parallel-execution',
-        'features/anti-flaky',
+        'features/anti-flaky/anti-flaky',
       ],
     },
     {

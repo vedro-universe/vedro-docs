@@ -11,7 +11,7 @@ class VedroPluginList extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://api.vedro.io/v1/plugins/top")
+    fetch("https://api.vedro.io/v1/plugins/top?limit=15")
       .then(response => response.json())
       .then(plugins => this.setState({ plugins }))
     ;

@@ -7,8 +7,11 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import Link from '@site/src/components/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TableOfContents from './TableOfContents';
 
 # Preventing Flaky Tests
+
+<TableOfContents current="Part 1. Preventing Flaky Tests" />
 
 ## What are Flaky Tests?
 
@@ -63,22 +66,25 @@ $ vedro run --repeats 3
 
 Output example:
 
-```shell
+<TerminalOutput>
+{`
 Scenarios
-*
- ✔ register via email
- │
- ├─[1/3] ✔ register via email
- │
- ├─[2/3] ✔ register via email
- │
- ├─[3/3] ✔ register via email
-
-
-# --seed fb0095bc-db57-4976-9368-a356dfb1ff94
-# repeated x3
-# 1 scenario, 1 passed, 0 failed, 0 skipped (0.49s)
-```
+[1m* auth / register[0m[1m
+[0m [32m✔ register via email[0m[32m
+[0m │
+ ├─[1/3] [32m✔ register via email[0m[38;5;244m (0.18s)[0m[38;5;244m
+[0m │
+ ├─[2/3] [32m✔ register via email[0m[38;5;244m (0.12s)[0m[38;5;244m
+[0m │
+ ├─[3/3] [32m✔ register via email[0m[38;5;244m (0.11s)[0m[38;5;244m
+[0m 
+ 
+[38;5;249m# --seed c5e5829e-b6a3-459c-a97c-f9047682ae6d
+# repeated x3[0m[38;5;249m
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.42s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
 ### 🔍 Unveiling Hidden Dependencies with Random Test Ordering
 

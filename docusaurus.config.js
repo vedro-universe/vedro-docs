@@ -101,13 +101,13 @@
                 href: 'https://t.me/vedro_universe',
               },
               {
+                label: 'Instagram',
+                href: 'https://www.instagram.com/vedro_universe',
+              },
+              {
                 label: 'Twitter',
                 href: 'https://twitter.com/vedro_universe',
               },
-              {
-                label: 'Instagram',
-                href: 'https://www.instagram.com/vedro_universe',
-              }
             ],
           },
           {
