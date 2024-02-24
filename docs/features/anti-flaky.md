@@ -8,7 +8,7 @@ import Link from '@site/src/components/Link';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Preventing Flaky Tests with Vedro
+# Preventing Flaky Tests
 
 ## What are Flaky Tests?
 
@@ -44,9 +44,22 @@ Another effective strategy employed by Vedro to combat the issue of flaky tests 
 
 Vedro simplifies this process with straightforward command-line options. For example, executing a test multiple times is achievable using the command:
 
+<Tabs>
+  <TabItem value="short_form" label="Short Form" default>
+
 ```shell
 $ vedro run -N 3
 ```
+
+  </TabItem>
+  <TabItem value="long_form" label="Long Form">
+
+```shell
+$ vedro run --repeats 3
+```
+
+  </TabItem>
+</Tabs>
 
 Output example:
 
@@ -88,18 +101,21 @@ While the features and best practices provided by Vedro significantly enhance te
 Vedro offers a plugin, [vedro-git-changed](https://pypi.org/project/vedro-git-changed/), which automatically identifies and runs test scenarios that have changed relative to a specified git branch. This targeted approach ensures that newly introduced or modified tests are scrutinized for flakiness before being merged.
 
 To install the plugin, use the command:
-```sh
+
+```shell
 $ vedro plugin install vedro-git-changed
 ```
 
 To run tests that have changed against the main branch, execute:
-```sh
+
+```shell
 $ vedro run --changed-against-branch=main
 ```
 
-To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here are example configurations for GitLab CI and GitHub Actions:
+To further bolster flaky test detection and ensure test suite robustness, the plugin can be seamlessly integrated into CI pipelines. Here are example configurations for [GitLab CI](https://docs.gitlab.com/ee/ci/) and [GitHub Actions](https://github.com/features/actions):
 
-**GitLab CI Configuration:**
+<Tabs>
+  <TabItem value="gitlab_ci" label="GitLab CI" default>
 
 ```yaml
 # .gitlab-ci.yml
@@ -117,7 +133,8 @@ run_changed_tests:
       - scenarios/**/*
 ```
 
-**GitHub Actions Workflow:**
+  </TabItem>
+  <TabItem value="github_actions" label="GitHub Actions">
 
 ```yaml
 # .github/workflows/run_changed_tests.yml
@@ -150,6 +167,9 @@ jobs:
       run: vedro run --changed-against-branch=main -N 10 --order-random
 ```
 
+  </TabItem>
+</Tabs>
+
 The `vedro-git-changed` plugin not only simplifies the process of running new or changed tests locally but also establishes a robust quality gate within the CI pipeline. Automatically running tests multiple times in random order reduces the likelihood of undetected flakiness.
 
 ### ✅ Enforcing Best Practices
@@ -158,13 +178,13 @@ The `vedro-git-changed` plugin not only simplifies the process of running new or
 
 To install `flake8-vedro`, run the following command:
 
-```sh
+```shell
 $ pip install flake8-vedro
 ```
 
 To check for linting errors, use the command below:
 
-```sh
+```shell
 $ flake8
 ```
 
