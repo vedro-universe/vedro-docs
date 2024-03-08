@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-The `ScenarioStatus` enumeration provides a set of possible states for `ScenarioResult`, indicating the current status of a test scenario. 
+The `ScenarioStatus` enumeration defines possible states for a `ScenarioResult`, indicating the current status of a test scenario.
 
 ```python
 from enum import Enum
@@ -22,9 +22,9 @@ class ScenarioStatus(Enum):
 ```
 
 - **PENDING**: Indicates the scenario is queued and waiting for execution.
-- **PASSED**: Signifies the scenario has completed successfully, with all assertions validated.
+- **PASSED**: Signifies that the scenario has completed successfully, with all assertions validated.
 - **FAILED**: Marks the scenario as unsuccessful due to failed assertions or unexpected errors.
-- **SKIPPED**: Represents scenarios that are deliberately not executed, for instance, scenarios <Link to="/docs/features/skipping-scenarios" target="_blank">marked</Link> with `@vedro.skip`.
+- **SKIPPED**: Represents scenarios that are deliberately not executed, for instance, scenarios <Link to="/docs/features/skipping-scenarios">marked</Link> with `@vedro.skip`.
 
 :::info Note
 The statuses `PASSED`, `FAILED`, and `SKIPPED` are final. Once a `ScenarioResult` is assigned one of these statuses, it cannot change.
