@@ -53,6 +53,7 @@ module.exports = {
         'integrations/allure-reporter',
         'integrations/httpx-client',
         'integrations/pycharm-plugin',
+        'integrations/vscode-extension',
         'integrations/gitlab-reporter',
         'integrations/flake8-linter',
       ],

@@ -26,9 +26,10 @@ Interested in creating your own plugins? Learn how to do so <Link to="/docs/guid
 
 These are plugins specifically designed to integrate Vedro into popular IDEs, providing seamless workflows and a more user-friendly experience.
 
-| Plugin                                                             | Description                                               | Info          |
-|--------------------------------------------------------------------|-----------------------------------------------------------|---------------|
-| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link> | PyCharm integration | Version 0.2.3 |
+| Plugin                                                                              | Description                                                              | Info          |
+|-------------------------------------------------------------------------------------|--------------------------------------------------------------------------|---------------|
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link>   | <Link to="https://www.jetbrains.com/pycharm/">PyCharm</Link> integration | Version 0.2.5 |
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">VSCode Extension</Link> | <Link to="https://code.visualstudio.com/">VSCode</Link> integration      | Version 0.1.1 |
 
 ## Core Plugins
 
