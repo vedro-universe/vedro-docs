@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-The `StepStatus` enumeration is designed to represent the possible states of a `StepResult`, indicating the current status of an individual test step within a scenario.
+The `StepStatus` enumeration is designed to represent the possible states of a <Link to="/docs/core/step-result">`StepResult`</Link>, indicating the current status of an individual test step within a scenario.
 
 ```python
 from enum import Enum
@@ -24,7 +24,7 @@ class StepStatus(Enum):
 - **PASSED**: Signifies the step has completed successfully.
 - **FAILED**: Marks the step as unsuccessful due to an assertion failure or an unexpected error.
 
-Unlike <Link to="/docs/core/scenario-status">scenarios</Link>, steps do not have a SKIPPED status because skipping is managed at the scenario level, affecting all steps within that scenario.
+Unlike <Link to="/docs/core/scenario-status">scenarios</Link>, steps do not have a `SKIPPED` status because skipping is managed at the scenario level, affecting all steps within that scenario.
 
 :::info Note
 The `PASSED` and `FAILED` statuses are final for a `StepResult`. Once assigned, these statuses cannot change.

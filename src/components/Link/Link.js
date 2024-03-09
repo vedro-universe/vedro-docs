@@ -14,7 +14,7 @@ class Link extends React.Component {
   render() {
     const { to, children, className } = this.props;
 
-    if (!to || !children || typeof children !== "string") {
+    if (!to || !children) {
       return null;
     }
 

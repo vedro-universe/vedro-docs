@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-The `ScenarioStatus` enumeration defines possible states for a `ScenarioResult`, indicating the current status of a test scenario.
+The `ScenarioStatus` enumeration defines possible states for a <Link to="/docs/core/scenario-result">`ScenarioResult`</Link>, indicating the current status of a test scenario.
 
 ```python
 from enum import Enum
