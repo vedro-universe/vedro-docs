@@ -73,6 +73,14 @@ class AuthAPI(AsyncHTTPInterface):
         })
 ```
 
+The `_request()` function is used to send HTTP requests. It passes the arguments directly to the `httpx.AsyncClient.request()` method.
+
+:::tip
+
+For a comprehensive understanding of the `AsyncClient.request()` method and its various parameters, see the official <Link to="https://www.python-httpx.org/api/#asyncclient">HTTPX documentation</Link>
+
+:::
+
   </TabItem>
   <TabItem value="sync" label="Sync">
 
@@ -90,16 +98,16 @@ class AuthAPI(SyncHTTPInterface):
         })
 ```
 
-  </TabItem>
-</Tabs>
-
-The `_request` function is used to send HTTP requests. It passes the arguments directly to the `AsyncClient.request` method.
+The `_request()` function is used to send HTTP requests. It passes the arguments directly to the `httpx.Client.request()` method.
 
 :::tip
 
-For a comprehensive understanding of the `AsyncClient.request` method and its various parameters, see the official <Link to="https://www.python-httpx.org/api/#asyncclient">HTTPX documentation</Link>
+For a comprehensive understanding of the `Client.request()` method and its various parameters, see the official <Link to="https://www.python-httpx.org/api/#client">HTTPX documentation</Link>
 
 :::
+
+  </TabItem>
+</Tabs>
 
 Once you've defined your AuthAPI interface, you can incorporate it into your test scenarios. Here's an example scenario that simulates a registered user logging in:
 
@@ -223,12 +231,14 @@ class AuthAPI(AsyncHTTPInterface):
         super().__init__(base_url)
 
     async def login(self, username: str, password: str) -> Response:
-        async with self._client(base_url=self._base_url, verify=False) as client:
+        async with self._client(verify=False) as client:
             return await self._request("POST", "/auth/login", json={
                 "username": username,
                 "password": password
             })
 ```
+
+This approach provides full flexibility in using the HTTPX `AsyncClient` directly, allowing you to control additional parameters such as SSL verification.
 
   </TabItem>
   <TabItem value="sync" label="Sync">
@@ -241,16 +251,38 @@ class AuthAPI(SyncHTTPInterface):
         super().__init__(base_url)
 
     def login(self, username: str, password: str) -> Response:
-        with self._client(base_url=self._base_url, verify=False) as client:
+        with self._client(verify=False) as client:
             return self._request("POST", "/auth/login", json={
                 "username": username,
                 "password": password
             })
 ```
 
+This approach provides full flexibility in using the HTTPX `Client` directly, allowing you to control additional parameters such as SSL verification.
+
   </TabItem>
 </Tabs>
 
-This approach provides full flexibility in using the HTTPX `AsyncClient` directly, allowing you to control additional parameters such as SSL verification.
+For more information and available parameters, check out the official <Link to="https://www.python-httpx.org/api/">HTTPX documentation</Link>.
 
-For more information and available parameters, check out the official <Link to="https://www.python-httpx.org/api/#asyncclient">HTTPX documentation</Link>.
+## Request Recording
+
+The `vedro-httpx` plugin also enables recording of HTTP requests made during scenario execution and saving the data as a scenario artifact in <Link to="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR (HTTP Archive) format</Link>. This can be especially useful for debugging and auditing.
+
+```shell
+$ vedro run --httpx-record-requests
+```
+
+Artifacts, such as recorded HTTP requests, can be attached to an <Link to="/docs/integrations/allure-reporter#artifacts">Allure report</Link>. Use the following command to generate an Allure report with HTTP request recordings:
+
+```shell
+$ vedro run -r rich allure --httpx-record-requests
+```
+
+If you prefer to save artifacts locally for offline analysis, you can use the `--save-artifacts` option. This will save the recorded HTTP requests as HAR files on your local file system:
+
+```shell
+$ vedro run --httpx-record-requests --save-artifacts
+```
+
+HAR files can be opened and analyzed using browser developer tools or local tools such as <Link to="https://www.telerik.com/fiddler">Fiddler</Link> or <Link to="https://insomnia.rest/">Insomnia</Link>. Additionally, you can use online tools like the <Link to="https://toolbox.googleapps.com/apps/har_analyzer/">Google HAR Analyzer</Link> for convenient, web-based viewing.
