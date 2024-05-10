@@ -4,7 +4,7 @@ id: selective-discoverer
 
 # Selective Discoverer
 
-:::caution
+:::warning
 
 This page describes an experimental framework feature. Backward compatibility is not guaranteed.
 

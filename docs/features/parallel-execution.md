@@ -1,6 +1,6 @@
 # Parallel Execution
 
-:::caution
+:::warning
 Please note that this documentation is currently under finalization and improvement
 :::
 

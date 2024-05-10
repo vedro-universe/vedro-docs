@@ -3,7 +3,7 @@ id: writing-plugins
 ---
 # Writing Plugins
 
-:::caution
+:::warning
 
 Please note that this documentation page is currently undergoing finalization and improvements
 
