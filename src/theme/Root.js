@@ -1,13 +1,13 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import React from 'react';
 
-import UmamiAnalytics from '../components/UmamiAnalytics';
+import Analytics from '../components/Analytics';
 
 function Root({children}) {
   return (
     <>
       {children}
-      <BrowserOnly>{() => <UmamiAnalytics />}</BrowserOnly>
+      <BrowserOnly>{() => <Analytics />}</BrowserOnly>
     </>
   );
 }
