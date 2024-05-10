@@ -1,6 +1,9 @@
-// With JSDoc @type annotations, IDEs can provide config autocompletion
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-(module.exports = {
+// @ts-check
+
+import { themes as prismThemes } from 'prism-react-renderer';
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: 'Vedro',
   tagline: 'Pragmatic Testing Framework',
   url: 'https://vedro.io',
@@ -16,14 +19,14 @@
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
           showLastUpdateTime: false,
         },
         blog: {
           blogTitle: 'What\'s New',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
         sitemap: {
           changefreq: 'daily',
@@ -131,7 +134,10 @@
         copyright: `Made in the middle of nowhere with ❤️<br/>© ${new Date().getFullYear()}`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/oceanicNext'),
+        theme: prismThemes.oceanicNext,
+        additionalLanguages: ['json', 'bash'],
       },
     }),
-});
+};
+
+export default config;

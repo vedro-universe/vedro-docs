@@ -7,6 +7,7 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Link from '@site/src/components/Link';
+import CodeBlock from '@theme/CodeBlock';
 
 # Schema Validator
 
@@ -78,10 +79,10 @@ class Scenario(vedro.Scenario):
 
 However, if the validation fails, standart `AssertionError` provides limited insight into why the test failed. You're often left with just a side-by-side comparison of the expected and actual data, which can be time-consuming to decipher, especially with complex data.
 
-<code className='word-wrap'>{`
+<CodeBlock className='word-wrap'>{`
 AssertionError: assert {'created_at': '2020-01-00T00:00:00', 'id': 1, 'is_deleted': True, 'name': 'Bob'} == {'created_at': '2020-01-01T00:00:00', 'id': 1, 'is_deleted': False, 'name': 'Bob'}
  +  where {'created_at': '2020-01-00T00:00:00', 'id': 1, 'is_deleted': True, 'name': 'Bob'} = <scenarios.retrieve_users.Response object at 0x102da1120>.body
-`}</code>
+`}</CodeBlock>
 
 ## Leveling Up Data Validation
 

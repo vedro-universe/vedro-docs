@@ -26,8 +26,8 @@ Here's an overview of the key API endpoints that we'll be working with:
 | ----------- | ----------- |
 | <code style={{ background: "#caeac8" }}>POST /auth/register</code>            | Register a new user with a username and password                                                                  |
 | <code style={{ background: "#caeac8" }}>POST /auth/login</code>               | Authenticate an existing user                                                                                     |
-| <code style={{ background: "#caeac8" }}>POST /chats/<chat_id>/messages</code> | Send a message to a chat with the specified chat_id. <br/> A new chat will be created if it doesn't already exist |
-| <code style={{ background: "#d8f2fb" }}>GET /chats/<chat_id>/messages</code>  | Retrieve messages for a chat with the specified chat_id                                                           |
+| <code style={{ background: "#caeac8" }}>POST /chats/\<chat_id\>/messages</code> | Send a message to a chat with the specified chat_id. <br/> A new chat will be created if it doesn't already exist |
+| <code style={{ background: "#d8f2fb" }}>GET /chats/\<chat_id\>/messages</code>  | Retrieve messages for a chat with the specified chat_id                                                           |
 
 To ensure an uninterrupted learning experience without getting sidetracked by dependency installations, let's proceed with installing everything we need.
 

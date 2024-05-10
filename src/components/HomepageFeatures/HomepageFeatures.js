@@ -1,4 +1,4 @@
-import { faCheck, faMagic, faPlug } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faMagicWandSparkles, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '@site/src/components/Link';
 import clsx from 'clsx';
@@ -14,7 +14,7 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: 'No Magic',
-    icon: faMagic,
+    icon: faMagicWandSparkles,
     description: (
       <>
         Write test scenarios as a Python code

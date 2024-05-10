@@ -62,7 +62,7 @@ After the installation, all you need to do is run your Vedro tests with the GitL
 $ vedro run -r gitlab --gitlab-collapsable {steps,vars,scope}
 ```
 
-In the command above, the {steps, vars, scope} parameters dictate what elements the plugin should collapse in your report. Each mode has its unique functionality; let's explore them in further detail.
+In the command above, the \{steps, vars, scope\} parameters dictate what elements the plugin should collapse in your report. Each mode has its unique functionality; let's explore them in further detail.
 
 ### Steps Mode
 
