@@ -29,7 +29,7 @@ const config = {
           customCss: './src/css/custom.css',
         },
         sitemap: {
-          changefreq: 'daily',
+          filename: 'sitemap.xml',
         },
       }),
     ],

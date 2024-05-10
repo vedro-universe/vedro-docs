@@ -1600,7 +1600,7 @@
     "@docusaurus/utils-validation" "3.3.2"
     tslib "^2.6.0"
 
-"@docusaurus/plugin-sitemap@3.3.2":
+"@docusaurus/plugin-sitemap@3.3.2", "@docusaurus/plugin-sitemap@^3.3.2":
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-sitemap/-/plugin-sitemap-3.3.2.tgz#f64fba6f03ebc14fdf55434aa2219bf80f752a13"
   integrity sha512-/ZI1+bwZBhAgC30inBsHe3qY9LOZS+79fRGkNdTcGHRMcdAp6Vw2pCd1gzlxd/xU+HXsNP6cLmTOrggmRp3Ujg==
