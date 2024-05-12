@@ -58,7 +58,7 @@ When we run the above test a second time, it fails because the username "bob" is
 `}
 </TerminalOutput>
 
-This issue arises due to the hardcoded data used in our test. To maintain the independence of each test, we must introduce variability, achievable through data models. In this context, we will use the <Link to="https://d42.vedro.io/docs/quick-start">d42 library</Link> to define, generate, validate, and substitute data based on the models we design.
+This issue arises due to the hardcoded data used in our test. To maintain the independence of each test, we must introduce variability, achievable through data models. In this context, we will use the <Link to="https://d42.sh/docs/quick-start">d42 library</Link> to define, generate, validate, and substitute data based on the models we design.
 
 Let's compare hardcoded data and a data model.
 
@@ -89,7 +89,7 @@ _(these specifications are based on the method documentation available at <Link 
 
 ## Data Generation
 
-Our new data model allows the <Link to="https://d42.vedro.io/docs/features/generation">generation</Link> of unique data for each test:
+Our new data model allows the <Link to="https://d42.sh/docs/features/generation">generation</Link> of unique data for each test:
 
 ```python
 from d42 import fake
@@ -116,7 +116,7 @@ To keep our data models organized, we should save them in the `schemas/` directo
 
 ## Data Validation
 
-The beauty of data models is their ability not only to generate data but also <Link to="https://d42.vedro.io/docs/features/validation">validate it</Link>. The validation process ensures that the received response fits our defined data model:
+The beauty of data models is their ability not only to generate data but also <Link to="https://d42.sh/docs/features/validation">validate it</Link>. The validation process ensures that the received response fits our defined data model:
 
 <Tabs>
   <TabItem value="correct-fields" label="🍏 OK" default>
@@ -173,7 +173,7 @@ This validation step ensures that the response has the correct structure and fie
 
 The test now checks not only that the `username` and `password` fields exist and are strings, but also that they meet the criteria defined in our data model.
 
-For even more granular validation, we can refine the schema by <Link to="https://d42.vedro.io/docs/features/substitution">substituting</Link> our generated values. This allows us to validate not just the type, but also the specific values of the fields:
+For even more granular validation, we can refine the schema by <Link to="https://d42.sh/docs/features/substitution">substituting</Link> our generated values. This allows us to validate not just the type, but also the specific values of the fields:
 
 ```python
 NewUserSchema % {

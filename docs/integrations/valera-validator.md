@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 # Schema Validator
 
-<Link to="https://pypi.org/project/vedro-valera-validator/">vedro-valera-validator</Link> is a plugin for the Vedro framework that utilizes the <Link to="https://pypi.org/project/valera">valera validator</Link>, a package designed for data validation based on <Link to="https://d42.vedro.io/docs/quick-start">d42 (district42) schemas</Link>. Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
+<Link to="https://pypi.org/project/vedro-valera-validator/">vedro-valera-validator</Link> is a plugin for the Vedro framework that utilizes the <Link to="https://pypi.org/project/valera">valera validator</Link>, a package designed for data validation based on <Link to="https://d42.sh/docs/quick-start">d42 (district42) schemas</Link>. Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
 
 ## Setting Up
 
@@ -159,4 +159,4 @@ Provided validation exception indicates that the `created_at` value and `is_dele
 
 ## More Info
 
-You can find more about how to use valera and d42 (district42) schemas in your projects in the <Link to="https://d42.vedro.io/docs/quick-start">official documentation</Link>. With valera, data validation becomes less of a challenge and more of a strength.
+You can find more about how to use valera and d42 (district42) schemas in your projects in the <Link to="https://d42.sh/docs/quick-start">official documentation</Link>. With valera, data validation becomes less of a challenge and more of a strength.
