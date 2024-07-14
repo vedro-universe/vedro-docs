@@ -6,8 +6,6 @@ hide_table_of_contents: false
 
 import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.10
