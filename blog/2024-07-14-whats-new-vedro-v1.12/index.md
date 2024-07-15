@@ -24,23 +24,6 @@ We've introduced new assertions that provide beautiful and informative diffs, ma
 
 <TerminalOutput>
 {`
-Scenarios
-[1m* [0m[1m
-[0m [31m✗ update task[0m[31m
-[0m   [32m✔ given_created_task[0m[32m
-[0m   [32m✔ when_user_updates_task[0m[32m
-[0m   [31m✗ then_it_should_return_updated_task[0m[31m
-[0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m──────────────────[0m[31m─╮[0m
-[31m│[0m [2;33m/tests/scenarios/[0m[1;33mupdate_task.py[0m:[94m26[0m in [92mthen_it_should_return_updated_task[0m  [31m│[0m
-[31m│[0m                                                                           [31m│[0m
-[31m│[0m   [2m23 [0m        }                                                            [31m│[0m
-[31m│[0m   [2m24 [0m                                                                     [31m│[0m
-[31m│[0m   [2m25 [0m    [94mdef[0m [92mthen_it_should_return_updated_task[0m([96mself[0m):                    [31m│[0m
-[31m│[0m [31m❱ [0m26         [94massert[0m [96mself[0m.result == {                                      [31m│[0m
-[31m│[0m   [2m27 [0m            [33m"[0m[33mtotal[0m[33m"[0m: [94m1[0m,                                              [31m│[0m
-[31m│[0m   [2m28 [0m            [33m"[0m[33mitems[0m[33m"[0m: [                                               [31m│[0m
-[31m│[0m   [2m29 [0m                {                                                    [31m│[0m
-[31m╰───────────────────────────────────────────────────────────────────────────╯[0m
 [1;91mAssertionError[0m
 [1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
     [38;5;244m          {[0m
@@ -64,25 +47,12 @@ Scenarios
 
 For more detailed output, use the `--show-full-diff` argument to see the complete diff of the assertions.
 
+```shell
+$ vedro run --show-full-diff
+```
+
 <TerminalOutput>
 {`
-Scenarios
-[1m* [0m[1m
-[0m [31m✗ update task[0m[31m
-[0m   [32m✔ given_created_task[0m[32m
-[0m   [32m✔ when_user_updates_task[0m[32m
-[0m   [31m✗ then_it_should_return_updated_task[0m[31m
-[0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m──────────────────[0m[31m─╮[0m
-[31m│[0m [2;33m/tests/scenarios/[0m[1;33mupdate_task.py[0m:[94m26[0m in [92mthen_it_should_return_updated_task[0m  [31m│[0m
-[31m│[0m                                                                           [31m│[0m
-[31m│[0m   [2m23 [0m        }                                                            [31m│[0m
-[31m│[0m   [2m24 [0m                                                                     [31m│[0m
-[31m│[0m   [2m25 [0m    [94mdef[0m [92mthen_it_should_return_updated_task[0m([96mself[0m):                    [31m│[0m
-[31m│[0m [31m❱ [0m26         [94massert[0m [96mself[0m.result == {                                      [31m│[0m
-[31m│[0m   [2m27 [0m            [33m"[0m[33mtotal[0m[33m"[0m: [94m1[0m,                                              [31m│[0m
-[31m│[0m   [2m28 [0m            [33m"[0m[33mitems[0m[33m"[0m: [                                               [31m│[0m
-[31m│[0m   [2m29 [0m                {                                                    [31m│[0m
-[31m╰───────────────────────────────────────────────────────────────────────────╯[0m
 [1;91mAssertionError[0m
 [1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
     [38;5;244m  {[0m
@@ -107,6 +77,10 @@ Scenarios
 `}
 </TerminalOutput>
 
+:::note
+If you prefer the old behavior, you can use the `--legacy-assertions` argument.
+:::
+
 ## New Command-Line Arguments
 
 ### Change Project Directory
@@ -122,6 +96,12 @@ $ vedro run --project-dir /app/tests
 ### Suppress Modules in Traceback
 
 The `tb_suppress_modules` parameter allows you to suppress specific modules in the traceback output, making the relevant information more prominent.
+
+```python
+# vedro.cfg.py
+class RichReporter(vedro.plugins.director.rich.RichReporter):
+    tb_suppress_modules = [json]
+```
 
 <Tabs>
   <TabItem value="suppressed" label="Suppressed" default>
@@ -217,9 +197,10 @@ Scenarios
 
 ### Traceback Width Control
 
-Set the width of the traceback output with the `tb_width` parameter. If not set, the terminal width will be used.
+Set the width of the traceback output with the `tb_width` parameter. If not set, the terminal width will be used. The default value is `tb_width = 100`.
 
 ```python
+# vedro.cfg.py
 class RichReporter(vedro.plugins.director.rich.RichReporter):
     tb_width = 120
 ```
