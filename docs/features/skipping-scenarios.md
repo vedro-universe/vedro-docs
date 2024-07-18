@@ -2,6 +2,7 @@
 id: skipping-scenarios
 ---
 
+import Link from '@site/src/components/Link';
 import TerminalOutput from '@site/src/components/TerminalOutput';
 
 # Skipping Scenarios
@@ -98,6 +99,25 @@ from sys import version_info
 class Scenario(vedro.Scenario):
     subject = "register user"
 ```
+
+## Skipping Individual Parameterized Scenarios
+
+Vedro takes advantage of decorators' relaxed grammar (<Link to="https://peps.python.org/pep-0614/">PEP 614</Link>), bringing the ability to skip individual parameterized scenarios:
+
+```python
+import vedro
+from vedro import params, skip
+
+class Scenario(vedro.Scenario):
+    subject = "login as {user}"
+
+    @params("Bob")
+    @params[skip]("Alice")
+    def __init__(self, user):
+        self.user = user
+```
+
+In this example, the scenario for the user "Alice" will be skipped, while the scenario for "Bob" will be executed.
 
 ## A Word of Caution
 
