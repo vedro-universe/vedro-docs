@@ -108,8 +108,8 @@ const config = {
                 href: 'https://www.instagram.com/vedro_universe',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/vedro_universe',
+                label: 'X (Twitter)',
+                href: 'https://x.com/vedro_universe',
               },
             ],
           },
