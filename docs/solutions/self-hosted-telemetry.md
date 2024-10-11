@@ -1,6 +1,8 @@
+import Link from '@site/src/components/Link';
+
 # Vedro Telemetry
 
-[vedro-telemetry](https://pypi.python.org/pypi/vedro-telemetry/) is an external Vedro plugin that enables saving telemetry events to your own **self-hosted** server.
+<Link to="https://pypi.python.org/pypi/vedro-telemetry/">vedro-telemetry</Link> is an external Vedro plugin that enables saving telemetry events to your own **self-hosted** server.
 
 It's useful for teams with multiple projects to monitor and analyze their test suites across different projects in a centralized manner. By collecting telemetry data, teams can gain insights into test performance and detect areas that need improvement.
 
@@ -35,18 +37,18 @@ After installation and configuration, you can access several dashboards in your 
 ### 5. Plugin Adoption
 
 - **Description**: A list of projects with all enabled plugins (including their versions).
-- **Purpose**: Useful for tracking the adoption of specific tools like Allure (if [vedro-allure-reporter](https://pypi.org/project/vedro-allure-reporter/) is enabled) or [vedro-git-changed](https://pypi.org/project/vedro-git-changed/) to combat flaky tests (plugin targets changed tests to help [detect flakiness early](/docs/features/anti-flaky#ensuring-test-reliability)).
+- **Purpose**: Useful for tracking the adoption of specific tools like Allure (if <Link to="https://pypi.org/project/vedro-allure-reporter/">vedro-allure-reporter</Link> is enabled) or <Link to="https://pypi.org/project/vedro-git-changed/">vedro-git-changed</Link> to combat flaky tests (plugin targets changed tests to help <Link to="/docs/features/anti-flaky#ensuring-test-reliability">detect flakiness early</Link>).
 - **Benefit**: Helps teams monitor which plugins are being used across projects, ensuring consistency and aiding in the adoption of useful tools.
 
 ## Installation
 
 1. **Set Up Self-Hosted Telemetry Server**
 
-   Before using the plugin, you need to set up your own telemetry server to collect and store the telemetry data. Instructions on how to set up a self-hosted telemetry server can be found in the [Vedro Telemetry Server documentation](/docs/solutions/setting-up-self-hosted-telemetry-server).
+   Before using the plugin, you need to set up your own telemetry server to collect and store the telemetry data. Instructions on how to set up a self-hosted telemetry server can be found in the <Link to="/docs/solutions/setting-up-self-hosted-telemetry-server">Vedro Telemetry Server documentation</Link>.
 
 2. **Install the Plugin**
 
-   Install the [vedro-telemetry](https://pypi.org/project/vedro-telemetry/) plugin using the following command:
+   Install the <Link to="https://pypi.org/project/vedro-telemetry/">vedro-telemetry</Link> plugin using the following command:
 
    ```bash
    $ vedro plugin install vedro-telemetry
@@ -83,7 +85,7 @@ $ vedro run
 At the end of the test session, the collected telemetry data will be sent to the specified API endpoint.
 
 :::info
-Examples of the data that will be sent are available [here](https://github.com/vedro-universe/vedro-telemetry/tree/main/examples)
+Examples of the data that will be sent are available <Link to="https://github.com/vedro-universe/vedro-telemetry/tree/main/examples">here</Link>
 :::
 
 ## Configuration

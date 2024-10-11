@@ -1,8 +1,10 @@
+import Link from '@site/src/components/Link';
+
 # Setting Up Your Self-Hosted Telemetry Server
 
-To get started, make sure to review the [Vedro Telemetry Plugin documentation](/docs/solutions/self-hosted-telemetry) to understand how to collect telemetry data from your Vedro test runs. This plugin allows you to send telemetry events to your self-hosted server.
+To get started, make sure to review the <Link to="/docs/solutions/self-hosted-telemetry">Vedro Telemetry Plugin documentation</Link> to understand how to collect telemetry data from your Vedro test runs. This plugin allows you to send telemetry events to your self-hosted server.
 
-This guide will walk you through setting up that server using [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
+This guide will walk you through setting up that server using <Link to="https://docs.docker.com/engine/install/">Docker</Link> and <Link to="https://docs.docker.com/compose/install/">Docker Compose</Link>.
 
 ### Step-by-Step Setup Process
 
@@ -67,11 +69,11 @@ Open your web browser and navigate to http://localhost:3000.
 
 After logging in, you'll be prompted to change the password. Avoid using default or weak passwords, especially for non-local instances.
 
-Grafana is pre-configured with the necessary [data sources](https://grafana.com/docs/grafana/latest/datasources/) and [dashboards](https://grafana.com/docs/grafana/latest/dashboards/), thanks to its [provisioning feature](https://grafana.com/docs/grafana/latest/administration/provisioning/). You can start exploring your telemetry data immediately.
+Grafana is pre-configured with the necessary <Link to="https://grafana.com/docs/grafana/latest/datasources/">data sources</Link> and <Link to="https://grafana.com/docs/grafana/latest/dashboards/">dashboards</Link>, thanks to its <Link to="https://grafana.com/docs/grafana/latest/administration/provisioning/">provisioning feature</Link>. You can start exploring your telemetry data immediately.
 
 #### 6. Visualize Data in Grafana
 
-Once you've set up your telemetry server and started sending data from your Vedro tests (see the [Vedro Telemetry Plugin documentation](/docs/solutions/self-hosted-telemetry) for instructions on how to install and configure the plugin), you can visualize the data in Grafana.
+Once you've set up your telemetry server and started sending data from your Vedro tests (see the <Link to="/docs/solutions/self-hosted-telemetry">Vedro Telemetry Plugin documentation</Link> for instructions on how to install and configure the plugin), you can visualize the data in Grafana.
 
 To access the pre-configured dashboard directly, navigate to:
 
