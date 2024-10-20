@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import React from 'react';
 
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Link from '@site/src/components/Link';
 
 import styles from './index.module.css';
 
@@ -16,12 +15,12 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
+          <a
             className="button button--secondary button--lg"
-            to="/docs/quick-start"
+            href="/docs/quick-start"
           >
             Get Started →
-          </Link>
+          </a>
         </div>
       </div>
     </header>
