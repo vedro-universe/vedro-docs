@@ -286,3 +286,53 @@ $ vedro run --httpx-record-requests --save-artifacts
 ```
 
 HAR files can be opened and analyzed using browser developer tools or local tools such as <Link to="https://www.telerik.com/fiddler">Fiddler</Link> or <Link to="https://insomnia.rest/">Insomnia</Link>. Additionally, you can use online tools like the <Link to="https://toolbox.googleapps.com/apps/har_analyzer/">Google HAR Analyzer</Link> for convenient, web-based viewing.
+
+## Generating OpenAPI Specs (beta)
+
+The `vedro-httpx` plugin provides the ability to generate OpenAPI specifications from the HTTP requests recorded during test executions. This feature allows you to document your APIs dynamically based on real interactions.
+
+:::info
+Please note that the current implementation does not yet support the generation of request and response bodies.
+:::
+
+1. **Record HTTP Requests During Test Execution**:
+   
+   Start by running your test scenarios and recording the HTTP requests made during execution. Use the `--httpx-record-requests` and `--save-artifacts` flags to save these requests as HAR files:
+   
+   ```shell
+   $ vedro run --httpx-record-requests --save-artifacts
+   ```
+   
+   This command saves the recorded HTTP requests as HAR files in the `.vedro/artifacts` directory.
+
+2. **Generate the OpenAPI Specification**:
+   
+   Once the requests are recorded, you can generate the OpenAPI specification by running the following command:
+   
+   ```shell
+   $ vedro_httpx .vedro/artifacts
+   ```
+   
+   This command processes the saved HAR files and generates an OpenAPI spec based on them.
+
+### Important Considerations
+
+When defining API routes with dynamic segments (e.g., user IDs), use the `segments` argument to avoid treating each request as a static path. Without it, the OpenAPI generator will interpret paths like `/users/bob` and `/users/alice` as separate static endpoints, leading to an inaccurate spec.
+
+#### Example Without `segments` (❌ Not Recommended):
+```python
+class AsyncAuthAPI(AsyncHTTPInterface):
+    async def get_user(self, username: str) -> Response:
+        return await self._request("GET", f"/users/{username}")
+```
+
+#### Example With `segments` (✅ Recommended):
+```python
+class AsyncAuthAPI(AsyncHTTPInterface):
+    async def get_user(self, username: str) -> Response:
+        return await self._request("GET", "/users/{username}", segments={
+            "username": username
+        })
+```
+
+This ensures the OpenAPI spec recognizes `{username}` as a dynamic parameter, resulting in a cleaner, more accurate path like `/users/{username}`.
