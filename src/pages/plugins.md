@@ -1,39 +1,39 @@
----
-id: plugins
----
-
 import { PluginList, Plugin } from '@site/src/components/PluginList';
 import VedroPluginList from '@site/src/components/VedroPluginList';
 import Link from '@site/src/components/Link';
 
 # Plugins
 
+Explore Vedro’s plugin ecosystem, which consists of core plugins providing essential features and community-developed plugins that extend its functionality. Discover how to integrate these plugins into your project, and enhance your testing experience with the wide range of tools available.
+
+:::info
+**New to using plugins in Vedro?** Check out our <Link to="/docs/guides/using-plugins">Using Plugins guide</Link> to learn how to install, configure, and manage plugins in your project.
+:::
+
 ## Community Plugins
 
-Third-party plugins, created by the Vedro community, expand the framework's capabilities by adding new features, tools, and integrations.
+The Vedro community actively contributes to the framework by developing plugins that expand its capabilities. Below is a list of popular third-party plugins that add various features like enhanced reporting and integrations:
 
 <VedroPluginList />
 
-And <Link to="https://pypi.org/search/?q=vedro">more..</Link>
+Looking for more plugins? Explore the full list on <Link to="https://pypi.org/search/?q=vedro">PyPi</Link>.
 
 :::tip
-
-Interested in creating your own plugins? Learn how to do so <Link to="/docs/guides/writing-plugins">here</Link>
-
+Interested in creating custom plugins? Learn how to develop your own in the <Link to="/docs/guides/writing-plugins">Writing Plugins guide</Link>.
 :::
 
 ## IDE Plugins
 
-These are plugins specifically designed to integrate Vedro into popular IDEs, providing seamless workflows and a more user-friendly experience.
+These plugins integrate Vedro with popular Integrated Development Environments (IDEs), providing seamless workflows and a more user-friendly experience.
 
-| Plugin                                                                                             | Description                                                              | Info          |
-|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|---------------|
-| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link>                  | <Link to="https://www.jetbrains.com/pycharm/">PyCharm</Link> integration | Version 0.2.5 |
-| <Link to="https://marketplace.visualstudio.com/items?itemName=vedro.vedro">VSCode Extension</Link> | <Link to="https://code.visualstudio.com/">VSCode</Link> integration      | Version 0.1.1 |
+| Plugin                                                                                             | Description                                                                                                                | Info          |
+|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------|
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link>                  | Integration with <Link to="https://www.jetbrains.com/pycharm/">PyCharm</Link> for easy scenario execution and debugging.   | Version 0.2.5 |
+| <Link to="https://marketplace.visualstudio.com/items?itemName=vedro.vedro">VSCode Extension</Link> | Adds Vedro support to <Link to="https://code.visualstudio.com/">VSCode</Link>, allowing easy test runs and result viewing. | Version 0.1.1 |
 
 ## Core Plugins
 
-Built-in plugins provided by Vedro to deliver essential features.
+Vedro comes with a rich set of built-in plugins that provide essential testing features. These plugins are designed to improve scenario management, reporting, and test execution, ensuring a flexible and robust testing experience.
 
 <PluginList>
     <Plugin key='director' name='Director' pypi='vedro'
@@ -81,16 +81,23 @@ Built-in plugins provided by Vedro to deliver essential features.
     <Plugin key='assert-rewriter' name='AssertRewriter' pypi='vedro'
         desc='Rewrites assert statements to provide better error messages'
     />
-    <Plugin key='dryRunner' name='DryRunner' pypi='vedro'
+    <Plugin key='dry-runner' name='DryRunner' pypi='vedro'
         desc='Simulates scenario execution without actually executing them'
     />
-    <Plugin key='lastFailed' name='LastFailed' pypi='vedro'
+    <Plugin key='ensurer' name='Ensurer' pypi='vedro'
+        desc='Adds configurable retry logic to functions and steps, including attempts, delay and exceptions to swallow'
+    />
+    <Plugin key='last-failed' name='LastFailed' pypi='vedro'
         desc='Runs only the previously failed scenarios'
     />
-    <Plugin key='tempKeeper' name='TempKeeper' pypi='vedro'
+    <Plugin key='temp-keeper' name='TempKeeper' pypi='vedro'
         desc='Manages temporary directories and files'
     />
     <Plugin key='terminator' name='Terminator' pypi='vedro'
         desc='Handles test exit status based on test results and interruptions'
     />
 </PluginList>
+
+## Feedback
+
+We are continuously working to improve Vedro and its ecosystem. If you have suggestions for new plugins or improvements to existing ones, please open an issue on our <Link to="https://github.com/vedro-universe/vedro">GitHub repository</Link> or reach out to us on <Link to="https://x.com/vedro_universe">Twitter</Link> with your ideas!
