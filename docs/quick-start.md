@@ -25,13 +25,13 @@ $ pip install vedro httpx
 Vedro framework uses scenario tests to simulate user interactions and validate outcomes (or side effects). Each scenario begins with a **subject** representing the user's intention and includes a series of steps:
 
 1. **Arrange steps** - Prepare data for the primary action
-2. **Primary action (act)** - User interaction with the application, system, or component
+2. **Primary action (Act)** - User interaction with the application, system, or component
 3. **Assert steps** - Verify application responses or side effects against expected outcomes
 
 Create a new file named `decode_base64_encoded_string.py` in the `scenarios/` directory and add the following code:
 
 <Tabs>
-  <TabItem value="sync" label="sync" default>
+  <TabItem value="scenario-based" label="Scenario-based" default>
 
 ```python
 import httpx
@@ -52,24 +52,24 @@ class Scenario(vedro.Scenario):
 ```
 
   </TabItem>
-  <TabItem value="async" label="async">
+  <TabItem value="function-based" label="Function-based">
+
+To use the function-based approach, install the [vedro-fn](https://pypi.org/project/vedro-fn/) plugin. For more details, refer to [this article](https://medium.com/@tsv_/a-leaner-approach-with-vedro-introducing-function-based-scenarios-f93df8c8d02f).
 
 ```python
 import httpx
-import vedro
+from vedro_fn import scenario, given, when, then
 
-class Scenario(vedro.Scenario):
-    subject = "decode base64 encoded string"
+@scenario()
+def decode_base64_encoded_str():
+    with given:
+        encoded = "YmFuYW5h"
 
-    def given_encoded_string(self):
-        self.encoded = "YmFuYW5h"
+    with when:
+        response = httpx.get(f"https://httpbin.org/base64/{encoded}")
 
-    async def when_user_decodes_string(self):
-        async with httpx.AsyncClient() as client:
-            self.response = await client.get(f"https://httpbin.org/base64/{self.encoded}")
-
-    def then_it_should_return_decoded_string(self):
-        assert self.response.text == "banana"
+    with then:
+        assert response.text == "banana"
 
 ```
 
@@ -78,9 +78,9 @@ class Scenario(vedro.Scenario):
 
 In this test, we use the <Link to="https://httpbin.org">httpbin.org</Link> API to decode a base64 encoded string. We define a `Scenario` class with a `subject` representing the user's intention to decode the string and three methods:
 
-1. `given_encoded_string` — Sets up the initial conditions for the test (in this case, the encoded string)
-2. `when_user_decodes_string` — Performs the primary action (sending an HTTP GET request to the API)
-3. `then_it_should_return_decoded_string` — Verifies the outcome (checking if the decoded string is "banana")
+1. `given` — Sets up the initial conditions for the test (in this case, the encoded string)
+2. `when` — Performs the primary action (sending an HTTP GET request to the API)
+3. `then` — Verifies the outcome (checking if the decoded string is "banana")
 
 
 ## Running the Test
@@ -88,7 +88,7 @@ In this test, we use the <Link to="https://httpbin.org">httpbin.org</Link> API t
 To run the test, execute the following command in your terminal:
 
 ```shell
-$ vedro run -v
+$ vedro run
 ```
 
 The command will run all the test scenarios in `scenarios/` directory and display the results, indicating which tests have passed, failed, or been skipped.
@@ -105,28 +105,30 @@ Scenarios
 `}
 </TerminalOutput>
 
-The `-v` flag increases the verbosity of the test output. In case a scenario fails, this flag provides more detailed information about the test run to help you identify and troubleshoot the issue.
+Here is an example of a failed scenario:
 
 <TerminalOutput>
 {`
 Scenarios
 [1m* [0m[1m
-[0m [31m✗ decode base64 encoded string[0m[31m
-[0m   [32m✔ given_encoded_string[0m[32m
-[0m   [32m✔ when_user_decodes_string[0m[32m
-[0m   [31m✗ then_it_should_return_decoded_string[0m[31m
-[0m[31m╭─[0m[31m──────────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m────────────────────────[0m[31m─╮[0m
-[31m│[0m [2;33m/e2e/scenarios/[0m[1;33mdecode_base64_encoded_string.py[0m:[94m15[0m in [92mthen_it_should_return_decoded_string[0m [31m│[0m
-[31m│[0m   [2m13 [0m[2m│   [0m                                                                                 [31m│[0m
-[31m│[0m   [2m14 [0m[2m│   [0m[94mdef[0m [92mthen_it_should_return_decoded_string[0m([96mself[0m):                                  [31m│[0m
-[31m│[0m [31m❱ [0m15 [2m│   │   [0m[94massert[0m [96mself[0m.response.text == [33m"[0m[33mbanana[0m[33m"[0m                                        [31m│[0m
-[31m│[0m   [2m16 [0m                                                                                     [31m│[0m
-[31m╰───────────────────────────────────────────────────────────────────────────────────────────╯[0m
-[1;91mAssertionError: [0massert [32m'banana'[0m == [32m''[0m
- +  where [32m'banana'[0m = [1m<[0m[1;95mResponse[0m[39m [0m[1;39m[[0m[1;36m503[0m[39m SERVICE UNAVAILABLE[0m[1;39m][0m[1m>[0m.text
+[0m [31m✗ decode base64 encoded str[0m[31m
+[0m   [31m✗ do[0m[31m
+[0m[31m╭─[0m[31m───────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m───────────────────[0m[31m─╮[0m
+[31m│[0m [2;33m/e2e/scenarios/[0m[1;decode_base64.py[0m:[94m14[0m in [92mdecode_base64_encoded_str[0m           [31m│[0m
+[31m│[0m                                                                           [31m│[0m
+[31m│[0m   [2m12 [0m                                                                     [31m│[0m
+[31m│[0m   [2m13 [0m    [94mwith[0m then:                                                       [31m│[0m
+[31m│[0m [31m❱ [0m14         [1;4;94massert[0m[1;4m response.text == [0m[1;4;33m"[0m[1;4;33mbanana[0m[1;4;33m"[0m                             [31m│[0m
+[31m│[0m   [2m15 [0m                                                                     [31m│[0m
+[31m╰───────────────────────────────────────────────────────────────────────────╯[0m
+[1;91mAssertionError[0m
+[1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
+    [32m- 'banana'[0m                                                                                                                   
+    [31m+ ''[0m                                                                                                                         
  
-[37m# --seed 80485375-d67c-44d3-88b5-51335c5adcb7[0m[37m
-[0m[1;31m# 3 scenarios, 0 passed, 1 failed, 0 skipped[0m[34m (1.52s)[0m[34m
+ 
+[38;5;249m# --seed ab0017dd-63ba-45c8-b9fb-b7d7bd694d4b[0m[38;5;249m
+[0m[1;31m# 1 scenario, 0 passed, 1 failed, 0 skipped[0m[34m (0.68s)[0m[34m
 [0m
 `}
 </TerminalOutput>
