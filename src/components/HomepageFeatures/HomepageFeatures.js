@@ -26,7 +26,7 @@ const FeatureList = [
     icon: faPlug,
     description: (
       <>
-        Unleash the power of plugins. Including integrations with <Link to='/docs/integrations/pycharm-plugin' target='_blank'>PyCharm</Link>, <Link to='/docs/integrations/allure-reporter' target='_blank'>Allure</Link> and <Link to='/docs/integrations/gitlab-reporter' target='_blank'>GitLab</Link>
+        Unleash the power of plugins. Including integrations with <Link to='https://pypi.org/project/vedro-pw/' target='_blank'>Playwright</Link>, <Link to='/docs/integrations/allure-reporter' target='_blank'>Allure</Link> and <Link to='/docs/integrations/pycharm-plugin' target='_blank'>PyCharm</Link>
       </>
     ),
   },
