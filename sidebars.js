@@ -45,6 +45,7 @@ const sidebars = {
       items: [
         'guides/using-plugins',
         'guides/testing-exceptions',
+        'guides/measuring-coverage',
       ],
     },
     {
