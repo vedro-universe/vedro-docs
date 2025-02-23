@@ -3,6 +3,8 @@ id: testing-exceptions
 ---
 
 import Link from '@site/src/components/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Testing Exceptions
 
@@ -28,6 +30,9 @@ Vedro provides the `catched` function designed to assist in testing exceptions.
 
 Below is an example where we test the scenario of attempting to open a non-existing file. We expect a `FileNotFoundError` to be raised, and the test verifies the exception's type and message.
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
 import vedro
 from vedro import catched
@@ -46,6 +51,30 @@ class Scenario(vedro.Scenario):
         assert self.exc_info.type is FileNotFoundError
         assert str(self.exc_info.value) == f"[Errno 2] No such file or directory: {self.filename!r}"
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+import vedro
+from vedro import catched
+# Install via: vedro plugin install vedro-fn
+from vedro_fn import scenario, given, when, then
+
+def try_to_open_nonexisting_file():
+    with given:
+        filename = "non-existing.file"
+    
+    with when, catched(Exception) as exc_info:
+        open(filename)
+
+    with then:
+        assert exc_info.type is FileNotFoundError
+        assert str(exc_info.value) == f"[Errno 2] No such file or directory: {filename!r}"
+```
+
+  </TabItem>
+</Tabs>
 
 The `exc_info` object encapsulates details about the exception. If an exception is raised within the `catched` block, the following attributes are populated:
 - `type` — the type of the exception that was raised

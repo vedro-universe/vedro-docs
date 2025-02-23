@@ -30,7 +30,7 @@ Vedro framework uses scenario tests to simulate user interactions and validate o
 
 Create a new file named `decode_base64_encoded_string.py` in the `scenarios/` directory and add the following code:
 
-<Tabs>
+<Tabs groupId="test-style">
   <TabItem value="scenario-based" label="Scenario-based" default>
 
 ```python
@@ -58,6 +58,7 @@ To use the function-based approach, install the [vedro-fn](https://pypi.org/proj
 
 ```python
 import httpx
+# Install via: vedro plugin install vedro-fn
 from vedro_fn import scenario, given, when, then
 
 @scenario()
