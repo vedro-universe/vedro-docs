@@ -30,7 +30,7 @@ If you prefer a manual approach, follow these steps:
 1. Install the package using pip:
 
 ```shell
-$ pip3 install vedro-httpx
+$ pip install vedro-httpx
 ```
 
 2. Then, enable the plugin in the `vedro.cfg.py` configuration file:

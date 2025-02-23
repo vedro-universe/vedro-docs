@@ -19,7 +19,7 @@ Vedro, on the other hand, takes a different approach — one that is rooted in t
 For instance, after installing the <Link to="https://pypi.org/project/vedro-valera-validator/">vedro-allure-reporter</Link> plugin:
 
 ```shell
-pip3 install vedro_allure_reporter
+$ pip install vedro_allure_reporter
 ```
 
 You can configure it in your Vedro configuration file as follows:

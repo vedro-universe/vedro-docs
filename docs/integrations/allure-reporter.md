@@ -30,7 +30,7 @@ If you prefer a manual approach, follow these steps:
 1. Install the package using pip:
 
 ```shell
-$ pip3 install vedro-allure-reporter
+$ pip install vedro-allure-reporter
 ```
 
 2. Then, enable the plugin in the `vedro.cfg.py` configuration file:
