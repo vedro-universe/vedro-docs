@@ -2,8 +2,6 @@
 id: pycharm-plugin
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import Screenshot from '@site/src/components/Screenshot';
 import Link from '@site/src/components/Link';
 
