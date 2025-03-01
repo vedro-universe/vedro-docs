@@ -59,6 +59,7 @@ const sidebars = {
         'integrations/vscode-extension',
         'integrations/gitlab-reporter',
         'integrations/flake8-linter',
+        'integrations/unittest-bridge',
       ],
     },
     {
