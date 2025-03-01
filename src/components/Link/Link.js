@@ -30,9 +30,9 @@ class Link extends React.Component {
         to={to}
         target={target}
         rel={rel}
-        data-umami-event="goto"
-        data-umami-event-url={to}
-        data-umami-event-id={children}
+        // data-umami-event="goto"
+        // data-umami-event-url={to}
+        // data-umami-event-id={children}
       >
         {children}
       </DocLink>
