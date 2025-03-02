@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Python’s built-in [unittest framework](https://docs.python.org/3/library/unittest.html) has been a staple for test automation for years. Many teams have extensive test suites built with unittest, but as testing needs evolve, modern frameworks like Vedro offer powerful features that improve test execution, reporting, and stability.
 
-Transitioning to a new testing framework can feel overwhelming, especially for teams with extensive unittest-based test suites. With [vedro-unittest](https://pypi.org/project/vedro-unittest), you can gradually integrate Vedro into your testing process, maintaining your existing unittest workflow while exploring its advantages.
+Transitioning to a new testing framework can feel overwhelming, especially for teams with extensive unittest-based test suites. With [vedro-unittest](https://pypi.org/project/vedro-unittest), you can gradually integrate Vedro into your testing process:
 
 - **Try Vedro without full commitment:** Run your existing unittest test cases inside Vedro to explore its [enhanced reporting](https://vedro.io/docs/basics/reporting-system), [parallel execution](https://vedro.io/docs/features/parallel-execution), and [built-in stability mechanisms](https://vedro.io/docs/features/anti-flaky) without rewriting your tests.
 - **Migrate gradually:** Keep unittest and Vedro tests separate while executing them together within a unified reporting system, allowing for a seamless transition.
@@ -122,7 +122,7 @@ vedro-unittest is designed to be fully compatible with unittest, maintaining the
 
 ### ✅ **Assertions**  
 
-The vedro-unittest plugin fully supports unittest's assertion methods:
+All assertion methods from unittest are fully supported, ensuring that existing test validations run without changes.
 
 ```python
 import unittest
@@ -134,7 +134,7 @@ class TestStringMethods(unittest.TestCase):
 
 ### ✅ **Fixtures (setUp & tearDown)**  
 
-Fixtures such as `setUp()` and `tearDown()` work just like in unittest, allowing you to prepare your test environment.
+Lifecycle methods such as `setUp()` and `tearDown()` function as expected, ensuring that tests can properly prepare the environment before execution.
 
 ```python
 import unittest
@@ -150,7 +150,7 @@ class WidgetTestCase(unittest.TestCase):
 
 ### ✅ **Skipping Tests**
 
-All the standard `@unittest.skip*` decorators are supported. You can skip tests either at the method or class level.
+Tests marked with `@unittest.skip*` decorators will be skipped in Vedro just as they are in unittest, whether applied to individual test methods or entire test classes.
 
 <Tabs>
   <TabItem value="test_case" label="Skipping a Test" default>
@@ -185,7 +185,7 @@ class MyTestCase(unittest.TestCase):
 
 ### ✅ **Expected Failures**  
 
-Vedro correctly handles `@unittest.expectedFailure`, ensuring that failed tests marked as expected failures do not cause the scenario to fail.
+Vedro correctly handles `@unittest.expectedFailure`, ensuring that tests expected to fail do not cause the scenario to fail.
 
 ```python
 import unittest
@@ -210,7 +210,7 @@ Scenarios
 `}
 </TerminalOutput>
 
-However, if such a test unexpectedly passes, vedro‑unittest raises an `UnexpectedSuccessError`.
+If a test marked as an expected failure unexpectedly passes, vedro-unittest raises an `UnexpectedSuccessError`.
 
 <TerminalOutput>
 {`
@@ -228,7 +228,7 @@ Scenarios
 
 ### ✅ **Parameterized Tests**  
 
-The plugin supports `subTest()` and external parameterization libraries like [parameterized](https://pypi.org/project/parameterized/).
+Parameterized tests work as expected. The `subTest()` feature and external libraries like [parameterized](https://pypi.org/project/parameterized/) remain fully supported.
 
 <Tabs>
   <TabItem value="subtest" label="Using subTest" default>
@@ -263,7 +263,7 @@ class NumbersTest(unittest.TestCase):
 
 ### ✅ **Async Support**
 
-`vedro-unittest` supports async test cases out of the box. You can use `async def` inside your `unittest` test cases, and Vedro will execute them properly by running them in a dedicated thread.
+vedro-unittest supports async test cases out of the box. Existing `async def` test methods are executed correctly, running in a dedicated thread within Vedro’s async-aware environment.
 
 ```python
 import unittest
@@ -277,7 +277,7 @@ class AsyncTestCase(unittest.IsolatedAsyncioTestCase):
 
 ### ✅ **Mocking**
 
-Since Vedro just provides a different test runner, Python's standard [unittest.mock](https://docs.python.org/3/library/unittest.mock.html) works without modifications. You can use `@patch` decorators and context managers as usual.
+Since Vedro acts as a test runner rather than modifying test logic, the standard [unittest.mock](https://docs.python.org/3/library/unittest.mock.html) module remains fully functional. Existing `@patch` decorators and context managers work as expected.
 
 ```python
 import unittest
@@ -355,3 +355,51 @@ This grouping means that:
 - Each test still executes its own `setUp()` and `tearDown()` methods.
 - If one test in a grouped scenario fails, the entire scenario is marked as failed (although all tests will still be executed, as in unittest).
 - If multiple tests in a grouped scenario fail, the report will include a complete summary of all failures.
+
+## Gradual Migration to Vedro
+
+Switching testing frameworks is rarely an overnight task, especially for large codebases. Before committing fully, it's important to experience the benefits firsthand and make an informed decision based on your own testing needs.
+
+With vedro-unittest, you can transition smoothly, step by step, without disrupting your existing test suite.
+
+### Step 1: Start Running unittest Tests with Vedro
+
+Instead of rewriting everything at once, start by running your existing unittest tests inside Vedro using the vedro-unittest plugin.
+
+**Benefit**: No code changes required, your tests remain the same, but you immediately gain:
+- Enhanced reporting for better visibility
+- Improved test stability with built-in anti-flaky mechanisms
+- Access to Vedro’s integrations (e.g., Playwright, HTTPX, Allure)
+
+### Step 2: Introduce New Tests in Vedro
+
+As you develop new features, start writing new test scenarios in Vedro while still running legacy unittest tests. This lets your team gradually adopt Vedro’s scenario-based structure without disrupting development.  
+
+The easiest way to separate the test types:  
+1. Run existing unittest tests via `vedro run tests/` (with vedro-unittest enabled)  
+2. Run native Vedro tests via `vedro run scenarios/` (with vedro-unittest disabled)  
+
+**Benefit**: Your team gets familiar with Vedro without modifying existing tests, reducing risk and friction.  
+
+### Step 3: Convert Legacy unittest Tests to Vedro Scenarios
+
+Over time, start rewriting critical tests as native Vedro scenarios. This allows you to fully adopt Vedro’s structured, expressive, and maintainable testing approach.
+
+**Benefit**:
+- Clear and natural test structure that makes scenarios easier to read and understand.
+- Independent and modular tests that simplify test management and reduce setup complexity.
+- Built-in stability mechanisms that help mitigate flaky tests with retries and robust error handling.
+
+### Step 4: Remove vedro-unittest Once Fully Migrated
+
+Once most tests have been rewritten as Vedro scenarios, you can phase out vedro-unittest and run only native Vedro tests.
+
+**Final Benefit**: Your entire test suite is optimized for independence, reliability and maintainability, leveraging Vedro’s full potential.
+
+### Final Thoughts
+
+Migrating to a new testing framework is a strategic decision, and Vedro makes it easier by allowing a gradual transition. With vedro-unittest, you can start small, gain the benefits of enhanced execution and reporting immediately, and adopt Vedro at your own pace.
+
+By following this step-by-step approach, you minimize risk, improve test clarity and stability, and position your team for a more efficient and maintainable testing workflow.
+
+If you're ready to take the next step, start running your unittest tests with Vedro today and experience the difference firsthand! 🚀
