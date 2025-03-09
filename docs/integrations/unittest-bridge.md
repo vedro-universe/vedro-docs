@@ -6,6 +6,7 @@ toc_max_heading_level: 3
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Link from '@site/src/components/Link';
 
 # UnitTest Bridge
 
@@ -153,7 +154,7 @@ class WidgetTestCase(unittest.TestCase):
 Tests marked with `@unittest.skip*` decorators will be skipped in Vedro just as they are in unittest, whether applied to individual test methods or entire test classes.
 
 <Tabs>
-  <TabItem value="test_case" label="Skipping a Test" default>
+  <TabItem value="test-case" label="Skipping a Test" default>
 
 ```python
 import unittest
@@ -169,7 +170,7 @@ class MyTestCase(unittest.TestCase):
 ```
 
   </TabItem>
-  <TabItem value="test_suite" label="Skipping a Test Suite">
+  <TabItem value="test-suite" label="Skipping a Test Suite">
 
 ```python
 import unittest
@@ -380,6 +381,10 @@ The easiest way to separate the test types:
 2. Run native Vedro tests via `vedro run scenarios/` (with vedro-unittest disabled)  
 
 **Benefit**: Your team gets familiar with Vedro without modifying existing tests, reducing risk and friction.  
+
+:::tip
+For a quick reference on how unittest concepts translate to Vedro, see the <Link to="/docs/cheatsheets/unittest-vedro" target="_blank">unittest → Vedro Cheatsheet</Link>.
+:::
 
 ### Step 3: Convert Legacy unittest Tests to Vedro Scenarios
 
