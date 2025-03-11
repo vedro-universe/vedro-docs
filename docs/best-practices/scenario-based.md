@@ -4,6 +4,8 @@ id: scenario-based-tests
 
 import Screenshot from '@site/src/components/Screenshot';
 import Link from '@site/src/components/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Scenario-Based Tests
 
@@ -27,6 +29,9 @@ Vedro takes this principle to heart. It presents interactions in the form of sce
 
 Consider the following example as an illustration:
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
 import vedro
 from contexts import opened_url_shortener
@@ -37,7 +42,7 @@ class Scenario(vedro.Scenario):
     def given_opened_shortener(self):
         self.page = opened_url_shortener()
 
-    def given_original_url(self):
+    def given_entered_url(self):
         self.page.fill_url("https://vedro.io/docs/quick-start")
 
     def when_user_shortens_url(self):
@@ -47,6 +52,32 @@ class Scenario(vedro.Scenario):
         shortened_url = self.page.get_shortened_url()
         assert shortened_url
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro_fn import scenario, given, when, then
+from contexts import opened_url_shortener
+
+@scenario()
+def shorten_url():
+    with given("opened shortener"):
+        page = opened_url_shortener()
+
+    with given("entered url"):
+        page.fill_url("https://vedro.io/docs/quick-start")
+
+    with when("user shortens url"):
+        page.click_shorten_button()
+
+    with then("it should shorten url"):
+        shortened_url = page.get_shortened_url()
+        assert shortened_url
+```
+
+  </TabItem>
+</Tabs>
 
 It's worth noting that Vedro's scenario anatomy directly follows the <Link to="https://robertmarshall.dev/blog/arrange-act-and-assert-pattern-the-three-as-of-unit-testing/">AAA (Arrange-Act-Assert) pattern</Link>.
 
@@ -86,7 +117,12 @@ This not only offers an instant overview without delving into individual tests b
 
 Delving deeper, the scenario level provides detailed insights without overwhelming the reader with technicalities. Following the steps of a scenario reveals the core interaction and expected outcomes.
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
+import vedro
+
 class Scenario(vedro.Scenario):
     subject = "login as registered user"
 
@@ -103,6 +139,30 @@ class Scenario(vedro.Scenario):
         ...
 ```
 
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro_fn import scenario, given, when, then
+
+@scenario()
+def login_as_registered_user():
+    with given("registered user"):
+        ...
+
+    with when("user logs in"):
+        ...
+
+    with then("it should return success response"):
+        ...
+
+    with then("it should return created token"):
+        ...
+```
+
+  </TabItem>
+</Tabs>
+
 An added benefit of this structure is that steps can be integrated into reporting systems, like <Link to="/docs/integrations/allure-reporter" target="_blank">Allure</Link>. This makes the tracking of test execution and results more visual and organized, adding an extra layer of utility and traceability to the testing process.
 
 <Screenshot src={require('./scenario-based/allure_example.png')} width="550px" /><br/>
@@ -112,6 +172,9 @@ An added benefit of this structure is that steps can be integrated into reportin
 
 For those who seek a granular understanding, the step level delves into the specifics. Here lies the essence of each test, with the code ensuring no room for ambiguity.
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
     def when_user_logs_in(self):
         self.response = ChatApi().login(self.user)
@@ -119,6 +182,20 @@ For those who seek a granular understanding, the step level delves into the spec
     def then_it_should_return_success_response(self):
         assert self.response.status_code == 200
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+    with when("user logs in"):
+        response = ChatApi().login(user)
+
+    with then("it should return success response"):
+        assert response.status_code == 200
+```
+
+  </TabItem>
+</Tabs>
 
 **4. Beyond the Steps**
 
