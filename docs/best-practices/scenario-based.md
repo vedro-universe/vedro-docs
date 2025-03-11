@@ -168,6 +168,10 @@ An added benefit of this structure is that steps can be integrated into reportin
 <Screenshot src={require('./scenario-based/allure_example.png')} width="550px" /><br/>
 <br/>
 
+:::tip
+Check out the <Link to="/docs/best-practices/naming-conventions" target="_blank">Naming Conventions</Link> guide for best practices on naming scenarios.
+:::
+
 **3. Step Level**
 
 For those who seek a granular understanding, the step level delves into the specifics. Here lies the essence of each test, with the code ensuring no room for ambiguity.
