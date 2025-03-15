@@ -169,7 +169,7 @@ An added benefit of this structure is that steps can be integrated into reportin
 <br/>
 
 :::tip
-Check out the <Link to="/docs/best-practices/naming-conventions" target="_blank">Naming Conventions</Link> guide for best practices on naming scenarios.
+Check out the <Link to="/docs/best-practices/naming-for-better-tests" target="_blank">Naming for Better Tests</Link> guide for best practices on naming scenarios.
 :::
 
 **3. Step Level**
