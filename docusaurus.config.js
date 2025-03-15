@@ -20,7 +20,10 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          showLastUpdateTime: false,
+          breadcrumbs: true,
+          editUrl: "https://github.com/vedro-universe/vedro-docs/edit/main",
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: false,
         },
         blog: {
           blogTitle: 'What\'s New',
@@ -33,6 +36,22 @@ const config = {
         },
       }),
     ],
+  ],
+
+  plugins: [
+    [
+      // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html', 'htm'],
+        redirects: [
+          {
+            from: '/docs',
+            to: '/docs/quick-start',
+          },
+        ]
+      }
+    ]
   ],
 
   i18n: {
@@ -122,7 +141,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/vedro-universe/vedro',
+                href: 'https://github.com/vedro-universe',
               },
               {
                 label: 'PyPi',
