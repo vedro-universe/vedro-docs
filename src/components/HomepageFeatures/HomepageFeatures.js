@@ -35,7 +35,7 @@ const FeatureList = [
     icon: faCheck,
     description: (
       <>
-        Use the distilled knowledge from dozens of quality engineers
+        Use the <Link to="/docs/category/best-practices" target="_blank">distilled knowledge</Link> from dozens of quality engineers
       </>
     ),
   },
