@@ -26,6 +26,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Features',
+      link: { type: 'generated-index' },
       collapsed: false,
       items: [
         'features/skipping-scenarios',
@@ -41,6 +42,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Guides',
+      link: { type: 'generated-index' },
       collapsed: false,
       items: [
         'guides/using-plugins',
@@ -51,6 +53,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Integrations',
+      link: { type: 'generated-index' },
       collapsed: false,
       items: [
         'integrations/allure-reporter',
@@ -65,6 +68,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Best Practices',
+      link: { type: 'generated-index' },
       collapsed: false,
       items: [
         'best-practices/scenario-based-tests',
