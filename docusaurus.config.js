@@ -93,6 +93,16 @@ const config = {
             label: 'Plugins',
             position: 'left',
           },
+          {
+            href: '/community',
+            label: 'Community',
+            position: 'left',
+          },
+          {
+            href: 'https://vedro-universe.slack.com',
+            label: '💬 Join Slack',
+            position: 'right',
+          }
         ],
       },
       footer: {
@@ -109,26 +119,22 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/tutorial/api/chapter1-first-steps',
               },
-              {
-                label: 'Experimental Features',
-                to: '/docs/exp',
-              },
             ],
           },
           {
-            title: 'Community',
+            title: 'Connect',
             items: [
               {
-                label: 'Telegram',
-                href: 'https://t.me/vedro_universe',
+                label: 'X (Twitter)',
+                href: 'https://x.com/vedro_universe',
               },
               {
                 label: 'Instagram',
                 href: 'https://www.instagram.com/vedro_universe',
               },
               {
-                label: 'X (Twitter)',
-                href: 'https://x.com/vedro_universe',
+                label: 'Telegram',
+                href: 'https://t.me/vedro_universe',
               },
             ],
           },
