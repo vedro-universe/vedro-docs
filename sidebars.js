@@ -73,6 +73,7 @@ const sidebars = {
       items: [
         'best-practices/scenario-based-tests',
         'best-practices/avoid-ifs',
+        'best-practices/naming-for-better-tests',
         'best-practices/best-practice',
       ],
     },
