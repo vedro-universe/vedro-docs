@@ -49,6 +49,10 @@ const config = {
             from: '/docs',
             to: '/docs/quick-start',
           },
+          {
+            from: '/changelog',
+            to: '/blog',
+          }
         ]
       }
     ]
