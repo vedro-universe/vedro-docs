@@ -16,7 +16,7 @@ In most frameworks or libraries, enabling a plugin is often a matter of simply i
 
 Vedro, on the other hand, takes a different approach — one that is rooted in the Pythonic principle of explicitness. In Vedro, to enable a plugin, you need to explicitly configure it in your `vedro.cfg.py` file. This means you have to intentionally activate each plugin, specifying its use and underlining its role in your codebase.
 
-For instance, after installing the <Link to="https://pypi.org/project/vedro-valera-validator/">vedro-allure-reporter</Link> plugin:
+For instance, after installing the <Link to="https://pypi.org/project/vedro-allure-reporter/">vedro-allure-reporter</Link> plugin:
 
 ```shell
 $ pip install vedro_allure_reporter
@@ -76,22 +76,22 @@ However, when you're initializing a new project, it may become tedious to enable
 Consider the following command:
 
 ```shell
-$ vedro plugin install vedro-valera-validator \
+$ vedro plugin install vedro-gitlab-reporter \
                        vedro-allure-reporter
 ```
 
 With this command, Vedro not only installs the specified plugins, but it also automatically enables them in your `vedro.cfg.py` file:
 
 ```python
+import vedro_gitlab_reporter
 import vedro_allure_reporter
-import vedro_valera_validator
 import vedro
 
 class Config(vedro.Config):
 
     class Plugins(vedro.Config.Plugins):
 
-        class ValeraValidator(vedro_valera_validator.ValeraValidator):
+        class GitlabReporter(vedro_gitlab_reporter.GitlabReporter):
             enabled = True
 
         class AllureReporter(vedro_allure_reporter.AllureReporter):
@@ -126,7 +126,6 @@ This command will output a list of the top plugins along with a brief descriptio
 [38;5;244m│[0m[34m [0m[34mvedro-allure-reporter [0m[34m [0m[38;5;244m│[0m Allure reporter for Vedro framework     [38;5;244m│[0m pypi.org/project/vedro-allure-reporter  [38;5;244m│[0m       2677 [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-gitlab-reporter [0m[34m [0m[38;5;244m│[0m GitLab reporter with collapsable        [38;5;244m│[0m pypi.org/project/vedro-gitlab-reporter  [38;5;244m│[0m       2671 [38;5;244m│[0m
 [38;5;244m│[0m[34m                        [0m[38;5;244m│[0m sections for Vedro framework            [38;5;244m│[0m                                         [38;5;244m│[0m            [38;5;244m│[0m
-[38;5;244m│[0m[34m [0m[34mvedro-valera-validator[0m[34m [0m[38;5;244m│[0m Validator for Vedro framework           [38;5;244m│[0m pypi.org/project/vedro-valera-validator [38;5;244m│[0m       2053 [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-interactive     [0m[34m [0m[38;5;244m│[0m Interactive mode for Vedro framework    [38;5;244m│[0m pypi.org/project/vedro-interactive      [38;5;244m│[0m        640 [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-advanced-tags   [0m[34m [0m[38;5;244m│[0m Vedro tags with boolean logic           [38;5;244m│[0m pypi.org/project/vedro-advanced-tags    [38;5;244m│[0m        357 [38;5;244m│[0m
 [38;5;244m└────────────────────────┴─────────────────────────────────────────┴─────────────────────────────────────────┴────────────┘[0m

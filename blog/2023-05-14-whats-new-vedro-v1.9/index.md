@@ -21,20 +21,20 @@ Greetings to all Vedro users. Today we are introducing <Link to="https://pypi.or
 This update introduces a new command, that simplifies the process of managing plugins.
 
 ```shell
-$ vedro plugin install vedro-valera-validator
+$ vedro plugin install vedro-gitlab-reporter
 ```
 
 This command not only installs the plugin, but also enables it in your `vedro.cfg.py` file:
 
 ```python
-import vedro_valera_validator
 import vedro
+import vedro_gitlab_reporter
 
 class Config(vedro.Config):
 
     class Plugins(vedro.Config.Plugins):
 
-        class ValeraValidator(vedro_valera_validator.ValeraValidator):
+        class GitlabReporter(vedro_gitlab_reporter.GitlabReporter):
             enabled = True
 
 ```
@@ -55,7 +55,6 @@ This command shows you the most popular <Link to="/plugins">Vedro plugins</Link>
 [38;5;244m│[0m[34m [0m[34mvedro-gitlab-reporter [0m[34m [0m[38;5;244m│[0m GitLab reporter with           [38;5;244m│[0m pypi.org/project/vedro-gitlab-reporter  [38;5;244m│[0m       2728 [38;5;244m│[0m
 [38;5;244m│[0m[34m                        [0m[38;5;244m│[0m collapsable sections           [38;5;244m│[0m                                         [38;5;244m│[0m            [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-allure-reporter [0m[34m [0m[38;5;244m│[0m Allure reporter                [38;5;244m│[0m pypi.org/project/vedro-allure-reporter  [38;5;244m│[0m       2646 [38;5;244m│[0m
-[38;5;244m│[0m[34m [0m[34mvedro-valera-validator[0m[34m [0m[38;5;244m│[0m Validator                      [38;5;244m│[0m pypi.org/project/vedro-valera-validator [38;5;244m│[0m       2038 [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-interactive     [0m[34m [0m[38;5;244m│[0m Interactive mode               [38;5;244m│[0m pypi.org/project/vedro-interactive      [38;5;244m│[0m        733 [38;5;244m│[0m
 [38;5;244m│[0m[34m [0m[34mvedro-advanced-tags   [0m[34m [0m[38;5;244m│[0m Vedro tags with boolean logic  [38;5;244m│[0m pypi.org/project/vedro-advanced-tags    [38;5;244m│[0m        356 [38;5;244m│[0m
 [38;5;244m└────────────────────────┴────────────────────────────────┴─────────────────────────────────────────┴────────────┘[0m

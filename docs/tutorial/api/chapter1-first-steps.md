@@ -36,7 +36,7 @@ To ensure an uninterrupted learning experience without getting sidetracked by de
 $ pip install vedro httpx
 
 # Install the necessary plugins
-$ vedro plugin install vedro-valera-validator
+$ vedro plugin install vedro-d42-validator
 ```
 
 ## Let’s Do It
