@@ -9,11 +9,11 @@ const sidebars = {
       id: 'quick-start',
       label: 'Quick Start',
     },
-    {
-      type: 'doc',
-      id: 'tutorial/tutorial',
-      label: 'Tutorial',
-    },
+    // {
+    //   type: 'doc',
+    //   id: 'tutorial/tutorial',
+    //   label: 'Tutorial',
+    // },
     {
       type: 'category',
       label: 'Basics',

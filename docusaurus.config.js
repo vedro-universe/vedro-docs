@@ -99,10 +99,15 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://vedro-universe.slack.com',
-            label: '💬 Join Slack',
+            href: 'https://slack.vedro.io',
             position: 'right',
-          }
+            className: 'header-link header-link-slack',
+          },
+          {
+            href: 'https://github.com/vedro-universe',
+            position: 'right',
+            className: 'header-link header-link-github',
+          },
         ],
       },
       footer: {
@@ -144,10 +149,6 @@ const config = {
               {
                 to: 'blog',
                 label: 'Changelog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/vedro-universe',
               },
               {
                 label: 'PyPi',

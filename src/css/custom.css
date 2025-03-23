@@ -24,3 +24,38 @@
   white-space: pre-wrap !important;
   overflow-wrap: anywhere !important;
 }
+
+.header-link {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.header-link::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+html[data-theme="dark"] .header-link::before {
+  filter: invert(1);
+}
+
+.header-link:hover::before {
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+.header-link-github::before {
+  background-image: url('/img/GitHub.svg');
+}
+
+.header-link-slack::before {
+  background-image: url('/img/Slack.svg');
+}
