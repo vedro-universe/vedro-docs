@@ -44,16 +44,7 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         fromExtensions: ['html', 'htm'],
-        redirects: [
-          {
-            from: '/docs',
-            to: '/docs/quick-start',
-          },
-          {
-            from: '/changelog',
-            to: '/blog',
-          }
-        ]
+        redirects: []
       }
     ]
   ],
