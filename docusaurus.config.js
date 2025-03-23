@@ -89,12 +89,12 @@ const config = {
             label: 'Docs',
           },
           {
-            href: '/plugins',
+            to: '/plugins',
             label: 'Plugins',
             position: 'left',
           },
           {
-            href: '/community',
+            to: '/community',
             label: 'Community',
             position: 'left',
           },
