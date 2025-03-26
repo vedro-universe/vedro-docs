@@ -6,6 +6,17 @@
 
 **Pronunciation:** vedro (_veh-dro_) — stress on the first syllable. Think of "veh" (like the vowel sound in "bed"), then "dro" (like the start of "drone").
 
+<p style={{ display: "flex", gap: "1em" }}>
+    <audio controls preload="metadata">
+        <source src="/audio/vedro2.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
+    <audio controls preload="metadata">
+        <source src="/audio/vedro1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
+</p>
+
 **Meaning & Concept:** In Croatian and Serbian (Serbo-Croatian), vedro generally means "clear", "bright", or "cheerful". It’s often used to describe a clear, cloudless sky or fair weather. By choosing this word, the framework aims to convey transparency and stability in testing. Just as a clear sky has no obscurities, the goal of Vedro is to eliminate confusion or uncertainty in the testing process, providing an open and direct approach to ensuring quality.
 
 ### Is there a big company behind Vedro?
