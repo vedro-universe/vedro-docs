@@ -10,6 +10,17 @@
   --ifm-code-font-size: 95%;
 }
 
+/* :root {
+  --ifm-color-primary: #AA47BC;
+  --ifm-color-primary-dark: #993FA8;
+  --ifm-color-primary-darker: #8F3A9D;
+  --ifm-color-primary-darkest: #753182;
+  --ifm-color-primary-light: #B95CC7;
+  --ifm-color-primary-lighter: #C06ACC;
+  --ifm-color-primary-lightest: #CF87D9;
+  --ifm-code-font-size: 95%;
+} */
+
 .navbar__logo {
   height: 1.5rem;
   margin-bottom: 5px;
@@ -28,34 +39,40 @@
 .header-link {
   padding-left: 1.5rem;
   position: relative;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .header-link::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-html[data-theme="dark"] .header-link::before {
-  filter: invert(1);
+  width: 24px;
+  height: 24px;
+  background-color: var(--ifm-navbar-link-color);
+  transition: transform 0.2s ease, background-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-repeat: no-repeat;
 }
 
 .header-link:hover::before {
-  transform: translateY(-50%) scale(1.1);
+  background-color: var(--ifm-navbar-link-hover-color);
 }
 
-
 .header-link-github::before {
-  background-image: url('/img/GitHub.svg');
+  -webkit-mask-image: url('/img/GitHub.svg');
+  mask-image: url('/img/GitHub.svg');
 }
 
 .header-link-slack::before {
-  background-image: url('/img/Slack.svg');
+  -webkit-mask-image: url('/img/Slack.svg');
+  mask-image: url('/img/Slack.svg');
+}
+
+html[data-theme="dark"] .header-link::before {
+  filter: none;
 }
