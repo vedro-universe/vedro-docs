@@ -142,12 +142,12 @@ const config = {
             title: 'More',
             items: [
               {
-                to: 'blog',
-                label: 'Changelog',
+                to: 'faq',
+                label: 'FAQ',
               },
               {
-                label: 'PyPi',
-                href: 'https://pypi.org/project/vedro/',
+                to: 'blog',
+                label: 'Changelog',
               },
             ],
           },
