@@ -2,6 +2,9 @@
 id: temporary-files
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Working with Temp Files
 
 Temporary files and directories are a foundational part of modern test suites, especially when simulating interactions with the filesystem. Whether you're storing intermediate data, mimicking file uploads, or creating sandboxed environments, they allow you to replicate real-world behaviors in an isolated and controllable way. Properly managing these resources helps keep your tests clean, reliable, and reproducible.
@@ -17,16 +20,38 @@ These utilities are part of Vedro's core philosophy: to keep tests expressive, m
 
 Temporary files are useful when you need a file-like object that exists on disk during a test. For example, they’re great for simulating file uploads or testing components that read from the filesystem.
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
 import vedro
 from vedro import create_tmp_file
 
 class Scenario(vedro.Scenario):
+    subject = "Upload file"
 
     def given_tmp_file(self):
         self.tmp_file = create_tmp_file()
         self.tmp_file.write_text("Hello, World!")
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+# Install via: vedro plugin install vedro-fn
+from vedro_fn import scenario, given
+from vedro import create_tmp_file
+
+@scenario()
+def upload_file():
+    with given:
+        tmp_file = create_tmp_file()
+        tmp_file.write_text("Hello, World!")
+```
+
+  </TabItem>
+</Tabs>
 
 You can read from and write to this file just like any other [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use) object in Python. After the scenario completes, the file remains available for manual inspection unless explicitly removed.
 
@@ -34,16 +59,38 @@ You can read from and write to this file just like any other [`Path`](https://do
 
 Temporary directories are helpful for simulating file trees, generating multiple test files, or isolating filesystem changes. They allow you to create a full structure of nested files and folders, which is ideal for integration testing.
 
+<Tabs groupId="test-style">
+  <TabItem value="scenario-based" label="Scenario-based" default>
+
 ```python
 import vedro
 from vedro import create_tmp_dir
 
 class Scenario(vedro.Scenario):
+    subject = "Upload files"
 
     def given_tmp_dir(self):
         self.tmp_dir = create_tmp_dir()
         (self.tmp_dir / "file1.txt").write_text("Hello, World!")
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+# Install via: vedro plugin install vedro-fn
+from vedro_fn import scenario, given
+from vedro import create_tmp_dir
+
+@scenario()
+def upload_files():
+    with given:
+        tmp_dir = create_tmp_dir()
+        (tmp_dir / "file1.txt").write_text("Hello, World!")
+```
+
+  </TabItem>
+</Tabs>
 
 Once created, the directory and its contents behave like any normal [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use). You can iterate through contents, perform assertions, or run subprocesses that rely on those files.
 
