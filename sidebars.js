@@ -48,6 +48,7 @@ const sidebars = {
         'guides/using-plugins',
         'guides/testing-exceptions',
         'guides/measuring-coverage',
+        'guides/temporary-files',
       ],
     },
     {
