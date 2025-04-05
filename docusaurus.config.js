@@ -119,6 +119,10 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/tutorial/api/chapter1-first-steps',
               },
+              {
+                label: 'Experimental Features',
+                to: '/docs/exp',
+              },
             ],
           },
           {
