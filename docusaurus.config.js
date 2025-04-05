@@ -4,8 +4,8 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Vedro',
-  tagline: 'Pragmatic Testing Framework',
+  title: 'Vedro Testing Framework',
+  tagline: 'Readable. Scalable. Pragmatic.',
   url: 'https://vedro.io',
   baseUrl: '/',
   trailingSlash: false,
