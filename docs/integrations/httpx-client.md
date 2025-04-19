@@ -210,12 +210,6 @@ If scenario fails, `vedro-httpx` provides a beautifully formatted output of the 
   </TabItem>
 </Tabs>
 
-:::note
-
-This feature requires <Link to="https://pypi.org/project/vedro/">Vedro</Link> v1.9.1 or higher
-
-:::
-
 ## Advanced Usage
 
 In addition to the basic request method, the `vedro-httpx` plugin also allows you to directly use the HTTPX client.
@@ -231,6 +225,7 @@ class AuthAPI(AsyncHTTPInterface):
         super().__init__(base_url)
 
     async def login(self, username: str, password: str) -> Response:
+        # Disable TLS verification for illustration only
         async with self._client(verify=False) as client:
             return await self._request("POST", "/auth/login", json={
                 "username": username,
@@ -251,6 +246,7 @@ class AuthAPI(SyncHTTPInterface):
         super().__init__(base_url)
 
     def login(self, username: str, password: str) -> Response:
+        # Disable TLS verification for illustration only
         with self._client(verify=False) as client:
             return self._request("POST", "/auth/login", json={
                 "username": username,
@@ -267,66 +263,76 @@ For more information and available parameters, check out the official <Link to="
 
 ## Request Recording
 
-The `vedro-httpx` plugin also enables recording of HTTP requests made during scenario execution and saving the data as a scenario artifact in <Link to="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR (HTTP Archive) format</Link>. This can be especially useful for debugging and auditing.
+The `vedro-httpx` plugin can record every HTTP request made while a scenario runs and store the data as a [HAR‑format](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact automatically.
 
 ```shell
 $ vedro run --httpx-record-requests
 ```
 
-Artifacts, such as recorded HTTP requests, can be attached to an <Link to="/docs/integrations/allure-reporter#artifacts">Allure report</Link>. Use the following command to generate an Allure report with HTTP request recordings:
+The recorded HAR files are saved in the `.vedro/artifacts` directory by default.
+
+They can be attached to an <Link to="/docs/integrations/allure-reporter#artifacts">Allure report</Link> like so:
 
 ```shell
 $ vedro run -r rich allure --httpx-record-requests
-```
-
-If you prefer to save artifacts locally for offline analysis, you can use the `--save-artifacts` option. This will save the recorded HTTP requests as HAR files on your local file system:
-
-```shell
-$ vedro run --httpx-record-requests --save-artifacts
 ```
 
 HAR files can be opened and analyzed using browser developer tools or local tools such as <Link to="https://www.telerik.com/fiddler">Fiddler</Link> or <Link to="https://insomnia.rest/">Insomnia</Link>. Additionally, you can use online tools like the <Link to="https://toolbox.googleapps.com/apps/har_analyzer/">Google HAR Analyzer</Link> for convenient, web-based viewing.
 
 ## Generating OpenAPI Specs (beta)
 
-The `vedro-httpx` plugin provides the ability to generate OpenAPI specifications from the HTTP requests recorded during test executions. This feature allows you to document your APIs dynamically based on real interactions.
+The `vedro-httpx` plugin can turn the HAR files it records into an OpenAPI 3.0 specification that documents every route exercised by your tests.
 
-:::info
-Please note that the current implementation does not yet support the generation of request and response bodies.
-:::
-
-1. **Record HTTP Requests During Test Execution**:
-   
-   Start by running your test scenarios and recording the HTTP requests made during execution. Use the `--httpx-record-requests` and `--save-artifacts` flags to save these requests as HAR files:
-   
+1. **Record your scenarios**  
    ```shell
-   $ vedro run --httpx-record-requests --save-artifacts
-   ```
-   
-   This command saves the recorded HTTP requests as HAR files in the `.vedro/artifacts` directory.
+   $ vedro run --httpx-record-requests
+   ```  
+   HAR files are saved to `.vedro/artifacts`.
 
-2. **Generate the OpenAPI Specification**:
-   
-   Once the requests are recorded, you can generate the OpenAPI specification by running the following command:
-   
+2. **Generate the spec**  
    ```shell
    $ vedro_httpx .vedro/artifacts
    ```
-   
-   This command processes the saved HAR files and generates an OpenAPI spec based on them.
+   The command prints the resulting spec to stdout so you can pipe or redirect it as you like.
 
-### Important Considerations
+For every *method + path* pair the spec now stores:
 
-When defining API routes with dynamic segments (e.g., user IDs), use the `segments` argument to avoid treating each request as a static path. Without it, the OpenAPI generator will interpret paths like `/users/bob` and `/users/alice` as separate static endpoints, leading to an inaccurate spec.
+* **Request** – query parameters, headers, and a body if it’s JSON or form‑urlencoded.  
+* **Response** – headers and a body if it’s JSON.  
 
-#### Example Without `segments` (❌ Not Recommended):
+All other content types are quietly skipped, so the spec stays tidy.
+
+### CLI options
+
+* `--base-url <url>` – only process entries whose URL begins with the given prefix (e.g. `http://localhost:8080/api/v1`).  
+* `--no-constraints` – omit JSON‑Schema constraints such as `minimum`, `maximum`, `minItems`, etc., producing a more permissive spec.
+
+**Example invocation**
+
+```shell
+$ vedro_httpx .vedro/artifacts \
+    --base-url http://localhost:8080/api/v1 \
+    --no-constraints > openapi.yaml
+```
+
+Feed the resulting `openapi.yaml` into Swagger UI, Redoc, or your favorite code‑generation or linting tool.
+
+### Handling Dynamic Path Segments
+
+If a route contains variable parts such as user IDs or order numbers, declare those parts as **dynamic** with the `segments` argument. Otherwise, the generator records every concrete value it sees and fills your spec with many near‑identical paths.
+
+#### ❌ Without `segments`
+
 ```python
 class AsyncAuthAPI(AsyncHTTPInterface):
     async def get_user(self, username: str) -> Response:
         return await self._request("GET", f"/users/{username}")
 ```
 
-#### Example With `segments` (✅ Recommended):
+Each call (`/users/bob`, `/users/alice`, `/users/42`, …) appears as its own static path, which is messy and inaccurate.
+
+#### ✅ With `segments`
+
 ```python
 class AsyncAuthAPI(AsyncHTTPInterface):
     async def get_user(self, username: str) -> Response:
@@ -335,4 +341,4 @@ class AsyncAuthAPI(AsyncHTTPInterface):
         })
 ```
 
-This ensures the OpenAPI spec recognizes `{username}` as a dynamic parameter, resulting in a cleaner, more accurate path like `/users/{username}`.
+The generator now produces a single, tidy path `/users/{username}` and documents `{username}` as a path parameter, keeping your OpenAPI spec precise and readable.
