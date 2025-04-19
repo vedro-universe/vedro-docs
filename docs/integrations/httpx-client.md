@@ -9,9 +9,16 @@ import Link from '@site/src/components/Link';
 
 # HTTPX Client
 
-<Link to="https://pypi.org/project/vedro-httpx/">vedro-httpx</Link> is a plugin designed for the Vedro testing framework. Its main goal is to simplify the process of sending HTTP requests via <Link to="https://www.python-httpx.org/">HTTPX</Link>, a fully-featured HTTP client that supports both synchronous and asynchronous APIs, as well as HTTP/1.1 and HTTP/2 protocols.
+<Link to="https://pypi.org/project/vedro-httpx/">vedro‑httpx</Link> is an official plugin for the Vedro testing framework that wraps <Link to="https://www.python-httpx.org/">HTTPX</Link>, a feature‑rich HTTP client supporting both sync & async APIs, HTTP/1.1 and HTTP/2, to make writing API tests feel effortless.
 
-## Setup
+**Features**
+
+* **Friction‑less requests** — send asynchronous or synchronous calls through one helper method.
+* **Pretty failures** — on an assertion error you get a colourised snapshot of the method, URL, status, headers and body right in the console.
+* **Request recording** — automatically capture every request/response pair as a [HAR](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact for debugging or reporting.
+* **OpenAPI generation (beta)** — turn recorded traffic into an OpenAPI 3.1 spec with a single command.
+
+## Installation
 
 <Tabs>
   <TabItem value="quick" label="Quick" default>
@@ -52,9 +59,15 @@ class Config(vedro.Config):
   </TabItem>
 </Tabs>
 
-## Basics
+## Getting Started
 
-The core functionality of the `vedro-httpx` plugin is provided by the `AsyncHTTPInterface` class. You can use this class to define your API interface. Below is an example of creating an AuthAPI interface for an authentication API:
+`vedro-httpx` encourages you to wrap every external service in a small **interface** class:
+
+1. One place to configure a reusable HTTPX client (base URL, headers, TLS, time‑outs).
+2. Clearly named, type‑annotated methods for each endpoint – your tests stay readable.
+3. A unified `Response` object that Vedro can render beautifully when an assertion fails.
+
+Below is an example of creating an AuthAPI interface for an authentication API:
 
 <Tabs>
   <TabItem value="async" label="Async" default>
@@ -156,7 +169,7 @@ class Scenario(vedro.Scenario):
   </TabItem>
 </Tabs>
 
-If scenario fails, `vedro-httpx` provides a beautifully formatted output of the response, including headers and the body:
+Because `vedro-httpx` is aware of the `Response` type, a failing assertion prints a colourised dump of the request and response so you can diagnose issues **instantly**.
 
 <Tabs>
   <TabItem value="with_plugin" label="Using Plugin" default>
@@ -261,7 +274,7 @@ This approach provides full flexibility in using the HTTPX `Client` directly, al
 
 For more information and available parameters, check out the official <Link to="https://www.python-httpx.org/api/">HTTPX documentation</Link>.
 
-## Customising Output
+## Fine-Tuning Console Output
 
 `vedro-httpx` formats failed‐scenario responses for you, but you can fine‑tune what is shown (or hidden) by configuring a `ResponseRenderer`.
 
@@ -301,7 +314,7 @@ class Config(vedro.Config):
 
 With this in place you control exactly what appears in the rich console log whenever an assertion fails, keeping noisy payloads or sensitive request data out of the test output.
 
-## Request Recording
+## Recording HTTP Traffic
 
 The `vedro-httpx` plugin can record every HTTP request made while a scenario runs and store the data as a [HAR‑format](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact automatically.
 
@@ -342,7 +355,7 @@ For every *method + path* pair the spec now stores:
 
 All other content types are quietly skipped, so the spec stays tidy.
 
-### CLI options
+### Command‑Line Options
 
 * `--base-url <url>` – only process entries whose URL begins with the given prefix (e.g. `http://localhost:8080/api/v1`).  
 * `--no-constraints` – omit JSON‑Schema constraints such as `minimum`, `maximum`, `minItems`, etc., producing a more permissive spec.
