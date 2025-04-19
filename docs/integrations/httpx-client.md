@@ -261,6 +261,46 @@ This approach provides full flexibility in using the HTTPX `Client` directly, al
 
 For more information and available parameters, check out the official <Link to="https://www.python-httpx.org/api/">HTTPX documentation</Link>.
 
+## Customising Output
+
+`vedro-httpx` formats failed‐scenario responses for you, but you can fine‑tune what is shown (or hidden) by configuring a `ResponseRenderer`.
+
+```python
+# ./vedro.cfg.py
+import vedro
+import vedro_httpx
+
+class Config(vedro.Config):
+
+    class Plugins(vedro.Config.Plugins):
+
+        class VedroHTTPX(vedro_httpx.VedroHTTPX):
+            # Tailor what gets rendered to the console
+            response_renderer = vedro_httpx.ResponseRenderer(
+                include_request=False,          # omit the request section
+                include_request_body=False,     # omit request body
+                include_response_body=True,     # show response body
+                body_binary_preview_size=10,    # bytes to show for binary bodies
+                body_json_indent=4,             # pretty‑print JSON with 4‑space indents
+                body_max_length=4_096,          # truncate bodies beyond this length
+                syntax_theme="ansi_dark",       # rich‑syntax highlighting theme
+            )
+```
+
+**Options**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `include_request` | `False` | Render the request line, headers and (optionally) body. |
+| `include_request_body` | `False` | Render the request body (respects `body_*` limits). |
+| `include_response_body` | `True` | Render the response body (respects `body_*` limits). |
+| `body_binary_preview_size` | `10` | Max bytes to show when the body is binary. |
+| `body_json_indent` | `4` | Spaces to indent pretty‑printed JSON. |
+| `body_max_length` | `4_096` | Truncate any body longer than this many characters. |
+| `syntax_theme` | `"ansi_dark"` | Rich syntax‑highlighting theme (see [Rich docs](https://rich.readthedocs.io/en/latest/syntax.html#theme) for options). |
+
+With this in place you control exactly what appears in the rich console log whenever an assertion fails, keeping noisy payloads or sensitive request data out of the test output.
+
 ## Request Recording
 
 The `vedro-httpx` plugin can record every HTTP request made while a scenario runs and store the data as a [HAR‑format](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact automatically.
