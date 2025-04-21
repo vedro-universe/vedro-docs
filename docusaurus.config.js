@@ -94,6 +94,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/docs/ai',
+            label: 'AI',
+            position: 'left',
+          },
+          {
             href: 'https://slack.vedro.io',
             position: 'right',
             className: 'header-link header-link-slack',
