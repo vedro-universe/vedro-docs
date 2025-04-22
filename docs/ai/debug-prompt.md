@@ -118,3 +118,30 @@ A typical response might look like:
 >
 >3. **Why this works**  
 >   By calling `.decode('utf-8')` on the `bytes` result, you convert it to a `str` (`"banana"`), which matches the test’s expected value.
+
+## ⚙️ Custom Prompts
+
+Need a different tone, extra context, or even a completely new set of instructions for the LLM? You can swap out the built‑in `PromptBuilder` for your own implementation and override *just* the parts you care about. The most common tweak is changing the **system prompt**.
+
+### Example: overriding the system prompt
+
+```python
+# vedro.cfg.py
+import vedro
+import vedro_debug_prompt
+
+
+class MyPromptBuilder(vedro_debug_prompt.PromptBuilder):
+    def _get_system_prompt(self) -> str:
+        # Tell the LLM exactly how you want it to behave
+        return "<system prompt>"
+
+
+class Config(vedro.Config):
+    class Plugins(vedro.Config.Plugins):
+        class DebugPrompt(vedro_debug_prompt.DebugPrompt):
+            enabled = True
+            prompt_builder = MyPromptBuilder()  # ← use the customised builder
+```
+
+That’s it! The DebugPrompt plugin will now use your custom system prompt whenever it generates a prompt.
