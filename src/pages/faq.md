@@ -23,6 +23,14 @@
 
 No. Vedro has been open source from day one and isn’t affiliated with any company. It’s a community-driven project guided by passionate contributors and maintainers who believe in clear, reliable, and easy-to-understand testing practices.
 
+### Is Vedro a BDD framework?
+
+No, Vedro is a general-purpose testing framework that fits a wide range of testing needs and is not tied to Behavior-Driven Development (BDD) out of the box.
+
+In Vedro, scenarios are just sequences of steps (something that applies to any test or test case). The use of Given/When/Then is a stylistic choice that mirrors the Arrange/Act/Assert (AAA) pattern, designed to make test structure clear even for those new to AAA.
+
+However, thanks to Vedro's pluggable architecture, users can easily implement a full BDD workflow if desired. This includes writing feature files in Gherkin or integrating Cucumber-style tools, allowing for a smooth BDD experience on top of Vedro when needed.
+
 ## Compatibility & Requirements
 
 ### Which Python versions does Vedro support?
