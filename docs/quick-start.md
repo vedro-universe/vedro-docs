@@ -9,9 +9,15 @@ import Link from '@site/src/components/Link';
 
 # Quick Start
 
-This guide will take you from zero to a passing test in just a few steps. Along the way, you'll learn Vedro’s three core concepts: **Scenarios**, **Contexts**, and **Effects**. Together, they help you write tests that are readable, scalable, and pragmatic.
+:::tip What's inside
+* ✅ Write and run your **first passing test**
+* 🔍 Understand Vedro's three core concepts: **Scenarios**, **Contexts**, and **Effects**
+* 👉 Know exactly **what to explore next**
+:::
 
-Let’s explore each concept with practical examples.
+## Introduction
+
+Start small, stay sharp. This guide walks you through the essentials by example: no theory, no fluff, just the foundation you'll build real tests on.
 
 ## 1. Scenarios: The Heart of Vedro
 
@@ -28,7 +34,7 @@ Every scenario starts with a **subject**  — a short sentence that reflects the
 - **Function-Based** — compact and great for unit-level checks; pack many small scenarios in one file.
 :::
 
-Let’s write your very first test:
+Let's write your very first test:
 
 ```python
 # scenarios/create_file.py
@@ -48,21 +54,21 @@ class Scenario(vedro.Scenario):
         assert self.file.exists()
 ```
 
-Here’s what’s happening:
+Here's what's happening:
 
 - **Subject**: defines the intent — to create a file
-- **Given**: prepares a `File` pointing to `example.txt` (but doesn’t create it yet)
+- **Given**: prepares a `File` pointing to `example.txt` (but doesn't create it yet)
 - **When**: creates the file using `.touch()`
 - **Then**: checks that the file now exists on disk
 
 :::info
-The `given`, `when`, and `then` names are purely for readability; Vedro doesn’t assign any special meaning to them.
+The `given`, `when`, and `then` names are purely for readability; Vedro doesn't assign any special meaning to them.
 :::
 
 Run your first scenario:
 
 ```sh
-# Make sure you’ve installed Vedro first
+# Make sure you've installed Vedro first
 $ pip install vedro
 
 # Run all scenarios in the directory
@@ -82,7 +88,7 @@ Scenarios
 
 Simple, readable, and already passing. Vedro helps you start fast without sacrificing long-term maintainability.
 
-That first green checkmark feels great, but writing tests is only half the story. To stay valuable, a test suite must remain maintainable, not become "write-only" code that’s easier to rewrite than to debug. The next sections explain how contexts keep large test suites clean and scalable, and how effects help you focus on outcomes without cluttering your intent.
+That first green checkmark feels great, but writing tests is only half the story. To stay valuable, a test suite must remain maintainable, not become "write-only" code that's easier to rewrite than to debug. The next sections explain how contexts keep large test suites clean and scalable, and how effects help you focus on outcomes without cluttering your intent.
 
 ## 2. Contexts: Reusable Building Blocks
 
@@ -96,17 +102,17 @@ A context in Vedro is a plain Python function that prepares and returns whatever
 - Configuring mocks or stubs for external services
 - Managing resources like files, network connections, or background processes
 
-Let’s extract the file setup from the previous scenario into a reusable context:
+Let's extract the file setup from the previous scenario into a reusable context:
 ```python
-# contexts/existing_path.py
+# contexts/existing_file.py
 import vedro
-from pathlib import Path
+from pathlib import Path as File
 
 @vedro.context
-def existing_path(filename: str = "example.txt") -> Path:
-    path = Path(filename)
-    path.touch()
-    return path
+def existing_file(filename: str = "example.txt") -> File:
+    file = File(filename)
+    file.touch()
+    return file
 ```
 
 :::info
@@ -117,22 +123,22 @@ Now this context can be used in a more advanced scenario:
 
 ```python
 import vedro
-from contexts.existing_path import existing_path
+from contexts.existing_file import existing_file
 
 class Scenario(vedro.Scenario):
     subject = "write data to existing file"
 
     def given_existing_file(self):
-        self.path = existing_path()
+        self.file = existing_file()
 
     def when_writing_data(self):
-        self.path.write_text("data")
+        self.file.write_text("data")
 
     def then_file_should_contain_written_data(self):
-        assert self.path.read_text() == "data"
+        assert self.file.read_text() == "data"
 ```
 
-Here, the `existing_path()` context takes care of the low-level plumbing. It ensures the file exists, then hands back a ready-to-use `Path` object. This allows the scenario to stay laser-focused on what actually matters: writing and verifying the file content.
+Here, the `existing_file()` context takes care of the low-level plumbing. It ensures the file exists, then hands back a ready-to-use `File` object. This allows the scenario to stay laser-focused on what actually matters: writing and verifying the file content.
 
 Unlike some frameworks that inject fixtures automagically, Vedro keeps things **explicit**. Contexts are called directly inside steps, keeping dependencies visible and under your control. And because contexts are just regular functions, they offer a lot of flexibility:
 - **Customize** behavior by passing arguments
@@ -148,7 +154,7 @@ A key principle in Vedro is to build each scenario around **one primary action**
 
 This central action should reflect the scenario's subject and follow the `Arrange–Act–Assert` pattern introduced earlier: prepare the world, perform exactly one action, then verify the outcomes.
 
-It’s tempting to do more, chain multiple actions together in a single scenario. But that’s a common pitfall. Scenarios like `Arrange → Act → Assert → Act → Assert` become harder to understand, debug, and maintain. Instead, keep each scenario centered on one action. If there's more to test, write another scenario.
+It's tempting to do more, chain multiple actions together in a single scenario. But that's a common pitfall. Scenarios like `Arrange → Act → Assert → Act → Assert` become harder to understand, debug, and maintain. Instead, keep each scenario centered on one action. If there's more to test, write another scenario.
 
 However, that action may ripple through your system and produce several observable results: it might return a value, raise an error, publish a message to a queue, dispatch an email, or ping an external service. Vedro calls each of these outcomes an **effect** — something that can be observed and verified after the action is performed.
 
@@ -168,12 +174,12 @@ class Scenario(vedro.Scenario):
         self.renamed_file = self.original_file.rename("new_file.txt")
 
     def then_renamed_file_should_have_correct_name(self):
-        assert self.new_file.name == "new_file.txt"
+        assert self.renamed_file.name == "new_file.txt"
 
-    def and_renamed_file_should_exist(self):
-        assert self.new_file.exists()
+    def then_renamed_file_should_exist(self):
+        assert self.renamed_file.exists()
 
-    def but_original_file_should_no_longer_exist(self):
+    def then_original_file_should_no_longer_exist(self):
         assert not self.original_file.exists()
 ```
 
@@ -182,4 +188,13 @@ Each assertion here focuses on a distinct but related aspect of the same action'
 2. The renamed file exists on disk
 3. The original file no longer exists
 
-The scenario remains atomic. It tests just one thing: file renaming, while verifying all expected consequences of that action.
+The scenario remains atomic. It tests just one thing (file renaming), while verifying all expected consequences of that action.
+
+## Wrapping Up: Readable. Scalable. Pragmatic.
+
+You've just built your first test suite with Vedro, from a single passing scenario to reusable contexts and rich, effect-driven assertions.
+
+This flow wasn't accidental. It reflects Vedro's three core design principles:
+- **Readable**: Scenarios are easy to understand at a glance. The `Arrange–Act–Assert` structure, clear subject lines, and step names make intent obvious and reduce cognitive overhead.
+- **Scalable**: Contexts and effects keep your suite organized as it grows. Modular setup logic and atomic tests reduce duplication and make refactoring safe and painless.
+- **Pragmatic**: Vedro favors explicitness over magic. You stay in control of dependencies, state, and execution — writing plain Python, not bending to framework conventions.
