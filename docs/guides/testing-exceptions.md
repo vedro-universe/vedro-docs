@@ -31,7 +31,7 @@ Vedro provides the `catched` function designed to assist in testing exceptions.
 Below is an example where we test the scenario of attempting to open a non-existing file. We expect a `FileNotFoundError` to be raised, and the test verifies the exception's type and message.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro

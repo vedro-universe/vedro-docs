@@ -30,7 +30,7 @@ Vedro takes this principle to heart. It presents interactions in the form of sce
 Consider the following example as an illustration:
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -118,7 +118,7 @@ This not only offers an instant overview without delving into individual tests b
 Delving deeper, the scenario level provides detailed insights without overwhelming the reader with technicalities. Following the steps of a scenario reveals the core interaction and expected outcomes.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -177,7 +177,7 @@ Check out the <Link to="/docs/best-practices/naming-for-better-tests" target="_b
 For those who seek a granular understanding, the step level delves into the specifics. Here lies the essence of each test, with the code ensuring no room for ambiguity.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
     def when_user_logs_in(self):

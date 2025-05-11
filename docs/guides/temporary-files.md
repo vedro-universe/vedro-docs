@@ -21,7 +21,7 @@ These utilities are part of Vedro's core philosophy: to keep tests expressive, m
 Temporary files are useful when you need a file-like object that exists on disk during a test. For example, they’re great for simulating file uploads or testing components that read from the filesystem.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -60,7 +60,7 @@ You can read from and write to this file just like any other [`Path`](https://do
 Temporary directories are helpful for simulating file trees, generating multiple test files, or isolating filesystem changes. They allow you to create a full structure of nested files and folders, which is ideal for integration testing.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro

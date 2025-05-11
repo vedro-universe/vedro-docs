@@ -5,7 +5,6 @@ id: quick-start
 import TerminalOutput from '@site/src/components/TerminalOutput';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import Link from '@site/src/components/Link';
 
 # Quick Start
 
@@ -36,6 +35,9 @@ Every scenario starts with a **subject**  — a short sentence that reflects the
 
 Let's write your very first test:
 
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
 ```python
 # scenarios/create_file.py
 from pathlib import Path as File
@@ -53,6 +55,31 @@ class Scenario(vedro.Scenario):
     def then_file_should_exist(self):
         assert self.file.exists()
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+To use the function-based approach, install the [vedro-fn](https://pypi.org/project/vedro-fn/) plugin. For more details, refer to [this article](https://medium.com/@tsv_/a-leaner-approach-with-vedro-introducing-function-based-scenarios-f93df8c8d02f).
+
+```python
+# scenarios/create_file.py
+from pathlib import Path as File
+from vedro_fn import scenario, given, when, then
+
+@scenario()
+def create_file():
+    with given("new file"):
+        file = File("example.txt")
+
+    with when("creating file"):
+        file.touch()
+
+    with then("file should exist"):
+        assert file.exists()
+```
+
+  </TabItem>
+</Tabs>
 
 Here's what's happening:
 
@@ -103,6 +130,7 @@ A context in Vedro is a plain Python function that prepares and returns whatever
 - Managing resources like files, network connections, or background processes
 
 Let's extract the file setup from the previous scenario into a reusable context:
+
 ```python
 # contexts/existing_file.py
 import vedro
@@ -121,6 +149,9 @@ Contexts are typically placed in a `contexts/` directory and decorated with `@co
 
 Now this context can be used in a more advanced scenario:
 
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
 ```python
 import vedro
 from contexts.existing_file import existing_file
@@ -132,11 +163,33 @@ class Scenario(vedro.Scenario):
         self.file = existing_file()
 
     def when_writing_data(self):
-        self.file.write_text("data")
+        self.file.write_text("banana")
 
     def then_file_should_contain_written_data(self):
-        assert self.file.read_text() == "data"
+        assert self.file.read_text() == "banana"
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro_fn import scenario, given, when, then
+from contexts.existing_file import existing_file
+
+@scenario()
+def write_data_to_existing_file():
+    with given("existing file"):
+        file = existing_file()
+
+    with when("writing data"):
+        file.write_text("banana")
+
+    with then("file should contain written data"):
+        assert file.read_text() == "banana"
+```
+
+  </TabItem>
+</Tabs>
 
 Here, the `existing_file()` context takes care of the low-level plumbing. It ensures the file exists, then hands back a ready-to-use `File` object. This allows the scenario to stay laser-focused on what actually matters: writing and verifying the file content.
 
@@ -160,6 +213,9 @@ However, that action may ripple through your system and produce several observab
 
 Because every effect is still rooted in the same action, it is perfectly reasonable to check them together inside the same scenario:
 
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
 ```python
 import vedro
 from contexts.existing_file import existing_file
@@ -182,6 +238,34 @@ class Scenario(vedro.Scenario):
     def then_original_file_should_no_longer_exist(self):
         assert not self.original_file.exists()
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro_fn import scenario, given, when, then
+from contexts.existing_file import existing_file
+
+@scenario()
+def rename_existing_file():
+    with given("existing file"):
+        original_file = existing_file("file.txt")
+
+    with when("renaming file"):
+        renamed_file = original_file.rename("new_file.txt")
+
+    with then("renamed file should have correct name"):
+        assert renamed_file.name == "new_file.txt"
+
+    with then("renamed file should exist"):
+        assert renamed_file.exists()
+
+    with then("original file should no longer exist"):
+        assert not original_file.exists()
+```
+
+  </TabItem>
+</Tabs>
 
 Each assertion here focuses on a distinct but related aspect of the same action's outcome:
 1. The file gets a new name
