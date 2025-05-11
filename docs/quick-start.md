@@ -104,14 +104,51 @@ $ vedro run scenarios/
 
 And enjoy the output:
 
-```
+<Tabs>
+  <TabItem value="passed-output" label="✅ Passed" default>
+
+<TerminalOutput>
+{`
 Scenarios
-* 
- ✔ create file
+[1m* [0m[1m
+[0m [32m✔ create file[0m[32m
+[0m 
+[37m# --seed a61d255d-721b-4aeb-9ecd-aedcf542cfb2[0m[37m
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.00s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+  <TabItem value="failed-output" label="❌ Failed">
+
+<TerminalOutput>
+{`
+Scenarios
+[1m* [0m[1m
+[0m [31m✗ create file[0m[31m
+[0m   [32m✔ given_new_file[0m[32m
+[0m   [32m✔ when_creating_file[0m[32m
+[0m   [31m✗ then_file_should_exist[0m[31m
+[0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────[0m[31m─╮[0m
+[31m│[0m [2;33m/app/scenarios/[0m[1;33mcreate_file.py[0m:[94m14[0m in [92mthen_file_should_exist[0m                   [31m│[0m
+[31m│[0m                                                                              [31m│[0m
+[31m│[0m   [2m11 [0m        [96mself[0m.file.touch()                                               [31m│[0m
+[31m│[0m   [2m12 [0m                                                                        [31m│[0m
+[31m│[0m   [2m13 [0m    [94mdef[0m[90m [0m[92mthen_file_should_exist[0m([96mself[0m):                                   [31m│[0m
+[31m│[0m [31m❱ [0m14         [94massert[0m [1;4;96mself[0m[1;4m.file.exists()[0m                                       [31m│[0m
+[31m│[0m   [2m15 [0m                                                                        [31m│[0m
+[31m╰──────────────────────────────────────────────────────────────────────────────╯[0m
+[1;91mFileNotFoundError: [0m[1m[[0mErrno [1;36m2[0m[1m][0m No such file or directory: [32m'example.txt'[0m
  
-# --seed 9d903d07-5e97-4a74-a60a-33a527bcc6d9
-# 1 scenario, 1 passed, 0 failed, 0 skipped (0.00s)
-```
+[37m# --seed 9a9638f4-ffab-4c1b-b958-37a33f592d47[0m[37m
+[0m[1;31m# 1 scenario, 0 passed, 1 failed, 0 skipped[0m[34m (0.00s)[0m[34m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+</Tabs>
 
 Simple, readable, and already passing. Vedro helps you start fast without sacrificing long-term maintainability.
 
