@@ -103,11 +103,11 @@ const config = {
           //   position: 'right',
           //   className: 'header-link header-link-slack',
           // },
-          {
-            href: 'https://github.com/vedro-universe',
-            position: 'right',
-            className: 'header-link header-link-github',
-          },
+          // {
+          //   href: 'https://github.com/vedro-universe',
+          //   position: 'right',
+          //   className: 'header-link header-link-github',
+          // },
         ],
       },
       footer: {

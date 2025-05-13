@@ -1,4 +1,4 @@
-FROM node:22.1.0-alpine3.19 as builder
+FROM node:23.10.0 AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN yarn --frozen-lockfile
 COPY . /app
 RUN yarn build
 
-FROM nginx:1.25.5-alpine3.19
+FROM nginx:1.27.5-alpine3.21
 
 COPY --from=builder /app/build /srv/public
 
