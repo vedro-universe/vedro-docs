@@ -28,7 +28,7 @@ These plugins integrate Vedro with popular Integrated Development Environments (
 
 | Plugin                                                                                             | Description                                                                                                                | Info          |
 |----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------|
-| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link>                  | Integration with <Link to="https://www.jetbrains.com/pycharm/">PyCharm</Link> for easy scenario execution and debugging.   | Version 0.2.5 |
+| <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">PyCharm Plugin</Link>                  | Integration with <Link to="https://www.jetbrains.com/pycharm/">PyCharm</Link> for easy scenario execution and debugging.   | Version 0.3.0 |
 | <Link to="https://marketplace.visualstudio.com/items?itemName=vedro.vedro">VSCode Extension</Link> | Adds Vedro support to <Link to="https://code.visualstudio.com/">VSCode</Link>, allowing easy test runs and result viewing. | Version 0.1.1 |
 
 ## Core Plugins
