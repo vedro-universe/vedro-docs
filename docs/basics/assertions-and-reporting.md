@@ -74,6 +74,7 @@ When an assertion fails, you receive immediate, precise feedback with a clean, c
 [1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
     [32m- 'H[0m[30;42mello[0m[32m Alice, welcome[0m[30;42m back[0m[32m!'[0m
     [31m+ 'H[0m[30;41mi[0m[31m Alice, welcome!'[0m
+[0m
 `}
 </TerminalOutput>
 
@@ -141,6 +142,7 @@ Failures are reported clearly and with helpful context:
 [1m>>> assert [0m[1;31mmember[0m[1m in [0m[1;32mcontainer[0m
     [31m'Bob'[0m
     [32m['Alice', 'Charlie'][0m
+[0m
 `}
 </TerminalOutput>
 
@@ -358,3 +360,61 @@ Output:
 [0m
 `}
 </TerminalOutput>
+
+### Show Full Diff
+
+By default, Vedro trims assertion diffs to highlight just the changed lines, enough to catch most issues at a glance.
+
+But sometimes, especially with large dictionaries or deeply nested objects, you want to see the full picture. For that, use the `--show-full-diff` flag:
+
+```shell
+$ vedro run --show-full-diff
+```
+
+<Tabs>
+  <TabItem value="diff-default" label="Default Diff" default>
+
+<TerminalOutput>
+{`
+[1;91mAssertionError[0m
+[1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
+    [38;5;244m          {[0m
+    [32m-             'task_id': [0m[30;42m1[0m[32m,[0m
+    [31m+             'task_id': [0m[30;41m2[0m[31m,[0m
+    [38;5;244m              'description': 'Implement user authentication system',[0m
+    [38;5;244m...[0m
+    [38;5;244m              'assignee': 'Bob',[0m
+    [32m-             'due_date': '2024-07-1[0m[30;42m4[0m[32m'[0m
+    [31m+             'due_date': '2024-07-1[0m[30;41m5[0m[31m'[0m
+    [38;5;244m          }[0m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+  <TabItem value="diff-full" label="Full Diff">
+
+<TerminalOutput>
+{`
+[1;91mAssertionError[0m
+[1m>>> assert [0m[1;31mactual[0m[1m == [0m[1;32mexpected[0m
+    [38;5;244m  {[0m
+    [38;5;244m      'total': 1,[0m
+    [38;5;244m      'items': [[0m
+    [38;5;244m          {[0m
+    [32m-             'task_id': [0m[30;42m1[0m[32m,[0m
+    [31m+             'task_id': [0m[30;41m2[0m[31m,[0m
+    [38;5;244m              'description': 'Implement user authentication system',[0m
+    [38;5;244m              'status': 'in progress',[0m
+    [38;5;244m              'assignee': 'Bob',[0m
+    [32m-             'due_date': '2024-07-1[0m[30;42m4[0m[32m'[0m
+    [31m+             'due_date': '2024-07-1[0m[30;41m5[0m[31m'[0m
+    [38;5;244m          }[0m
+    [38;5;244m      ][0m
+    [38;5;244m  }[0m
+[0m
+`}
+</TerminalOutput>
+
+  </TabItem>
+</Tabs>
