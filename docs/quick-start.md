@@ -127,9 +127,9 @@ Scenarios
 Scenarios
 [1m* [0m[1m
 [0m [31m✗ create file[0m[31m
-[0m   [32m✔ given_new_file[0m[32m
-[0m   [32m✔ when_creating_file[0m[32m
-[0m   [31m✗ then_file_should_exist[0m[31m
+[0m   [32m✔ given new file[0m[32m
+[0m   [32m✔ when creating file[0m[32m
+[0m   [31m✗ then file should exist[0m[31m
 [0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────[0m[31m─╮[0m
 [31m│[0m [2;33m/app/scenarios/[0m[1;33mcreate_file.py[0m:[94m14[0m in [92mthen_file_should_exist[0m                   [31m│[0m
 [31m│[0m                                                                              [31m│[0m
