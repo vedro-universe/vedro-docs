@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 :::tip What's inside
 * ✅ Write and run your **first passing test**
-* 🔍 Understand Vedro's three core concepts: **Scenarios**, **Contexts**, and **Effects**
+* 🧠 Understand Vedro's three core concepts: **Scenarios**, **Contexts**, and **Effects**
 * 👉 Know exactly **what to explore next**
 :::
 

@@ -8,6 +8,14 @@ import TabItem from '@theme/TabItem';
 
 # Assertions & Reporting
 
+:::tip What's inside
+* ✅ Write clear assertions using plain Python’s `assert`
+* 🔍 Explore rich output: diffs, timings, paths, and full structure comparisons
+* 🧯 Catch and verify exceptions explicitly with `catched()`
+:::
+
+## Introduction
+
 **Assertions** describe what _should happen_. **Reporting** shows what _actually happened_.
 
 Together, they form the feedback loop that makes tests valuable: you write a check, run the test, and instantly see whether the test passed, failed, or was skipped, providing just enough detail to fix what’s wrong or move on with confidence.
@@ -300,15 +308,17 @@ $ vedro run --show-timings --show-steps
 [0mScenarios
 [1m* auth / login[0m[1m
 [0m [32m✔ login as registered user[0m[38;5;244m (0.36s)[0m[38;5;244m
-[0m   [32m✔ given_user[0m[38;5;244m (0.19s)[0m[38;5;244m
-[0m   [32m✔ when_user_logs_in[0m[38;5;244m (0.18s)[0m[38;5;244m
-[0m   [32m✔ then_it_should_return_success_response[0m[38;5;244m (0.00s)[0m[38;5;244m
-[0m   [32m✔ and_it_should_return_created_token[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m   [32m✔ given user[0m[38;5;244m (0.19s)[0m[38;5;244m
+[0m   [32m✔ when user logs in[0m[38;5;244m (0.18s)[0m[38;5;244m
+[0m   [32m✔ then it should return success response[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m   [32m✔ and it should return created token[0m[38;5;244m (0.00s)[0m[38;5;244m
 [0m 
 [0m[1;32m# 1 scenarios, 1 passed, 0 failed, 0 skipped[0m[34m (0.36s)[0m[34m
 [0m
 `}
 </TerminalOutput>
+
+Running all tests with `--show-steps` gives you more than just verbose output, it’s a form of living documentation. Each step describes the behavior being tested in clear, structured language. Use it to validate test coverage, onboard new team members, or even review product behavior during CI runs.
 
 ### Show Paths
 
