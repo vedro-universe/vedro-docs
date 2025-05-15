@@ -44,10 +44,10 @@ from pathlib import Path as File
 import vedro
 
 class Scenario(vedro.Scenario):
-    subject = "create file"
+    subject = 'create file'
 
     def given_new_file(self):
-        self.file = File("example.txt")
+        self.file = File('example.txt')
 
     def when_creating_file(self):
         self.file.touch()
@@ -68,13 +68,13 @@ from vedro_fn import scenario, given, when, then
 
 @scenario()
 def create_file():
-    with given("new file"):
-        file = File("example.txt")
+    with given('new file'):
+        file = File('example.txt')
 
-    with when("creating file"):
+    with when('creating file'):
         file.touch()
 
-    with then("file should exist"):
+    with then('file should exist'):
         assert file.exists()
 ```
 
@@ -174,7 +174,7 @@ import vedro
 from pathlib import Path as File
 
 @vedro.context
-def existing_file(filename: str = "example.txt") -> File:
+def existing_file(filename: str = 'example.txt') -> File:
     file = File(filename)
     file.touch()
     return file
@@ -194,16 +194,16 @@ import vedro
 from contexts.existing_file import existing_file
 
 class Scenario(vedro.Scenario):
-    subject = "write data to existing file"
+    subject = 'write data to existing file'
 
     def given_existing_file(self):
         self.file = existing_file()
 
     def when_writing_data(self):
-        self.file.write_text("banana")
+        self.file.write_text('banana')
 
     def then_file_should_contain_written_data(self):
-        assert self.file.read_text() == "banana"
+        assert self.file.read_text() == 'banana'
 ```
 
   </TabItem>
@@ -215,14 +215,14 @@ from contexts.existing_file import existing_file
 
 @scenario()
 def write_data_to_existing_file():
-    with given("existing file"):
+    with given('existing file'):
         file = existing_file()
 
-    with when("writing data"):
-        file.write_text("banana")
+    with when('writing data'):
+        file.write_text('banana')
 
-    with then("file should contain written data"):
-        assert file.read_text() == "banana"
+    with then('file should contain written data'):
+        assert file.read_text() == 'banana'
 ```
 
   </TabItem>
@@ -258,16 +258,16 @@ import vedro
 from contexts.existing_file import existing_file
 
 class Scenario(vedro.Scenario):
-    subject = "rename existing file"
+    subject = 'rename existing file'
 
     def given_existing_file(self):
-        self.original_file = existing_file("file.txt")
+        self.original_file = existing_file('file.txt')
 
     def when_renaming_file(self):
-        self.renamed_file = self.original_file.rename("new_file.txt")
+        self.renamed_file = self.original_file.rename('new_file.txt')
 
     def then_renamed_file_should_have_correct_name(self):
-        assert self.renamed_file.name == "new_file.txt"
+        assert self.renamed_file.name == 'new_file.txt'
 
     def then_renamed_file_should_exist(self):
         assert self.renamed_file.exists()
@@ -285,19 +285,19 @@ from contexts.existing_file import existing_file
 
 @scenario()
 def rename_existing_file():
-    with given("existing file"):
-        original_file = existing_file("file.txt")
+    with given('existing file'):
+        original_file = existing_file('file.txt')
 
-    with when("renaming file"):
-        renamed_file = original_file.rename("new_file.txt")
+    with when('renaming file'):
+        renamed_file = original_file.rename('new_file.txt')
 
-    with then("renamed file should have correct name"):
-        assert renamed_file.name == "new_file.txt"
+    with then('renamed file should have correct name'):
+        assert renamed_file.name == 'new_file.txt'
 
-    with then("renamed file should exist"):
+    with then('renamed file should exist'):
         assert renamed_file.exists()
 
-    with then("original file should no longer exist"):
+    with then('original file should no longer exist'):
         assert not original_file.exists()
 ```
 
