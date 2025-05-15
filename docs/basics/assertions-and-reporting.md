@@ -23,14 +23,14 @@ In Vedro, you write assertions using Python’s built-in `assert` statement: no 
 import vedro
 
 class Scenario(vedro.Scenario):
-    subject = "greet user"
+    subject = 'greet user'
 
     def when_greeting_user(self):
-        self.greeting = greet_user("Alice")
+        self.greeting = greet_user('Alice')
 
     def then_greeting_should_be_correct(self):
         # highlight-start
-        assert self.greeting == "Hello Alice, welcome back!"
+        assert self.greeting == 'Hello Alice, welcome back!'
         # highlight-end
 ```
 
@@ -42,12 +42,12 @@ from vedro_fn import scenario, given, when, then
 
 @scenario()
 def greet_user():
-    with when("greeting user"):
-        greeting = greet_user("Alice")
+    with when('greeting user'):
+        greeting = greet_user('Alice')
 
-    with then("greeting should be correct"):
+    with then('greeting should be correct'):
         # highlight-start
-        assert greeting == "Hello Alice, welcome back!"
+        assert greeting == 'Hello Alice, welcome back!'
         # highlight-end
 ```
 
@@ -64,10 +64,10 @@ When an assertion fails, you receive immediate, precise feedback with a clean, c
 [0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────[0m[31m─╮[0m
 [31m│[0m [2;33m/app/scenarios/[0m[1;33mgreet_user.py[0m:[94m14[0m in [92mthen_greeting_should_be_correct[0m           [31m│[0m
 [31m│[0m                                                                              [31m│[0m
-[31m│[0m   [2m11 [0m        [96mself[0m.greeting = greet_user([33m"[0m[33mAlice[0m[33m"[0m)                             [31m│[0m
+[31m│[0m   [2m11 [0m        [96mself[0m.greeting = greet_user([33m'[0m[33mAlice[0m[33m'[0m)                             [31m│[0m
 [31m│[0m   [2m12 [0m                                                                        [31m│[0m
 [31m│[0m   [2m13 [0m    [94mdef[0m[90m [0m[92mthen_greeting_should_be_correct[0m([96mself[0m):                          [31m│[0m
-[31m│[0m [31m❱ [0m14         [1;4;94massert[0m[1;4m [0m[1;4;96mself[0m[1;4m.greeting == [0m[1;4;33m"[0m[1;4;33mHello Alice, welcome back![0m[1;4;33m"[0m            [31m│[0m
+[31m│[0m [31m❱ [0m14         [1;4;94massert[0m[1;4m [0m[1;4;96mself[0m[1;4m.greeting == [0m[1;4;33m'[0m[1;4;33mHello Alice, welcome back![0m[1;4;33m'[0m            [31m│[0m
 [31m│[0m   [2m15 [0m                                                                        [31m│[0m
 [31m╰──────────────────────────────────────────────────────────────────────────────╯[0m
 [1;91mAssertionError[0m
@@ -90,14 +90,14 @@ Vedro gives you the full power of Python. Use any operator or expression to craf
 import vedro
 
 class Scenario(vedro.Scenario):
-    subject = "search user"
+    subject = 'search user'
 
     def when_searching_for_user(self):
-        self.result = search_users("Bob")
+        self.result = search_users('Bob')
 
     def then_user_should_be_in_result(self):
         # highlight-start
-        assert "Bob" in self.result
+        assert 'Bob' in self.result
         # highlight-end
 ```
 
@@ -109,12 +109,12 @@ from vedro_fn import scenario, given, when, then
 
 @scenario()
 def search_user():
-    with when("searching for user"):
-        result = search_users("Bob")
+    with when('searching for user'):
+        result = search_users('Bob')
 
-    with then("user should be in result"):
+    with then('user should be in result'):
         # highlight-start
-        assert "Bob" in result
+        assert 'Bob' in result
         # highlight-end
 ```
 
@@ -131,10 +131,10 @@ Failures are reported clearly and with helpful context:
 [0m[31m╭─[0m[31m────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────[0m[31m─╮[0m
 [31m│[0m [2;33m/app/scenarios/[0m[1;33mgreet_user.py[0m:[94m14[0m in [92mthen_user_should_be_in_result[0m             [31m│[0m
 [31m│[0m                                                                              [31m│[0m
-[31m│[0m   [2m11 [0m        [96mself[0m.result = search_users([33m"[0m[33mBob[0m[33m"[0m)                               [31m│[0m
+[31m│[0m   [2m11 [0m        [96mself[0m.result = search_users([33m'[0m[33mBob[0m[33m'[0m)                               [31m│[0m
 [31m│[0m   [2m12 [0m                                                                        [31m│[0m
 [31m│[0m   [2m13 [0m    [94mdef[0m[90m [0m[92mthen_user_should_be_in_result[0m([96mself[0m):                            [31m│[0m
-[31m│[0m [31m❱ [0m14         [1;4;94massert[0m[1;4m [0m[1;4;33m"[0m[1;4;33mBob[0m[1;4;33m"[0m[1;4m [0m[1;4;95min[0m[1;4m [0m[1;4;96mself[0m[1;4m.result[0m                                     [31m│[0m
+[31m│[0m [31m❱ [0m14         [1;4;94massert[0m[1;4m [0m[1;4;33m'[0m[1;4;33mBob[0m[1;4;33m'[0m[1;4m [0m[1;4;95min[0m[1;4m [0m[1;4;96mself[0m[1;4m.result[0m                                     [31m│[0m
 [31m│[0m   [2m15 [0m                                                                        [31m│[0m
 [31m╰──────────────────────────────────────────────────────────────────────────────╯[0m
 [1;91mAssertionError[0m
@@ -156,7 +156,7 @@ import vedro
 from vedro import catched
 
 class Scenario(vedro.Scenario):
-    subject = "divide by zero"
+    subject = 'divide by zero'
 
     def when_dividing_by_zero(self):
         with catched(Exception) as self.exc_info:
@@ -164,7 +164,7 @@ class Scenario(vedro.Scenario):
 
     def then_exception_should_be_raised(self):
         assert self.exc_info.type is ZeroDivisionError
-        assert str(self.exc_info.value) == "division by zero"
+        assert str(self.exc_info.value) == 'division by zero'
 ```
 
   </TabItem>
@@ -176,13 +176,13 @@ from vedro import catched
 
 @scenario()
 def divide_by_zero():
-    with when("dividing by zero"):
+    with when('dividing by zero'):
         with catched(Exception) as exc_info:
             1 / 0
 
-    with then("exception should be raised"):
+    with then('exception should be raised'):
         assert exc_info.type is ZeroDivisionError
-        assert str(exc_info.value) == "division by zero"
+        assert str(exc_info.value) == 'division by zero'
 ```
 
   </TabItem>
