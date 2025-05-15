@@ -144,6 +144,47 @@ Failures are reported clearly and with helpful context:
 `}
 </TerminalOutput>
 
+### Custom Messages in Assertions?
+
+Python supports custom messages in assertions:
+
+```python
+assert user.id == 42, "Expected user ID to be 42"
+```
+
+This works in Vedro too — but most of the time, it’s unnecessary.
+
+With descriptive step names, structured output, and clear diffs, you already get all the context you need when something fails. Adding messages often duplicates information or leads to less readable code.
+
+You also avoid the common trap of writing inverted logic like:
+
+```python
+assert not error_occurred, "An error occurred"
+```
+
+Instead, focus on writing clean, direct checks:
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
+```python
+def then_user_should_have_correct_id(self):
+    assert user.id == 42
+```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+with then('user should have correct id'):
+    assert user.id == 42
+```
+
+  </TabItem>
+</Tabs>
+
+This keeps your scenarios readable, and Vedro's reporter will make sure you still see exactly what went wrong.
+
 ### Testing Exceptions Explicitly
 
 Following Python’s principle that «Explicit is better than implicit», Vedro provides a simple, explicit way to capture and verify exceptions using the `catched()` context manager:
