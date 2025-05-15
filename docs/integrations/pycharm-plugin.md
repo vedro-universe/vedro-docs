@@ -15,23 +15,25 @@ There are two ways to install the plugin:
 1. **From the Marketplace**: Go to the <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">plugin page</Link> and install it directly from there
 2. **From PyCharm**: Navigate to `Preferences -> Plugins -> Marketplace` in the PyCharm menu. From there, search for "Vedro" in the marketplace, then click the "Install" button
 
-<Screenshot src={require('./pycharm/install.png')} />
-
 ## Usage
 
 Once installed, the Vedro plugin allows for easy execution of individual and parameterized scenarios.
 
 For individual scenarios, a green triangle appears next to the `Scenario` declaration. Clicking this triangle runs the selected scenario.
 
-<Screenshot src={require('./pycharm/scenario_run.png')} />
+<Screenshot src={require('./pycharm/scenario_run_cls.png')} shadow={false} width="45%" />
+
+<Screenshot src={require('./pycharm/scenario_run_fn.png')} shadow={false} width="45%" />
 
 When working with parameterized scenarios, a double green triangle appears near the `@vedro.params` decorator. Clicking this double triangle runs the parameterized scenario.
 
-<Screenshot src={require('./pycharm/parameterized_run.png')} />
+<Screenshot src={require('./pycharm/scenario_run_cls_params.png')} shadow={false} width="45%" />
+
+<Screenshot src={require('./pycharm/scenario_run_fn_params.png')} shadow={false} width="45%" />
 
 A significant benefit of the plugin is that it provides a detailed report within the IDE. It presents all necessary information regarding the scenario execution, making it easier to identify and resolve issues.
 
-<Screenshot src={require('./pycharm/output.png')} />
+<Screenshot src={require('./pycharm/output.png')} shadow={false} width="100%" />
 
 ## Configuration
 
@@ -39,10 +41,10 @@ The PyCharm plugin for Vedro comes with a default configuration of `-r rich pych
 
 To adjust the runner options, select _"Edit configurations…"_ from the PyCharm menu. This opens a dialogue where you can add any framework arguments to the _"Runner options"_:
 
-<Screenshot src={require('./pycharm/configuration.png')} />
+<Screenshot src={require('./pycharm/configuration.png')} shadow={false} width="100%" />
 
 For instance, you could add the `--show-timings` option to your runner options. This option will display the execution times for your scenarios.
 
 :::note
-The `--pycharm-no-output` option in the default configuration is included for backward compatibility 
+The `--pycharm-no-output` option in the default configuration is included for backward compatibility.
 :::
