@@ -19,8 +19,8 @@ const sidebars = {
       label: 'Basics',
       collapsed: false,
       items: [
+        'basics/assertions-and-reporting',
         'basics/selecting-and-ignoring',
-        'basics/reporting-system',
       ],
     },
     {
@@ -37,6 +37,7 @@ const sidebars = {
         'features/scope',
         'features/parallel-execution',
         'features/anti-flaky/anti-flaky',
+        'basics/reporting-system',
       ],
     },
     {
@@ -55,7 +56,7 @@ const sidebars = {
       type: 'category',
       label: 'Integrations',
       link: { type: 'generated-index' },
-      collapsed: false,
+      collapsed: true,
       items: [
         'integrations/allure-reporter',
         'integrations/httpx-client',
@@ -70,7 +71,7 @@ const sidebars = {
       type: 'category',
       label: 'Best Practices',
       link: { type: 'generated-index' },
-      collapsed: false,
+      collapsed: true,
       items: [
         'best-practices/scenario-based-tests',
         'best-practices/avoid-ifs',
