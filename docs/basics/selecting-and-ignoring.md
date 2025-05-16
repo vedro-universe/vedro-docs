@@ -19,7 +19,7 @@ import Link from '@site/src/components/Link';
 
 In day-to-day development, you often run just a subset of your test suite — a single scenario, a few files, or everything in just one directory. Vedro gives you multiple ways to precisely control what gets executed.
 
-### Selecting Scenarios
+## Selecting Scenarios
 
 To run specific files or directories, pass them to `vedro run`:
 
@@ -38,7 +38,7 @@ $ vedro run scenarios/register/register_new_user.py \
             scenarios/login/login_as_registered_user.py
 ```
 
-### Ignoring Scenarios
+## Ignoring Scenarios
 
 Use the `-i` or `--ignore` flag to exclude specific files or directories:
 
@@ -54,7 +54,7 @@ $ vedro run -i scenarios/logout/
 
 Ignored scenarios are completely excluded from the run: they won’t be executed, shown in output, or counted in summary statistics. To skip a scenario (but still include it in the report), see the <Link to="/docs/features/skipping-scenarios" target="_blank">Skipping Scenarios</Link> guide.
 
-### Combining Selection with Ignoring
+## Combining Selection with Ignoring
 
 You can combine file selection and ignore flags to run a group of scenarios while excluding specific ones:
 
@@ -69,7 +69,7 @@ This runs everything in `scenarios/login/`, except the file you explicitly ignor
 Use `--dry-run` to preview which scenarios would be executed, without actually running them. Helpful when fine-tuning test selection.
 :::
 
-### Selecting One and Only Scenario
+## Selecting One and Only Scenario
 
 To run just one scenario, add the `@vedro.only` decorator:
 
@@ -132,7 +132,7 @@ This will raise an error if any scenario uses `@only`.
   </div>
 </details>
 
-### Selecting by Subject
+## Selecting by Subject
 
 To run scenarios by their subject line, use `--subject` followed by a string match:
 
@@ -142,7 +142,7 @@ $ vedro run --subject 'register new user'
 
 All scenarios with a matching subject will be executed.
 
-### Selecting a Parameterized Case
+## Selecting a Parameterized Case
 
 The easiest way to run a specific <Link to="/docs/features/parameterized-scenarios" target="_blank">parameterized</Link> scenario is through an IDE like
 **<Link to="/docs/integrations/pycharm-plugin" target="_blank">PyCharm</Link>** or **<Link to="/docs/integrations/vscode-extension" target="_blank">VS Code</Link>**, which let you run individual cases directly from the UI.
@@ -178,3 +178,15 @@ $ vedro run scenarios/get_status.py::Scenario#2
 ```
 
 Indexing starts at **1**, and follows the **top-to-bottom order** of `@params` declarations — the natural order they appear in your code.
+
+## The Big Picture
+
+Every selection feature (whether it’s a path, subject, decorator, or parameter index) is just a **filter**.
+
+Vedro starts with the full set of available scenarios and lets you narrow it down using rules:
+- `vedro run <path>` → filter out everything **except** what’s in the specified path
+- `--ignore <path>` → filter out **only** what’s in the specified path
+- `--subject <intent>` → filter out all scenarios that **don’t match** this subject
+- `@vedro.only` decorator → filter out **everything except** this scenario
+
+Think of each tool as a way to define what to ignore, until only the scenarios you care about are left. Once you see it that way, combining filters becomes intuitive, predictable, and powerful.
