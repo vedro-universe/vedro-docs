@@ -9,9 +9,9 @@ import TabItem from '@theme/TabItem';
 # Assertions & Reporting
 
 :::tip What's inside
-* ✅ Write clear assertions using plain Python’s `assert`
+* ✅ Write clear assertions using plain Python’s **`assert`**
 * 🔍 Explore rich output: diffs, timings, paths, and full structure comparisons
-* 🧯 Catch and verify exceptions explicitly with `catched()`
+* 🧯 Catch and verify exceptions explicitly with **`catched()`**
 :::
 
 ## Introduction

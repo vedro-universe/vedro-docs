@@ -2,64 +2,79 @@
 id: selecting-and-ignoring
 ---
 
+import TerminalOutput from '@site/src/components/TerminalOutput';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Link from '@site/src/components/Link';
+
 # Selecting & Ignoring
 
-Depending on the requirements of the development cycle, it's often necessary to select specific test scenarios to run and ignore others.  Vedro provides command-line arguments and decorators to precisely control test execution.
+:::tip What's inside
+* 🎯 Run only the scenarios you care about
+* 🧹 Gently ignore which aren’t relevant right now
+* 🧬 Target individual tests, even parameterized cases
+:::
+
+## Introduction
+
+In day-to-day development, you often run just a subset of your test suite — a single scenario, a few files, or everything in just one directory. Vedro gives you multiple ways to precisely control what gets executed.
 
 ### Selecting Scenarios
 
-To run scenarios located in a specific file or directory, use the `vedro run` command, followed by the path to the file or directory:
+To run specific files or directories, pass them to `vedro run`:
 
 ```shell
 $ vedro run <file_or_dir>
 ```
 
-For example:
+Examples:
 
 ```shell
-# Select directory
+# Run all scenarios in a directory
 $ vedro run scenarios/login/
 
-# Select files
+# Run two individual files
 $ vedro run scenarios/register/register_new_user.py \
             scenarios/login/login_as_registered_user.py
 ```
 
 ### Ignoring Scenarios
 
-To exclude certain scenarios from your test run that are located in a file or directory, use the `-i` or `--ignore` argument followed by the path to the file or directory:
+Use the `-i` or `--ignore` flag to exclude specific files or directories:
 
 ```shell
-$ vedro run -i (--ignore) <file_or_dir>
+$ vedro run -i <file_or_dir>  # or --ignore
 ```
 
-For instance:
+Example:
 
 ```shell
 $ vedro run -i scenarios/logout/
 ```
 
-:::info Note
-Ignoring scenarios means they are entirely excluded from the run, including from summary statistics. If you want to merely skip scenarios instead of wholly ignoring them, refer to the "[Skipping Scenarios](../features/skipping-scenarios)" page.
-:::
+Ignored scenarios are completely excluded from the run: they won’t be executed, shown in output, or counted in summary statistics. To skip a scenario (but still include it in the report), see the <Link to="/docs/features/skipping-scenarios" target="_blank">Skipping Scenarios</Link> guide.
 
-### Combining Selecting and Ignoring
+### Combining Selection with Ignoring
 
-In certain situations, you may want to run a collection of test scenarios from a particular directory but ignore one or more individual scenarios within that directory. Vedro enables this by allowing the combining of run and ignore commands:
+You can combine file selection and ignore flags to run a group of scenarios while excluding specific ones:
 
 ```shell
-$ vedro run scenarios/login/ -i scenarios/login/try_to_login_as_nonexisting_user.py
+$ vedro run scenarios/login/ \
+         -i scenarios/login/try_to_login_as_nonexisting_user.py
 ```
 
-This command runs all scenarios in the "login/" directory, excluding the "try_to_login_as_nonexisting_user.py" scenario.
+This runs everything in `scenarios/login/`, except the file you explicitly ignored.
 
 :::tip
-Use the `--dry-run` argument to preview which scenarios would be executed. This feature helps in fine-tuning your test selection process without actually running the scenarios.
+Use `--dry-run` to preview which scenarios would be executed, without actually running them. Helpful when fine-tuning test selection.
 :::
 
-### Selecting Specific Scenarios
+### Selecting One and Only Scenario
 
-To execute a specific scenario, add the `@vedro.only` decorator to the scenario class definition. This decorator tells the framework to run only the decorated scenario, ignoring all others. Here's an example:
+To run just one scenario, add the `@vedro.only` decorator:
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -67,43 +82,72 @@ import vedro
 @vedro.only
 class Scenario(vedro.Scenario):
     subject = "register new user"
+    ...
 ```
 
-Then, simply run:
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro_fn import scenario
+from vedro import only
+
+@scenario[only]()
+def register_new_user():
+    ...
+```
+
+  </TabItem>
+</Tabs>
+
+Then run:
 
 ```shell
 $ vedro run
 ```
 
-:::info Note
-If any scenario is decorated with `@vedro.only`, all scenarios with this decorator will be executed
-:::
+To guard against accidentally committing `@vedro.only`, enable `forbid_only` in CI using the Skipper plugin configuration:
 
-### Selecting Scenarios with Specific Subjects
+<details>
+  <summary>Show config...</summary>
+  <div>
 
-To run scenarios that have a specific subject, use the `--subject` argument followed by the subject enclosed in quotes:
+```python
+import vedro.plugins.skipper
+from os import environ as env
 
-```shell
-$ vedro run --subject '<subject>'
+class Config(vedro.Config):
+
+    class Plugins(vedro.Config.Plugins):
+
+        class Skipper(vedro.plugins.skipper.Skipper):
+            enabled = True
+            # highlight-start
+            forbid_only = env.get("CI", False)
+            # highlight-end
 ```
 
-For example:
+This will raise an error if any scenario uses `@only`.
+
+  </div>
+</details>
+
+### Selecting by Subject
+
+To run scenarios by their subject line, use `--subject` followed by a string match:
 
 ```shell
 $ vedro run --subject 'register new user'
 ```
 
-This command executes the scenario with the subject "register new user".
+All scenarios with a matching subject will be executed.
 
-:::info Note
-If multiple scenarios share the same subject, they will all be executed
-:::
+### Selecting a Parameterized Case
 
-### Selecting Parameterized Scenarios
+The easiest way to run a specific <Link to="/docs/features/parameterized-scenarios" target="_blank">parameterized</Link> scenario is through an IDE like
+**<Link to="/docs/integrations/pycharm-plugin" target="_blank">PyCharm</Link>** or **<Link to="/docs/integrations/vscode-extension" target="_blank">VS Code</Link>**, which let you run individual cases directly from the UI.
 
-If you have scenarios that are [parameterized](../features/parameterized-scenarios), you can select a specific instance by specifying the scenario's index.
-
-For example, consider the following `get_status.py` file with parameterized scenario:
+If you're using the terminal, you can target a specific instance by appending `#<index>` to the scenario class:
 
 ```python
 import vedro
@@ -121,14 +165,16 @@ class Scenario(vedro.Scenario):
     ...
 ```
 
-To run only the first scenario (with a 200 status code), execute the following command:
+Run the **first** case (`200 OK`):
 
-```
+```shell
 $ vedro run scenarios/get_status.py::Scenario#1
 ```
 
-To run only the second scenario (with a 404 status code), execute the following command:
+Run the **second** (`404 Not Found`):
 
-```
+```shell
 $ vedro run scenarios/get_status.py::Scenario#2
 ```
+
+Indexing starts at **1**, and follows the **top-to-bottom order** of `@params` declarations — the natural order they appear in your code.
