@@ -3,48 +3,88 @@ id: pycharm-plugin
 ---
 
 import Screenshot from '@site/src/components/Screenshot';
-import Link from '@site/src/components/Link';
 
 # PyCharm Plugin
 
-<Link to="https://plugins.jetbrains.com/plugin/18227-vedro">Vedro PyCharm plugin</Link> streamlines the process of executing and analyzing individual and parameterized scenarios right within your IDE, reducing the need to context-switch between your terminal and the PyCharm environment.
+:::tip What’s inside
+* ▶️ Run individual or parameterized scenarios with a click
+* 📊 View clean, structured test output inside PyCharm
+* ⚙️ Customize runner options to fit your workflow
+:::
+
+## Introduction
+
+The [Vedro PyCharm plugin](https://plugins.jetbrains.com/plugin/18227-vedro) makes it easy to run and debug your scenarios, without ever leaving the IDE. It adds inline controls to execute both individual and parameterized scenarios, plus a built-in test report for quick feedback.
+
+No need to switch between terminal and editor — just click and go.
 
 ## Installation
 
-There are two ways to install the plugin:
-1. **From the Marketplace**: Go to the <Link to="https://plugins.jetbrains.com/plugin/18227-vedro">plugin page</Link> and install it directly from there
-2. **From PyCharm**: Navigate to `Preferences -> Plugins -> Marketplace` in the PyCharm menu. From there, search for "Vedro" in the marketplace, then click the "Install" button
+You can install the plugin in two ways:
 
-## Usage
+1. From the JetBrains Marketplace
 
-Once installed, the Vedro plugin allows for easy execution of individual and parameterized scenarios.
+    - Visit the [plugin page](https://plugins.jetbrains.com/plugin/18227-vedro)
+    - Click **Install**
 
-For individual scenarios, a green triangle appears next to the `Scenario` declaration. Clicking this triangle runs the selected scenario.
+2. From within PyCharm
+
+    - Go to `Preferences → Plugins → Marketplace`
+    - Search for **Vedro**
+    - Click **Install**
+
+## Running Scenarios
+
+After installation, you’ll see run icons directly in the editor:
+
+### ▶️ Run individual scenarios
+
+A single green triangle appears next to each scenario definition. Click it to run just that scenario.
 
 <Screenshot src={require('./pycharm/scenario_run_cls.png')} shadow={false} width="45%" />
 
 <Screenshot src={require('./pycharm/scenario_run_fn.png')} shadow={false} width="45%" />
 
-When working with parameterized scenarios, a double green triangle appears near the `@vedro.params` decorator. Clicking this double triangle runs the parameterized scenario.
+### ⏩ Run parameterized scenarios
+
+For parameterized scenarios, a **double triangle** appears next to each `@params` entry. Clicking it runs that specific parameterized case.
 
 <Screenshot src={require('./pycharm/scenario_run_cls_params.png')} shadow={false} width="45%" />
 
 <Screenshot src={require('./pycharm/scenario_run_fn_params.png')} shadow={false} width="45%" />
 
-A significant benefit of the plugin is that it provides a detailed report within the IDE. It presents all necessary information regarding the scenario execution, making it easier to identify and resolve issues.
+## Viewing Results
+
+Test output is shown right inside the Run window, with a clear, structured summary — just like in the terminal.
 
 <Screenshot src={require('./pycharm/output.png')} shadow={false} width="100%" />
 
+You’ll see scenario names, step results, failures (if any), and execution time, all without leaving PyCharm.
+
 ## Configuration
 
-The PyCharm plugin for Vedro comes with a default configuration of `-r rich pycharm --pycharm-no-output` runner options. However, you can extend these options according to your requirements.
+By default, the plugin runs scenarios using the following options:
 
-To adjust the runner options, select _"Edit configurations…"_ from the PyCharm menu. This opens a dialogue where you can add any framework arguments to the _"Runner options"_:
+```
+-r rich pycharm --pycharm-no-output
+```
+
+These options ensure smooth integration with PyCharm, with `--pycharm-no-output` included for backward compatibility.
+
+### Customize Runner Options
+
+To customize how scenarios are run:
+
+1. Open **Run → Edit Configurations…**
+2. Select your Vedro configuration
+3. Add any extra arguments to the **Runner options** field
 
 <Screenshot src={require('./pycharm/configuration.png')} shadow={false} width="100%" />
 
-For instance, you could add the `--show-timings` option to your runner options. This option will display the execution times for your scenarios.
+For example:
 
-:::note
-The `--pycharm-no-output` option in the default configuration is included for backward compatibility.
-:::
+```
+--show-timings --show-steps
+```
+
+This will enable step-by-step timing and detailed output during your test run.
