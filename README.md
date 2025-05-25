@@ -1,6 +1,6 @@
 # Vedro Docs
 
-Docs for [Vedro framework](https://vedro.io/)
+Docs for [Vedro](https://vedro.io/) testing framework.
 
 ### Installation
 
