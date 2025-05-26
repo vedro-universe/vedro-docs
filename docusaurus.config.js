@@ -99,7 +99,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/vedro-universe/vedro',
+            href: 'https://github.com/vedro-universe',
             position: 'right',
             className: 'header-github-link',
           },
