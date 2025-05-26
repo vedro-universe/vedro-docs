@@ -53,6 +53,13 @@ For parameterized scenarios, a **double triangle** appears next to each `@params
 
 <Screenshot src={require('./pycharm/scenario_run_fn_params.png')} shadow={false} width="45%" />
 
+### 🗂️ Run from file or directory
+You can also right-click any scenario file or directory and choose **“Run/Debug Vedro scenario(s)”** from the context menu. This is a quick way to run an entire group of related tests.
+
+:::info Important
+To ensure compatibility with PyCharm and other plugins, your project must contain a `vedro.cfg.py` file in the root directory (it can be completely empty).
+:::
+
 ## Viewing Results
 
 Test output is shown right inside the Run window, with a clear, structured summary — just like in the terminal.
