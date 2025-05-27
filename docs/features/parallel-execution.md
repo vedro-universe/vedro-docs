@@ -1,40 +1,44 @@
 # Parallel Execution
 
-:::warning
-Please note that this documentation is currently under finalization and improvement
+:::tip What’s inside
+* 🚀 Speed up test runs by splitting scenarios across multiple nodes
+* ⚙️ Configure parallel execution with `--slicer-total` and `--slicer-index`
+* ☁️ Set up parallel runs in CI with GitHub Actions, GitLab CI, or Drone
 :::
 
-Vedro allows you to split and run your tests across multiple nodes in parallel. This is done by slicing the test suite into separate parts and executing each slice on a different node.
+## Introduction
 
-## Configuration Options
+Need to run your test suite faster? Vedro makes it easy to execute tests in parallel across multiple nodes or containers.
 
-- `--slicer-total`: This flag specifies the total number of nodes (slices) that the test suite will be divided into for parallel execution.
-  
-- `--slicer-index`: This flag determines the index of the current node (slice). It should be assigned a unique number between `0` and `slicer-total - 1`.
+Each node runs a different “slice” of the test suite. Together, the nodes split the work and reduce overall test time — perfect for CI pipelines.
 
-### Example:
+## Running in Parallel
 
-To run tests in parallel on two nodes, execute the following commands:
+Use two command-line options to configure parallel execution:
+- `--slicer-total`: total number of nodes (slices)
+- `--slicer-index`: index of the current node (from `0` to `slicer-total - 1`)
 
-1. On the **first** node:
+### Example: 2 nodes
 
-  ```shell
-  $ vedro run --slicer-total=2 --slicer-index=0
-  ```
+**Node 1**
 
-2. On the **second** node:
+```shell
+$ vedro run --slicer-total=2 --slicer-index=0
+```
 
-  ```shell
-  $ vedro run --slicer-total=2 --slicer-index=1
-  ```
+**Node 2**
 
-## Integration with CI/CD Platforms
+```shell
+$ vedro run --slicer-total=2 --slicer-index=1
+```
 
-Different CI/CD platforms offer various ways to implement parallel execution. Here's how to set it up on popular platforms:
+## CI/CD Integration
+
+Most CI systems support parallel execution through job matrices or native parallel support. Here’s how to use slicing with the most common platforms.
 
 ### GitHub Actions
 
-To achieve parallel execution in GitHub Actions, use the [matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs).
+Use a [matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs) to run Vedro in parallel:
 
 ```yml
 # .github/workflows/test.yml
@@ -55,23 +59,23 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.12'
     - name: Install Dependencies
       run: pip install -r requirements.txt
     - name: Run Tests
       run: vedro run --slicer-total=${{ matrix.node-total }} --slicer-index=${{ matrix.node-index }}
 ```
 
-For additional details, refer to the [official GitHub Actions documentation](https://docs.github.com/en/actions/quickstart).
+See [GitHub Actions docs](https://docs.github.com/en/actions/quickstart) for more.
 
 ### GitLab CI
 
-GitLab CI natively supports [parallel execution](https://docs.gitlab.com/ee/ci/yaml/README.html#parallel):
+GitLab supports [parallel jobs](https://docs.gitlab.com/ee/ci/yaml/README.html#parallel) natively using the `parallel` keyword:
 
 ```yml
 # .gitlab-ci.yml
 test:
-  image: python:3.11
+  image: python:3.12
   parallel: 2
   before_script:
     - pip install -r requirements.txt
@@ -80,16 +84,14 @@ test:
 ```
 
 :::note
-GitLab starts counting indexes from 1, hence the adjustment `$((CI_NODE_INDEX-1))`
+GitLab uses 1-based indexing (`CI_NODE_INDEX` starts from 1), so subtract 1 to match Vedro’s 0-based indexing.
 :::
 
-For more details, refer to the [official GitLab CI documentation](https://docs.gitlab.com/ee/ci/).
+See [GitLab CI docs](https://docs.gitlab.com/ee/ci/) for more.
 
 ### Drone CI
 
-In [Drone CI](https://docs.drone.io/quickstart/docker/), you can define parallel steps as follows:
-
-Here's an example:
+[Drone](https://docs.drone.io/quickstart/docker/) supports parallel pipelines using multiple `steps`. Here’s how to split a run across two nodes:
 
 ```yml
 # .drone.yml
@@ -99,23 +101,23 @@ name: default
 
 steps:
 - name: fork1
-  image: python:3.11
+  image: python:3.12
   commands:
   - pip install -r requirements.txt
   - vedro run --slicer-total=2 --slicer-index=0
 
 - name: fork2
-  image: python:3.11
+  image: python:3.12
   commands:
   - pip install -r requirements.txt
   - vedro run --slicer-total=2 --slicer-index=1
 
 - name: join
-  image: python:3.11
+  image: python:3.12
   depends_on: [ fork1, fork2 ]
 ```
 
-To execute the parallel steps defined in your `.drone.yml` file locally, use the [drone exec command](https://docs.drone.io/cli/install/). This allows you to run the CI pipeline steps on your local machine, simulating the environment as if they were being run on the actual Drone CI server.
+To test locally:
 
 ```shell
 $ drone exec
