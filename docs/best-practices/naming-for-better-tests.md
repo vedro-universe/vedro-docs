@@ -7,18 +7,16 @@ import TabItem from '@theme/TabItem';
 
 # Naming for Better Tests
 
-Clear, consistent naming is essential for creating tests that are both readable and maintainable whether you’re working on API, UI, or mobile projects. This guide offers practical recommendations for structuring scenario names, building upon the core concepts of [Scenario-Based Tests](/docs/best-practices/scenario-based-tests), so that each test’s purpose is immediately clear.
+Clear, consistent naming helps your scenarios stay readable and maintainable, especially as your test suite grows. This guide offers practical naming tips for subjects and steps, aligned with Vedro’s principles of being **readable**, **scalable**, and **pragmatic**.
 
-:::info
-Keep in mind, there is no special “magic” or built-in logic in Vedro that requires you to follow these suggestions. Use them as a helpful starting point and adapt them to your team’s specific needs.
-:::
+These aren’t hard rules — Vedro doesn’t enforce naming conventions. Think of them as helpful defaults that you can adapt to your project or team style.
 
 ## Defining the Subject
 
-The subject attribute should succinctly describe the **intent** of the scenario using simple, imperative language. It reflects the perspective of the user (or system) interacting with the piece of code under test. A well-structured subject improves clarity and ensures quick comprehension of the scenario's purpose.
+The `subject` should describe the **intent** of the scenario — what action is being tested, or what the user/system is trying to do. Keep it short, direct, and ideally from the user’s perspective.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 class Scenario(vedro.Scenario):
@@ -38,17 +36,22 @@ def log_in_as_registered_user():
   </TabItem>
 </Tabs>
 
-Examples:
-- reset forgotten password
-- upload profile picture
-- retrieve order history
+🍏 **Do This:**
+- `reset forgotten password`
+- `upload profile picture`
+- `retrieve order history`
 
-### Adding Context or Input Conditions
+🍎 **Avoid This:**
+- `test login flow` — too generic, prefix "test" adds no value (all tests are tests)
+- `should successfully authenticate user with valid credentials` — too wordy, reads like assertion
+- `LoginTest123` — cryptic naming that provides no context
 
-To distinguish similar scenarios, add context or input conditions. This ensures clarity, especially when an action has multiple execution paths.
+### Adding Context or Conditions
+
+If an action can happen under different conditions, reflect those conditions in the subject. This is especially useful when inputs, data, or system states vary.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 class Scenario(vedro.Scenario):
@@ -68,17 +71,22 @@ def register_via_email():
   </TabItem>
 </Tabs>
 
-Examples:
-- register via phone
-- register via social (Twitter)
-- delete inactive account as admin
+🍏 **Do This:**
+- `log in as admin`
+- `register via Google OAuth`
+- `delete inactive account as admin`
 
-### Negative Scenarios
+🍎 **Avoid This:**
+- `admin scenario` — missing the actual action being tested
+- `check delete account` — vague verb that doesn't specify the intent
+- `handle edge case` — too generic, doesn't describe the specific case
 
-Negative scenarios describe cases where the user intent fails due to incorrect preconditions (invalid state or input data). These scenarios should begin with **"try to"** to explicitly indicate that the intended action was unsuccessful due to incorrect input or an invalid state.
+### Naming Negative Scenarios
+
+When a scenario is meant to fail (due to bad input or invalid state), prefix it with **"try to ..."**. This signals to the reader that the failure is intentional and part of the test design.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 class Scenario(vedro.Scenario):
@@ -98,106 +106,30 @@ def try_to_login_with_incorrect_password():
   </TabItem>
 </Tabs>
 
-Examples:
-- try to login with incorrect password — The user fails to log in (intent) due to an incorrect password (invalid input data).
-- try to login as non-existing user — The user fails to log in (intent) because the account does not exist (invalid state).
+🍏 **Do This:**
+- `try to login with incorrect password`
+- `try to register with already used email`
+- `try to login as non-existing user`
+
+🍎 **Avoid This:**
+- `fail login` — ambiguous whether failure is expected or a bug
+- `unauthorized access` — sounds like a security issue, not a test case
+- `negative test case 3` — numbered tests lack descriptive context
 
 ## Structuring Scenario Steps
 
-Each scenario is divided into clear, distinct steps to represent the flow of the interaction. The three main types of steps are Given, When, and Then.
+A typical scenario includes *given*, *when*, and *then* steps. At minimum, it should include:
+- `when` step that performs the main action
+- `then` step that verifies the outcome
 
-### When: Defining the Action
+Use names that make each step's purpose obvious, but don’t get caught up in strict formats. Favor clarity over ceremony.
 
-Prefix step names with **"when"** to indicate an action taken by the user or system. The when step should align with the subject of the scenario.
+### Given: Setting Up Preconditions
 
-<Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
-
-```python
-class Scenario(vedro.Scenario):
-    subject = "log in as registered user"
-    ...
-
-    def when_user_logs_in(self):
-        ...
-```
-
-  </TabItem>
-  <TabItem value="function-based" label="Function-based">
-
-```python
-@scenario()
-def log_in_as_registered_user():
-    ...
-
-    with when("user logs in"):
-        ...
-```
-
-  </TabItem>
-</Tabs>
-
-Examples:
-- when user updates profile information
-- when system processes payment
-- when background job syncs data
-
-:::tip
-If multiple roles exist, specify the actor explicitly (guest, user, admin). Otherwise, use a general term like user.
-:::
-
-:::warning
-Each test should have only one "when" step.  If you need to add a second "when", consider writing a separate test instead.
-:::
-
-### Then: Verifying the Outcomes
-
-Prefix step names with **"then"** followed by **"it should"** (where "it" refers to the piece of code under test) and a description of the expected result.
+Use `given` to prepare the scenario’s starting state: set up data, files, conditions, or system flags.
 
 <Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
-
-```python
-class Scenario(vedro.Scenario):
-    subject = "log in as registered user"
-    ...
-
-    def then_it_should_return_auth_token(self):
-        ...
-```
-
-  </TabItem>
-  <TabItem value="function-based" label="Function-based">
-
-```python
-@scenario()
-def log_in_as_registered_user():
-    ...
-
-    with then("it should return auth token"):
-        ...
-```
-
-  </TabItem>
-</Tabs>
-
-Examples:
-- then it should send email notification
-- then it should display a welcome message
-- then it should redirect to the dashboard
-
-For additional assertions, use "and it should" or "but it should not" to clearly define expected and unintended behaviors.
-
-Examples:
-- and it should return created token
-- but it should not send email (e.g., when the user has an unverified email)
-
-### Given: Establishing Preconditions
-
-Prefix step names with **"given"** to define preconditions or context. Properly structuring given steps ensures that each test begins in a well-defined state.
-
-<Tabs groupId="test-style">
-  <TabItem value="scenario-based" label="Scenario-based" default>
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 class Scenario(vedro.Scenario):
@@ -223,11 +155,114 @@ def log_in_as_registered_user():
   </TabItem>
 </Tabs>
 
-Examples:
-- given invalid user token
-- given system has pending transactions
-- given background job is scheduled
+🍏 **Do This:**
+- `given invalid user token`
+- `given expired session`
+- `given published blog post`
+
+🍎 **Avoid This:**
+- `setup` — too generic, doesn't specify what's being set up
+- `prepare test data` — vague about what data is being prepared
+- `given_step_1` — sequential numbering provides no meaningful context
 
 :::tip
-If multiple conditions are needed, use additional given steps.
+You can use multiple `given` steps to define separate preconditions when needed.
 :::
+
+### When: Performing the Action
+
+Use `when` for the primary action being tested — it should align with the subject and clearly describe what is happening.
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
+```python
+class Scenario(vedro.Scenario):
+    subject = "log in as registered user"
+    ...
+
+    def when_user_logs_in(self):
+        ...
+```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+@scenario()
+def log_in_as_registered_user():
+    ...
+
+    with when("user logs in"):
+        ...
+```
+
+  </TabItem>
+</Tabs>
+
+🍏 **Do This:**
+- `when user updates profile information`
+- `when system processes payment`
+- `when background job syncs data`
+
+🍎 **Avoid This:**
+- `when_step` — placeholder name with no descriptive value
+- `action` — too abstract, doesn't specify what action
+- `execute` — vague verb that could mean anything
+
+:::warning
+Each scenario should have exactly **one when step**. If you need multiple actions, split them into separate scenarios.
+:::
+
+### Then: Verifying the Outcomes
+
+Use `then` to assert what changed — what result or side effect is expected. Write names that reflect the actual check, not just the general outcome.
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
+```python
+class Scenario(vedro.Scenario):
+    subject = "log in as registered user"
+    ...
+
+    def then_it_should_return_auth_token(self):
+        ...
+```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+@scenario()
+def log_in_as_registered_user():
+    ...
+
+    with then("it should return auth token"):
+        ...
+```
+
+  </TabItem>
+</Tabs>
+
+🍏 **Do This:**
+- `then it should send confirmation email`
+- `then it should redirect to the dashboard`
+- `then it should display a welcome message`
+
+🍎 **Avoid This:**
+- `assert success` — doesn't specify what "success" means
+- `then successful login` — describes state, not expected behavior
+- `verify result` — too vague about what's being verified
+
+:::tip
+If you need to make additional assertions, you can use **"and ..."** or **"but ..."** steps to describe follow-up effects:
+- `and it should return created token`
+- `but it should not send email` (e.g., when the user has an unverified email)
+:::
+
+## Summary
+
+Stick to clear, action-oriented names that reflect the intent of each step and scenario. You’re not writing test code for the machine — you’re writing documentation for your future self (and your teammates).
+
+When in doubt, favor clarity. A good test name tells you what the test is doing before you even read the code.
