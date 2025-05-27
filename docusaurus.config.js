@@ -98,16 +98,11 @@ const config = {
             label: 'AI',
             position: 'left',
           },
-          // {
-          //   href: 'https://slack.vedro.io',
-          //   position: 'right',
-          //   className: 'header-link header-link-slack',
-          // },
-          // {
-          //   href: 'https://github.com/vedro-universe',
-          //   position: 'right',
-          //   className: 'header-link header-link-github',
-          // },
+          {
+            href: 'https://github.com/vedro-universe',
+            position: 'right',
+            className: 'header-github-link',
+          },
         ],
       },
       footer: {
