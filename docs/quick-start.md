@@ -319,3 +319,14 @@ This flow wasn't accidental. It reflects Vedro's three core design principles:
 - **Readable**: Scenarios are easy to understand at a glance. The `Arrange–Act–Assert` structure, clear subject lines, and step names make intent obvious and reduce cognitive overhead.
 - **Scalable**: Contexts and effects keep your suite organized as it grows. Modular setup logic and atomic tests reduce duplication and make refactoring safe and painless.
 - **Pragmatic**: Vedro favors explicitness over magic. You stay in control of dependencies, state, and execution — writing plain Python, not bending to framework conventions.
+
+## What's Next?
+
+The core concepts are in place — now it’s time to level up.
+
+**Go Further**
+- ✅ [Assertions & Reporting](/docs/basics/assertions-and-reporting) – Make better checks, understand results faster
+- 🎯 [Selecting & Ignoring](/docs/basics/selecting-and-ignoring) – Run exactly the tests you care about
+
+**Go Deeper**
+- 📝 [Naming for Better Tests](/docs/best-practices/naming-for-better-tests) – Write clearer, more meaningful scenario and step names
