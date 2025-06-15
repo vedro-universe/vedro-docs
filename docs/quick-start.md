@@ -59,8 +59,6 @@ class Scenario(vedro.Scenario):
   </TabItem>
   <TabItem value="function-based" label="Function-based">
 
-To use the function-based approach, install the [vedro-fn](https://pypi.org/project/vedro-fn/) plugin. For more details, refer to [this article](https://medium.com/@tsv_/a-leaner-approach-with-vedro-introducing-function-based-scenarios-f93df8c8d02f).
-
 ```python
 # scenarios/create_file.py
 from pathlib import Path as File
