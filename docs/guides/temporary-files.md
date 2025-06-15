@@ -39,9 +39,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given
-from vedro import create_tmp_file
+from vedro import scenario, given, create_tmp_file
 
 @scenario()
 def upload_file():
@@ -78,9 +76,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given
-from vedro import create_tmp_dir
+from vedro import scenario, given, create_tmp_dir
 
 @scenario()
 def upload_files():

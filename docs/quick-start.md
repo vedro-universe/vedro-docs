@@ -64,7 +64,7 @@ To use the function-based approach, install the [vedro-fn](https://pypi.org/proj
 ```python
 # scenarios/create_file.py
 from pathlib import Path as File
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 def create_file():
@@ -210,7 +210,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 from contexts.existing_file import existing_file
 
 @scenario()
@@ -280,7 +280,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 from contexts.existing_file import existing_file
 
 @scenario()

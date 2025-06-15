@@ -67,8 +67,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="vedro-function-based" label="Vedro (function-based)">
 
 ```python
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 def process_order():
@@ -146,9 +145,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="vedro-function-based" label="Vedro (function-based)">
 
 ```python
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given, when, then
-from vedro import params
+from vedro import scenario, params, given, when, then
 
 @scenario([
     params({"price": 10, "quantity": 3}, total=30),
@@ -214,8 +211,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="vedro-function-based" label="Vedro (function-based)">
 
 ```python
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 async def process_order():

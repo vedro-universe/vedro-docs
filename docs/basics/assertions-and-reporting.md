@@ -46,7 +46,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 def greet_user():
@@ -114,7 +114,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 def search_user():
@@ -222,8 +222,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, when, then
-from vedro import catched
+from vedro import scenario, when, then, catched
 
 @scenario()
 def divide_by_zero():

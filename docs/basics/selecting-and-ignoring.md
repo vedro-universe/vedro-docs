@@ -89,8 +89,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario
-from vedro import only
+from vedro import scenario, only
 
 @scenario[only]()
 def register_new_user():

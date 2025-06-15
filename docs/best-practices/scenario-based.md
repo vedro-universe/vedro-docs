@@ -57,7 +57,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 from contexts import opened_url_shortener
 
 @scenario()
@@ -143,7 +143,7 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then
 
 @scenario()
 def login_as_registered_user():

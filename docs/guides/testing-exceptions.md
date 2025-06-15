@@ -56,11 +56,9 @@ class Scenario(vedro.Scenario):
   <TabItem value="function-based" label="Function-based">
 
 ```python
-import vedro
-from vedro import catched
-# Install via: vedro plugin install vedro-fn
-from vedro_fn import scenario, given, when, then
+from vedro import scenario, given, when, then, catched
 
+@scenario()
 def try_to_open_nonexisting_file():
     with given:
         filename = "non-existing.file"
