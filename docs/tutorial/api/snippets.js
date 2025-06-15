@@ -294,10 +294,10 @@ class Scenario(vedro.Scenario):
 
 const configApiUrl = `
 # ./config.py
-import cabina
+import vedro.config as cfg
 
-class Config(cabina.Config):
-    class Api(cabina.Section):
+class Config(cfg.Config):
+    class Api(cfg.Section):
         URL = "https://chat-api-tutorial.vedro.io/$namespace$"
 `.trimStart();
 

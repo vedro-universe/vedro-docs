@@ -60,7 +60,7 @@ The `forbid_only` parameter ensures that no scenarios are inadvertently left in 
 ```python
 import vedro
 import vedro.plugins.skipper as skipper
-from cabina import env
+from vedro.config import env
 
 class Config(vedro.Config):
 
