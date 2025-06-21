@@ -1,5 +1,7 @@
 ---
 id: flake8-linter
+tags:
+  - third-party
 ---
 
 # Flake8 Linter
