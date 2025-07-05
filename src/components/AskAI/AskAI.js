@@ -1,4 +1,3 @@
-// src/components/AskAI/AskAI.js
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './AskAI.module.css';
 
@@ -6,7 +5,6 @@ const AskAI = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState('');
 
-  /** Centralised close helper so we avoid repetition */
   const close = useCallback(() => {
     setIsOpen(false);
     setUserInput('');

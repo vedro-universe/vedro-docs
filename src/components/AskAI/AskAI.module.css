@@ -1,31 +1,30 @@
 .askAIButton {
   position: fixed;
-  bottom: 20px;
+  bottom: 21px;
   right: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 20px;
-  background-color: var(--ifm-color-primary);
-  color: white;
+  padding: 14px 20px;
+  background-color: var(--ifm-color-emphasis-200);
+  color: #333;
   border: none;
   border-radius: 24px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
-  z-index: 999;
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  z-index: calc(var(--ifm-z-index-fixed) - 1);
+}
+
+@media (max-width: 600px) {
+  .askAIButton {
+  }
 }
 
 .askAIButton:hover {
-  background-color: var(--ifm-color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.askAIButton:active {
-  transform: translateY(0);
+  background-color: var(--ifm-color-emphasis-300);
 }
 
 .modal {
@@ -174,13 +173,6 @@
 }
 
 @media (max-width: 600px) {
-  .askAIButton {
-    bottom: 16px;
-    right: 16px;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-  
   .modalContent {
     width: 95%;
     margin: 0 10px;
