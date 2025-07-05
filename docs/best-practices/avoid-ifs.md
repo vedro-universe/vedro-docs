@@ -19,6 +19,9 @@ Let's start with an example to illustrate the problem. Imagine a movie streaming
 
 The initial test for this feature might look like this:
 
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
 ```python
 import vedro
 from contexts import logged_in_user, open_age_restricted_movie
@@ -40,6 +43,32 @@ class Scenario(vedro.Scenario):
             assert self.page.exists('.movie-title') is True
 ```
 
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro import scenario, given, when, then
+from contexts import logged_in_user, open_age_restricted_movie
+
+@scenario()
+def open_age_restricted_movie():
+    with given('logged in user'):
+        # `logged_in_user` provides a user with an age
+        user = logged_in_user()
+
+    with when('user opens movie page'):
+        page = open_age_restricted_movie(user)
+
+    with then('it should check user age'):
+        if page.text('.warning') == 'You must be 17+ to watch this movie':
+            assert page.exists('.movie-title') is False
+        else:
+            assert page.exists('.movie-title') is True
+```
+
+  </TabItem>
+</Tabs>
+
 On the surface, this test may look okay. It checks whether the user sees a warning message when trying to view an age-restricted movie and also checks if the movie is actually displayed. However, the test has a crucial flaw: it could pass for the wrong reasons.
 
 - **Frontend Ignores Age Restriction**: Suppose the frontend application completely disregards the age restriction and allows everyone to watch "John Wick." In this situation, the test would still pass (the absence of a warning message would trigger the else condition).
@@ -54,6 +83,9 @@ The [ternary operator](https://book.pythontips.com/en/latest/ternary_operators.h
 :::
 
 ### An Attempt to Refine the Test
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 class Scenario(vedro.Scenario):
@@ -73,6 +105,30 @@ class Scenario(vedro.Scenario):
         else:
             assert self.page.exists('.movie-title') is False
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+@scenario()
+def open_age_restricted_movie():
+    with given('logged in user'):
+        user = logged_in_user()
+
+    with when('user opens movie page'):
+        page = open_age_restricted_movie(user)
+
+    with then('it should check user age'):
+        # highlight-start
+        if user['age'] >= 17:
+        # highlight-end
+            assert page.exists('.movie-title') is True
+        else:
+            assert page.exists('.movie-title') is False
+```
+
+  </TabItem>
+</Tabs>
 
 In this version, the "if" condition is based on the age of the logged-in user, providing a more reliable foundation for the test. The age is a part of the input data, which the test assumes is under control and therefore reliable.
 
@@ -101,6 +157,9 @@ Tests are meant to validate business logic, not contain it themselves. When a te
 
 One effective strategy to address the challenges of conditional logic in tests is through <Link to="/docs/features/parameterized-scenarios" target="_blank">parameterized testing</Link>. This approach allows the same test logic to run multiple times with different sets of parameters. Instead of using branching logic for various data combinations, parameterized tests ensure a linear flow, which enhances their clarity and reliability.
 
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
+
 ```python
 import vedro
 from vedro import params
@@ -125,6 +184,31 @@ class Scenario(vedro.Scenario):
         assert self.page.locator('.movie-title').exists() == self.can_view_movie
 ```
 
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro import scenario, given, when, then, params
+from contexts import logged_in_user, open_age_restricted_movie
+
+@scenario([
+    params(age=13, can_view_movie=False),
+    params(age=17, can_view_movie=True)
+])
+def open_age_restricted_movie(age, can_view_movie):
+    with given('logged in user'):
+        user = logged_in_user(age=age)
+
+    with when('user opens movie page'):
+        page = open_age_restricted_movie(user)
+
+    with then('it should check user age'):
+        assert page.locator('.movie-title').exists() == can_view_movie
+```
+
+  </TabItem>
+</Tabs>
+
 In the example above, the `@params` decorator is used to provide different sets of data for the test. Each set represents a different test scenario. 
 
 ### Splitting Tests
@@ -132,6 +216,9 @@ In the example above, the `@params` decorator is used to provide different sets 
 Another method to eliminate conditional statements from tests is to split them into separate tests. Instead of one test trying to cater to both positive and negative scenarios, it's often clearer to have individual tests, each tailored for a specific responsibility.
 
 1. One test would handle the positive scenario where the user, aged 17, should be able to open an age-restricted movie.
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -150,7 +237,32 @@ class Scenario(vedro.Scenario):
         assert self.page.locator('.movie-title').exists()
 ```
 
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro import scenario, given, when, then
+from contexts import logged_in_user, open_age_restricted_movie
+
+@scenario()
+def open_age_restricted_movie():
+    with given('logged in user'):
+        user = logged_in_user(age=17)
+
+    with when('user opens movie page'):
+        page = open_age_restricted_movie(user)
+
+    with then('it should show movie'):
+        assert page.locator('.movie-title').exists()
+```
+
+  </TabItem>
+</Tabs>
+
 2. Conversely, another test would deal with the negative scenario, ensuring that a 13-year-old user cannot access age-sensitive content.
+
+<Tabs groupId="test-style">
+  <TabItem value="class-based" label="Class-based" default>
 
 ```python
 import vedro
@@ -168,6 +280,28 @@ class Scenario(vedro.Scenario):
     def then_it_should_restrict_movie(self):
         assert self.page.locator('.movie-title').not_exists()
 ```
+
+  </TabItem>
+  <TabItem value="function-based" label="Function-based">
+
+```python
+from vedro import scenario, given, when, then
+from contexts import logged_in_user, open_age_restricted_movie
+
+@scenario()
+def try_to_open_age_restricted_movie():
+    with given('logged in user'):
+        user = logged_in_user(age=13)
+
+    with when('user opens movie page'):
+        page = open_age_restricted_movie(user)
+
+    with then('it should restrict movie'):
+        assert page.locator('.movie-title').not_exists()
+```
+
+  </TabItem>
+</Tabs>
 
 ### Combining Approaches
 
