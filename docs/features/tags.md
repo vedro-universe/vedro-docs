@@ -40,10 +40,10 @@ class Scenario(vedro.Scenario):
 
 The scenario is tagged with the following labels:
 
-- `AUTH_REGISTER` — Denotes the feature related to authentication registration
-- `API` — Highlights the component being tested
-- `KAFKA` — Indicates the messaging system involved
-- `P0` — Signifies its high priority
+- `AUTH_REGISTER`: Denotes the feature related to authentication registration
+- `API`: Highlights the component being tested
+- `KAFKA`: Indicates the messaging system involved
+- `P0`: Signifies its high priority
 
 These tags facilitate effortless identification, execution, and management of this specific test across various dimensions.
 

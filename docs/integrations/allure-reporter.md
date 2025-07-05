@@ -259,8 +259,8 @@ You can use this configuration option to add custom labels to each scenario.
 
 ## Command Line Arguments
 
-- `--allure-report-dir` — Sets the directory for Allure reports. The default is` ./allure_reports`.
-- `--allure-attach-scope` — Attaches scope to the Allure report.
+- `--allure-report-dir`: Sets the directory for Allure reports. The default is` ./allure_reports`.
+- `--allure-attach-scope`: Attaches scope to the Allure report.
 
 These command-line arguments can be used to override the default configurations specified in the `vedro.cfg.py` file.
 

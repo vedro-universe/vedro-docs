@@ -27,7 +27,7 @@ By default, artifacts are saved in the `.vedro/artifacts` directory. However, yo
 
 ## Temp Keeper Plugin
 
-Introducing the Temp Keeper plugin — a convenient tool for managing temporary directories and files. This feature simplifies the process of creating and handling temporary files and directories, essential for tests that require isolated environments.
+Introducing the Temp Keeper plugin: a convenient tool for managing temporary directories and files. This feature simplifies the process of creating and handling temporary files and directories, essential for tests that require isolated environments.
 
 ```python
 import vedro

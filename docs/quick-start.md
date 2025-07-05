@@ -20,17 +20,17 @@ Start small, stay sharp. This guide walks you through the essentials by example:
 
 ## 1. Scenarios: The Heart of Vedro
 
-At the core of Vedro is the **scenario** — a test written as a sequence of clearly defined steps that follow the well-known `Arrange–Act–Assert` pattern. This structure promotes both clarity and consistency across tests, making them easier to read and maintain.
+At the core of Vedro is the **scenario**: a test written as a sequence of clearly defined steps that follow the well-known `Arrange–Act–Assert` pattern. This structure promotes both clarity and consistency across tests, making them easier to read and maintain.
 
 - **Given** – Prepare the initial state and data (Arrange)
 - **When** – Perform the primary action being tested (Act)
 - **Then** – Verify the outcomes (Assert)
 
-Every scenario starts with a **subject**  — a short sentence that reflects the user's intention and clarifies what functionality is under test.
+Every scenario starts with a **subject** : a short sentence that reflects the user's intention and clarifies what functionality is under test.
 
 :::note Writing Styles
-- **Class-Based** — perfect for rich end-to-end flows; typically one scenario per file.
-- **Function-Based** — compact and great for unit-level checks; pack many small scenarios in one file.
+- **Class-Based**: perfect for rich end-to-end flows; typically one scenario per file.
+- **Function-Based**: compact and great for unit-level checks; pack many small scenarios in one file.
 :::
 
 Let's write your very first test:
@@ -81,7 +81,7 @@ def create_file():
 
 Here's what's happening:
 
-- **Subject**: defines the intent — to create a file
+- **Subject**: defines the intent (to create a file)
 - **Given**: prepares a `File` pointing to `example.txt` (but doesn't create it yet)
 - **When**: creates the file using `.touch()`
 - **Then**: checks that the file now exists on disk
@@ -244,7 +244,7 @@ This central action should reflect the scenario's subject and follow the `Arrang
 
 It's tempting to do more, chain multiple actions together in a single scenario. But that's a common pitfall. Scenarios like `Arrange → Act → Assert → Act → Assert` become harder to understand, debug, and maintain. Instead, keep each scenario centered on one action. If there's more to test, write another scenario.
 
-However, that action may ripple through your system and produce several observable results: it might return a value, raise an error, publish a message to a queue, dispatch an email, or ping an external service. Vedro calls each of these outcomes an **effect** — something that can be observed and verified after the action is performed.
+However, that action may ripple through your system and produce several observable results: it might return a value, raise an error, publish a message to a queue, dispatch an email, or ping an external service. Vedro calls each of these outcomes an **effect**: something that can be observed and verified after the action is performed.
 
 Because every effect is still rooted in the same action, it is perfectly reasonable to check them together inside the same scenario:
 
@@ -316,11 +316,11 @@ You've just built your first test suite with Vedro, from a single passing scenar
 This flow wasn't accidental. It reflects Vedro's three core design principles:
 - **Readable**: Scenarios are easy to understand at a glance. The `Arrange–Act–Assert` structure, clear subject lines, and step names make intent obvious and reduce cognitive overhead.
 - **Scalable**: Contexts and effects keep your suite organized as it grows. Modular setup logic and atomic tests reduce duplication and make refactoring safe and painless.
-- **Pragmatic**: Vedro favors explicitness over magic. You stay in control of dependencies, state, and execution — writing plain Python, not bending to framework conventions.
+- **Pragmatic**: Vedro favors explicitness over magic. You stay in control of dependencies, state, and execution: writing plain Python, not bending to framework conventions.
 
 ## What's Next?
 
-The core concepts are in place — now it’s time to level up.
+The core concepts are in place, so now it’s time to level up.
 
 **Go Further**
 - ✅ [Assertions & Reporting](/docs/basics/assertions-and-reporting) – Make better checks, understand results faster

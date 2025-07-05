@@ -12,7 +12,7 @@ import TerminalOutput from '@site/src/components/TerminalOutput';
 import TableOfContents from './TableOfContents';
 import Link from '@site/src/components/Link';
 
-# Chapter 1 — First Steps
+# Chapter 1: First Steps
 
 <TableOfContents current="chapter1" />
 

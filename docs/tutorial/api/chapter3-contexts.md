@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
 import Link from '@site/src/components/Link';
 
-# Chapter 3 — Contexts
+# Chapter 3: Contexts
 
 <TableOfContents current="chapter3" />
 
@@ -24,7 +24,7 @@ In the previous chapters, we crafted our first scenario focused on registering a
 
 <TemplateScenario block={registerScenarioFinal} />
 
-After creating an account, we can now move on to the next scenario — the user <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">authentication process</Link>.
+After creating an account, we can now move on to the next scenario: the user <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">authentication process</Link>.
 
 ## Setting the Stage for Authentication
 
@@ -64,7 +64,7 @@ Contexts not only allow us to set prerequisites for our scenarios but also provi
 
 ## Final Touch: Dealing with Token
 
-While our scenario for logging in as a registered user is now functioning correctly, there's an important aspect we still need to handle — the token. As part of the <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">login process</Link>, the `/auth/login` method returns a token, a key component in subsequent authenticated user actions. Therefore, validating this token in our scenario is a critical step.
+While our scenario for logging in as a registered user is now functioning correctly, there's an important aspect we still need to handle: the token. As part of the <Link to="https://chat-api-tutorial.vedro.io/docs#/default/auth_login">login process</Link>, the `/auth/login` method returns a token, a key component in subsequent authenticated user actions. Therefore, validating this token in our scenario is a critical step.
 
 First, we need to define a schema for this token:
 

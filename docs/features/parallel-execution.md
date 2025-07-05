@@ -10,7 +10,7 @@
 
 Need to run your test suite faster? Vedro makes it easy to execute tests in parallel across multiple nodes or containers.
 
-Each node runs a different “slice” of the test suite. Together, the nodes split the work and reduce overall test time — perfect for CI pipelines.
+Each node runs a different “slice” of the test suite. Together, the nodes split the work and reduce overall test time, perfect for CI pipelines.
 
 ## Running in Parallel
 

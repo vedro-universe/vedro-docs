@@ -16,7 +16,7 @@ import Screenshot from '@site/src/components/Screenshot';
 
 The [Vedro PyCharm plugin](https://plugins.jetbrains.com/plugin/18227-vedro) makes it easy to run and debug your scenarios, without ever leaving the IDE. It adds inline controls to execute both individual and parameterized scenarios, plus a built-in test report for quick feedback.
 
-No need to switch between terminal and editor — just click and go.
+No need to switch between terminal and editor: just click and go.
 
 ## Installation
 
@@ -62,7 +62,7 @@ To ensure compatibility with PyCharm and other plugins, your project must contai
 
 ## Viewing Results
 
-Test output is shown right inside the Run window, with a clear, structured summary — just like in the terminal.
+Test output is shown right inside the Run window, with a clear, structured summary: just like in the terminal.
 
 <Screenshot src={require('./pycharm/output.png')} shadow={false} width="100%" />
 

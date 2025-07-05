@@ -13,10 +13,10 @@ import Link from '@site/src/components/Link';
 
 **Features**
 
-* **Friction‑less requests** — send asynchronous or synchronous calls through one helper method.
-* **Pretty failures** — on an assertion error you get a colourised snapshot of the method, URL, status, headers and body right in the console.
-* **Request recording** — automatically capture every request/response pair as a [HAR](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact for debugging or reporting.
-* **OpenAPI generation (beta)** — turn recorded traffic into an OpenAPI 3.1 spec with a single command.
+* **Friction‑less requests**: send asynchronous or synchronous calls through one helper method.
+* **Pretty failures**: on an assertion error you get a colourised snapshot of the method, URL, status, headers and body right in the console.
+* **Request recording**: automatically capture every request/response pair as a [HAR](https://en.wikipedia.org/wiki/HAR_(file_format)) artifact for debugging or reporting.
+* **OpenAPI generation (beta)**: turn recorded traffic into an OpenAPI 3.1 spec with a single command.
 
 ## Installation
 

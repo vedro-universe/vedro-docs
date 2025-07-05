@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
 import Link from '@site/src/components/Link';
 
-# Chapter 4 — Interfaces
+# Chapter 4: Interfaces
 
 <TableOfContents current="chapter4" />
 
@@ -62,7 +62,7 @@ httpx.post(f"{API_URL}/auth/register", json=self.user)
 httpx.post(f"{API_URL}/auth/register", json=user)
 ```
 
-In both files, we're using the same endpoint. If we need to modify this endpoint or the base URL, we would have to update all references to it — a tedious and error-prone task.
+In both files, we're using the same endpoint. If we need to modify this endpoint or the base URL, we would have to update all references to it: a tedious and error-prone task.
 
 To avoid this, we can employ the concept of **interfaces**.
 

@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 
 Clear, consistent naming helps your scenarios stay readable and maintainable, especially as your test suite grows. This guide offers practical naming tips for subjects and steps, aligned with Vedro’s principles of being **readable**, **scalable**, and **pragmatic**.
 
-These aren’t hard rules — Vedro doesn’t enforce naming conventions. Think of them as helpful defaults that you can adapt to your project or team style.
+These aren’t hard rules. Vedro doesn’t enforce naming conventions. Think of them as helpful defaults that you can adapt to your project or team style.
 
 ## Defining the Subject
 
-The `subject` should describe the **intent** of the scenario — what action is being tested, or what the user/system is trying to do. Keep it short, direct, and ideally from the user’s perspective.
+The `subject` should describe the **intent** of the scenario: what action is being tested, or what the user/system is trying to do. Keep it short, direct, and ideally from the user’s perspective.
 
 <Tabs groupId="test-style">
   <TabItem value="class-based" label="Class-based" default>
@@ -42,9 +42,9 @@ def log_in_as_registered_user():
 - `retrieve order history`
 
 🍎 **Avoid This:**
-- `test login flow` — too generic, prefix "test" adds no value (all tests are tests)
-- `should successfully authenticate user with valid credentials` — too wordy, reads like assertion
-- `LoginTest123` — cryptic naming that provides no context
+- `test login flow` (too generic, prefix "test" adds no value (all tests are tests)
+- `should successfully authenticate user with valid credentials` (too wordy, reads like assertion)
+- `LoginTest123` (cryptic naming that provides no context)
 
 ### Adding Context or Conditions
 
@@ -77,9 +77,9 @@ def register_via_email():
 - `delete inactive account as admin`
 
 🍎 **Avoid This:**
-- `admin scenario` — missing the actual action being tested
-- `check delete account` — vague verb that doesn't specify the intent
-- `handle edge case` — too generic, doesn't describe the specific case
+- `admin scenario` (missing the actual action being tested)
+- `check delete account` (vague verb that doesn't specify the intent)
+- `handle edge case` (too generic, doesn't describe the specific case)
 
 ### Naming Negative Scenarios
 
@@ -112,9 +112,9 @@ def try_to_login_with_incorrect_password():
 - `try to login as non-existing user`
 
 🍎 **Avoid This:**
-- `fail login` — ambiguous whether failure is expected or a bug
-- `unauthorized access` — sounds like a security issue, not a test case
-- `negative test case 3` — numbered tests lack descriptive context
+- `fail login` (ambiguous whether failure is expected or a bug)
+- `unauthorized access` (sounds like a security issue, not a test case)
+- `negative test case 3` (numbered tests lack descriptive context)
 
 ## Structuring Scenario Steps
 
@@ -161,9 +161,9 @@ def log_in_as_registered_user():
 - `given published blog post`
 
 🍎 **Avoid This:**
-- `setup` — too generic, doesn't specify what's being set up
-- `prepare test data` — vague about what data is being prepared
-- `given_step_1` — sequential numbering provides no meaningful context
+- `setup` (too generic, doesn't specify what's being set up)
+- `prepare test data` (vague about what data is being prepared)
+- `given_step_1` (sequential numbering provides no meaningful context)
 
 :::tip
 You can use multiple `given` steps to define separate preconditions when needed.
@@ -171,7 +171,7 @@ You can use multiple `given` steps to define separate preconditions when needed.
 
 ### When: Performing the Action
 
-Use `when` for the primary action being tested — it should align with the subject and clearly describe what is happening.
+Use `when` for the primary action being tested. It should align with the subject and clearly describe what is happening.
 
 <Tabs groupId="test-style">
   <TabItem value="class-based" label="Class-based" default>
@@ -206,9 +206,9 @@ def log_in_as_registered_user():
 - `when background job syncs data`
 
 🍎 **Avoid This:**
-- `when_step` — placeholder name with no descriptive value
-- `action` — too abstract, doesn't specify what action
-- `execute` — vague verb that could mean anything
+- `when_step` (placeholder name with no descriptive value)
+- `action` (too abstract, doesn't specify what action)
+- `execute` (vague verb that could mean anything)
 
 :::warning
 Each scenario should have exactly **one when step**. If you need multiple actions, split them into separate scenarios.
@@ -216,7 +216,7 @@ Each scenario should have exactly **one when step**. If you need multiple action
 
 ### Then: Verifying the Outcomes
 
-Use `then` to assert what changed — what result or side effect is expected. Write names that reflect the actual check, not just the general outcome.
+Use `then` to assert what changed: what result or side effect is expected. Write names that reflect the actual check, not just the general outcome.
 
 <Tabs groupId="test-style">
   <TabItem value="class-based" label="Class-based" default>
@@ -251,9 +251,9 @@ def log_in_as_registered_user():
 - `then it should display a welcome message`
 
 🍎 **Avoid This:**
-- `assert success` — doesn't specify what "success" means
-- `then successful login` — describes state, not expected behavior
-- `verify result` — too vague about what's being verified
+- `assert success` (doesn't specify what "success" means)
+- `then successful login` (describes state, not expected behavior)
+- `verify result` (too vague about what's being verified)
 
 :::tip
 If you need to make additional assertions, you can use **"and ..."** or **"but ..."** steps to describe follow-up effects:
@@ -263,6 +263,6 @@ If you need to make additional assertions, you can use **"and ..."** or **"but .
 
 ## Summary
 
-Stick to clear, action-oriented names that reflect the intent of each step and scenario. You’re not writing test code for the machine — you’re writing documentation for your future self (and your teammates).
+Stick to clear, action-oriented names that reflect the intent of each step and scenario. You’re not writing test code for the machine; you’re writing documentation for your future self (and your teammates).
 
 When in doubt, favor clarity. A good test name tells you what the test is doing before you even read the code.

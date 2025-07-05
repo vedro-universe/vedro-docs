@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 import TableOfContents from './TableOfContents';
 import Link from '@site/src/components/Link';
 
-# Chapter 2 — Data Models
+# Chapter 2: Data Models
 
 <TableOfContents current="chapter2" />
 

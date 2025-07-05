@@ -75,9 +75,9 @@ def try_to_open_nonexisting_file():
 </Tabs>
 
 The `exc_info` object encapsulates details about the exception. If an exception is raised within the `catched` block, the following attributes are populated:
-- `type` — the type of the exception that was raised
-- `value` —  the actual exception instance
-- `traceback` — the <Link to="https://docs.python.org/3/library/types.html#types.TracebackType">traceback object</Link> containing details about the exception's context
+- `type`: the type of the exception that was raised
+- `value`:  the actual exception instance
+- `traceback`: the <Link to="https://docs.python.org/3/library/types.html#types.TracebackType">traceback object</Link> containing details about the exception's context
 
 If no exception is raised, all these attributes are set to `None`.
 

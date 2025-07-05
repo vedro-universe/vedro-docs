@@ -17,7 +17,7 @@ import Link from '@site/src/components/Link';
 
 ## Introduction
 
-In day-to-day development, you often run just a subset of your test suite — a single scenario, a few files, or everything in just one directory. Vedro gives you multiple ways to precisely control what gets executed.
+In day-to-day development, you often run just a subset of your test suite: a single scenario, a few files, or everything in just one directory. Vedro gives you multiple ways to precisely control what gets executed.
 
 ## Selecting Scenarios
 
@@ -176,7 +176,7 @@ Run the **second** (`404 Not Found`):
 $ vedro run scenarios/get_status.py::Scenario#2
 ```
 
-Indexing starts at **1**, and follows the **top-to-bottom order** of `@params` declarations — the natural order they appear in your code.
+Indexing starts at **1**, and follows the **top-to-bottom order** of `@params` declarations: the natural order they appear in your code.
 
 ## The Big Picture
 

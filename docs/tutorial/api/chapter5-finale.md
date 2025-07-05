@@ -7,7 +7,7 @@ pagination_next: basics/selecting-and-ignoring
 import TableOfContents from './TableOfContents';
 import Link from '@site/src/components/Link';
 
-# Chapter 5 — Finale
+# Chapter 5: Finale
 
 <TableOfContents current="chapter5-finale" />
 

@@ -90,7 +90,7 @@ No guesswork. No extra logging. Just the information you need, right when you ne
 
 ### Use Any Assertion You Need
 
-Vedro gives you the full power of Python. Use any operator or expression to craft exactly the assertion you need — whether you're comparing values, checking membership, or verifying custom logic.
+Vedro gives you the full power of Python. Use any operator or expression to craft exactly the assertion you need: whether you're comparing values, checking membership, or verifying custom logic.
 
 <Tabs groupId="test-style">
   <TabItem value="class-based" label="Class-based" default>
@@ -162,7 +162,7 @@ Python supports custom messages in assertions:
 assert user.id == 42, "Expected user ID to be 42"
 ```
 
-This works in Vedro too — but most of the time, it’s unnecessary.
+This works in Vedro too: but most of the time, it’s unnecessary.
 
 With descriptive step names, structured output, and clear diffs, you already get all the context you need when something fails. Adding messages often duplicates information or leads to less readable code.
 
@@ -246,7 +246,7 @@ Learn more in the [Testing Exceptions](https://vedro.io/docs/guides/testing-exce
 
 ## Reporting: Readable and Customizable
 
-By default, Vedro uses the **RichReporter** — a powerful, highly customizable reporter that adds structure, color, and metadata to your test output.
+By default, Vedro uses the **RichReporter**: a powerful, highly customizable reporter that adds structure, color, and metadata to your test output.
 
 ### Show Timings
 

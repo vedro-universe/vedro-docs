@@ -11,8 +11,8 @@ Temporary files and directories are a foundational part of modern test suites, e
 
 Vedro makes this process easy with two built-in helpers:
 
-- `create_tmp_file()` — for generating temporary files
-- `create_tmp_dir()` — for creating temporary directories
+- `create_tmp_file()`: for generating temporary files
+- `create_tmp_dir()`: for creating temporary directories
 
 These utilities are part of Vedro's core philosophy: to keep tests expressive, maintainable, and free from noisy boilerplate code.
 
@@ -105,7 +105,7 @@ This customization is particularly useful when generating multiple temporary res
 
 ## Changing the Temporary Root Directory
 
-In some cases, the default `.vedro/tmp` location may not be ideal — especially when running tests in CI environments or within restricted filesystems. You can change the root directory for all temporary files using either configuration or command-line options.
+In some cases, the default `.vedro/tmp` location may not be ideal, especially when running tests in CI environments or within restricted filesystems. You can change the root directory for all temporary files using either configuration or command-line options.
 
 #### Via Config
 
@@ -173,9 +173,9 @@ def create_tmp_file(*, suffix: Optional[str] = None, prefix: Optional[str] = Non
 
 Creates a temporary file in the configured temporary root directory.
 
-- `suffix` — Optional suffix for the filename (e.g., ".txt")
-- `prefix` — Optional prefix for the filename (e.g., "log_")
-- **Returns** — A [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use) object representing the created file
+- `suffix`: Optional suffix for the filename (e.g., ".txt")
+- `prefix`: Optional prefix for the filename (e.g., "log_")
+- **Returns**: A [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use) object representing the created file
 
 Internally, `create_tmp_file` uses Python's [`tempfile.NamedTemporaryFile`](https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile) with `delete=False` to ensure the file persists.
 
@@ -187,8 +187,8 @@ def create_tmp_dir(*, suffix: Optional[str] = None, prefix: Optional[str] = None
 
 Creates a temporary directory in the configured temporary root directory.
 
-- `suffix` — Optional suffix for the directory name
-- `prefix` — Optional prefix for the directory name
-- **Returns** — A [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use) object representing the created directory
+- `suffix`: Optional suffix for the directory name
+- `prefix`: Optional prefix for the directory name
+- **Returns**: A [`Path`](https://docs.python.org/3/library/pathlib.html#basic-use) object representing the created directory
 
 Internally, `create_tmp_dir` uses Python's [`tempfile.mkdtemp`](https://docs.python.org/3/library/tempfile.html#tempfile.mkdtemp), providing a unique directory each time.

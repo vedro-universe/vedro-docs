@@ -76,7 +76,7 @@ class Scenario(vedro.Scenario):
 
 In this version, the "if" condition is based on the age of the logged-in user, providing a more reliable foundation for the test. The age is a part of the input data, which the test assumes is under control and therefore reliable.
 
-However, this refined test still has significant drawbacks. The test heavily relies on the `logged_in_user` function to dictate its path. What if, due to future code refactoring or changing business requirements, `logged_in_user` consistently returns users aged 17 or older? In such a case, the test would provide coverage only for one specific scenario—that users aged 17 or above can view the movie. It would fail to verify that younger users are restricted from watching age-sensitive content, essentially defeating the purpose of the test.
+However, this refined test still has significant drawbacks. The test heavily relies on the `logged_in_user` function to dictate its path. What if, due to future code refactoring or changing business requirements, `logged_in_user` consistently returns users aged 17 or older? In such a case, the test would provide coverage only for one specific scenario: that users aged 17 or above can view the movie. It would fail to verify that younger users are restricted from watching age-sensitive content, essentially defeating the purpose of the test.
 
 Even though the test appears to be improved, it still lacks comprehensive coverage. By relying on conditional statements, it opens the door to scenarios where it might not fully validate the functionality it is intended to test.
 
@@ -86,7 +86,7 @@ As seen from the examples above, even a well-intentioned effort to make the test
 
 **Unnecessary Complexity**
 
-Introducing an "if" statement into a test adds branching logic to test code. In other words, the test can take multiple paths based on varying conditions. While this might seem like a flexible approach, it actually introduces unnecessary complexity. A test should have a straightforward flow so that it clearly either passes or fails based on predefined conditions. If there are multiple branching paths, understanding why a test failed—or even worse, why it passed—becomes difficult.
+Introducing an "if" statement into a test adds branching logic to test code. In other words, the test can take multiple paths based on varying conditions. While this might seem like a flexible approach, it actually introduces unnecessary complexity. A test should have a straightforward flow so that it clearly either passes or fails based on predefined conditions. If there are multiple branching paths, understanding why a test failed, or even worse, why it passed, becomes difficult.
 
 <Screenshot src={require('./avoid-ifs/scn_diagram.png')} width="450px" shadow="none" /><br/>
 <br/>
