@@ -94,3 +94,8 @@
 html[data-theme="dark"] .header-link::before {
   filter: none;
 }
+
+/* TEMP: hide Docusaurus Back-to-Top while it conflicts with the Ask AI button */
+.theme-back-to-top-button {
+  display: none !important;
+}
