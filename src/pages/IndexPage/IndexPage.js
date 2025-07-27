@@ -1,5 +1,7 @@
+import Footer from './Footer';
 import { Header, HeroSection } from './Header';
 import BeautifulOutput from './Sections/BeautifulOutput';
+import JoinCommunity from './Sections/JoinCommunity';
 import PlainPythonAssertions from './Sections/PlainPythonAssertions';
 import PluginFirstArchitecture from './Sections/PluginFirstArchitecture';
 import Section from './Sections/Section';
@@ -65,6 +67,10 @@ const IndexPage = () => {
           <PluginFirstArchitecture />
         </Section>
 
+        {/* CTA Section: Join Community */}
+        <JoinCommunity />
+
+        <Footer />
       </div>
     </div>
   );
