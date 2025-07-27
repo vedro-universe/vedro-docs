@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 
-// touch ./src/pages/IndexPage/Styles/index.min.css
 const cssPath = path.join(__dirname, './src/pages/IndexPage/Styles/index.min.css');
 const cssSourcePath = path.join(__dirname, './src/pages/IndexPage/Styles/index.css');
 const jsPath = path.join(__dirname, './src/pages/IndexPage/Styles/index.js');
