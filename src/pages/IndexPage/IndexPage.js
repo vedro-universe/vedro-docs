@@ -1,6 +1,7 @@
 import Footer from './Footer';
-import { Header, HeroSection } from './Header';
+import Header from './Header';
 import BeautifulOutput from './Sections/BeautifulOutput';
+import HeroSection from './Sections/HeroSection';
 import JoinCommunity from './Sections/JoinCommunity';
 import PlainPythonAssertions from './Sections/PlainPythonAssertions';
 import PluginFirstArchitecture from './Sections/PluginFirstArchitecture';

@@ -12,7 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "build:index-css": "tailwindcss -c tailwind.config.js -i ./src/pages/IndexPage/Styles/index.css -o ./src/pages/IndexPage/Styles/index.min.css --minify"
+    "build:index-css": "tailwindcss -c tailwind.config.js -i ./src/pages/IndexPage/Styles/index.css -o ./static/css/index.min.css --minify"
   },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
