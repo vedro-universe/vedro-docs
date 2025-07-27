@@ -4,7 +4,7 @@ import PluginStats from './PluginStats';
 
 const PluginArchitecture = () => {
   return (
-    <div>
+    <div className="-mt-3">
       <PluginOrbs />
       <PluginStats />
       <PluginCode />
