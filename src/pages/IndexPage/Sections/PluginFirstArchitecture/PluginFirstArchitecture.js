@@ -1,7 +1,15 @@
-const PluginFirstArchitecture = () => {
+import PluginCode from './PluginCode';
+import PluginOrbs from './PluginOrbs';
+import PluginStats from './PluginStats';
+
+const PluginArchitecture = () => {
   return (
-    <div></div>
+    <div>
+      <PluginOrbs />
+      <PluginStats />
+      <PluginCode />
+    </div>
   );
 };
 
-export default PluginFirstArchitecture;
+export default PluginArchitecture;
