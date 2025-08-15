@@ -4,7 +4,7 @@ import IndexPage from './IndexPage/IndexPage';
 
 export default function Home() {
   const fonts = `
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap');
   `;
 
   return (
