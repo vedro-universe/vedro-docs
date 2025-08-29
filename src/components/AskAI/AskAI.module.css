@@ -18,11 +18,6 @@
   z-index: calc(var(--ifm-z-index-fixed) - 1);
 }
 
-@media (max-width: 600px) {
-  .askAIButton {
-  }
-}
-
 .askAIButton:hover {
   background-color: var(--ifm-color-emphasis-300);
 }
@@ -177,4 +172,42 @@
     width: 95%;
     margin: 0 10px;
   }
+}
+
+/* Add these styles to your existing AskAI.module.css file */
+
+.aiSelector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+}
+
+.aiOption {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aiOption:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.aiOptionActive {
+  background-color: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.aiOptionActive:hover {
+  background-color: var(--ifm-background-surface-color);
 }

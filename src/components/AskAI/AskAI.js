@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import styles from './AskAI.module.css';
 
 const AskAI = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState('');
+  const [selectedAI, setSelectedAI] = useState('chatgpt'); // 'chatgpt' or 'claude'
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -12,9 +13,18 @@ const AskAI = () => {
 
   const handleAskAI = () => {
     const currentUrl = window.location.href;
-    const query = encodeURIComponent(`${currentUrl} ${userInput}`);
-    const chatGPTUrl = `https://chatgpt.com/?hints=search&q=${query}`;
-    window.open(chatGPTUrl, '_blank');
+
+    let aiUrl;
+    if (selectedAI === 'claude') {
+      const query = `I'm looking at this documentation page: ${currentUrl}\n\nMy question: ${userInput}`;
+      const encodedPrompt = encodeURIComponent(query);
+      aiUrl = `https://claude.ai/new?q=${encodedPrompt}`;
+    } else {
+      const query = encodeURIComponent(`${currentUrl} ${userInput}`);
+      aiUrl = `https://chatgpt.com/?hints=search&q=${query}`;
+    }
+
+    window.open(aiUrl, '_blank');
     close();
   };
 
@@ -83,6 +93,25 @@ const AskAI = () => {
 
             <div className={styles.modalBody}>
               <p>What would you like to know about this documentation page?</p>
+              
+              {/* AI Selection Toggle */}
+              <div className={styles.aiSelector}>
+                <button
+                  className={`${styles.aiOption} ${selectedAI === 'chatgpt' ? styles.aiOptionActive : ''}`}
+                  onClick={() => setSelectedAI('chatgpt')}
+                  type="button"
+                >
+                  ChatGPT
+                </button>
+                <button
+                  className={`${styles.aiOption} ${selectedAI === 'claude' ? styles.aiOptionActive : ''}`}
+                  onClick={() => setSelectedAI('claude')}
+                  type="button"
+                >
+                  Claude
+                </button>
+              </div>
+
               <input
                 type="text"
                 className={styles.input}
@@ -104,7 +133,7 @@ const AskAI = () => {
                   onClick={handleAskAI}
                   disabled={!userInput.trim()}
                 >
-                  Ask ChatGPT
+                  Ask {selectedAI === 'claude' ? 'Claude' : 'ChatGPT'}
                 </button>
               </div>
             </div>
