@@ -124,7 +124,7 @@ $ pip install vedro
 $ vedro run scenarios/
 ```
 
-And enjoy the output:
+And enjoy Vedro's beautiful, informative output:
 
 <Tabs>
   <TabItem value="passed-output" label="✅ Passed" default>
@@ -384,7 +384,7 @@ This flow wasn't accidental. It reflects Vedro's core design principles:
 
 ## What's Next?
 
-The core concepts are in place, so now it’s time to level up.
+The core concepts are in place, so now it's time to level up.
 
 **Go Further**
 - ✅ [Assertions & Reporting](/docs/basics/assertions-and-reporting) – Make better checks, understand results faster
