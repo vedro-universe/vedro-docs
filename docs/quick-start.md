@@ -16,7 +16,9 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-Start small, stay sharp. This guide walks you through the essentials by example: no theory, no fluff, just the foundation you'll build real tests on.
+**Vedro** is a pragmatic testing framework that adapts to you, not the other way around. With plain Python assertions, flexible syntax styles, and a plugin-first architecture, Vedro makes testing enjoyable again.
+
+This guide walks you through the essentials by example: no theory, no fluff, just the foundation you'll build real tests on.
 
 ## 1. Scenarios: The Heart of Vedro
 
@@ -29,14 +31,56 @@ At the core of Vedro is the **scenario**: a test written as a sequence of clearl
 Every scenario starts with a **subject** : a short sentence that reflects the user's intention and clarifies what functionality is under test.
 
 :::note Writing Styles
-- **Class-Based**: perfect for rich end-to-end flows; typically one scenario per file.
-- **Function-Based**: compact and great for unit-level checks; pack many small scenarios in one file.
+Pick the style that fits your needs:
+- **Minimal**: Start writing tests immediately with zero ceremony
+- **Structured**: Make tests self-documenting with context managers
+- **Expressive**: Gain fine-grained control with class-based approach
 :::
 
 Let's write your very first test:
 
 <Tabs groupId="test-style">
-  <TabItem value="class-based" label="Class-based" default>
+  <TabItem value="minimal" label="Minimal">
+
+```python
+# scenarios/create_file.py
+from pathlib import Path as File
+from vedro import scenario
+
+@scenario()
+def create_file():
+    # Arrange
+    file = File('example.txt')
+
+    # Act
+    file.touch()
+
+    # Assert
+    assert file.exists()
+```
+
+  </TabItem>
+  <TabItem value="structured" label="Structured" default>
+
+```python
+# scenarios/create_file.py
+from pathlib import Path as File
+from vedro import scenario, given, when, then
+
+@scenario()
+def create_file():
+    with given('new file'):
+        file = File('example.txt')
+
+    with when('creating file'):
+        file.touch()
+
+    with then('file should exist'):
+        assert file.exists()
+```
+
+  </TabItem>
+  <TabItem value="expressive" label="Expressive">
 
 ```python
 # scenarios/create_file.py
@@ -54,26 +98,6 @@ class Scenario(vedro.Scenario):
 
     def then_file_should_exist(self):
         assert self.file.exists()
-```
-
-  </TabItem>
-  <TabItem value="function-based" label="Function-based">
-
-```python
-# scenarios/create_file.py
-from pathlib import Path as File
-from vedro import scenario, given, when, then
-
-@scenario()
-def create_file():
-    with given('new file'):
-        file = File('example.txt')
-
-    with when('creating file'):
-        file.touch()
-
-    with then('file should exist'):
-        assert file.exists()
 ```
 
   </TabItem>
@@ -185,7 +209,45 @@ Contexts are typically placed in a `contexts/` directory and decorated with `@co
 Now this context can be used in a more advanced scenario:
 
 <Tabs groupId="test-style">
-  <TabItem value="class-based" label="Class-based" default>
+  <TabItem value="minimal" label="Minimal">
+
+```python
+from vedro import scenario
+from contexts.existing_file import existing_file
+
+@scenario()
+def write_data_to_existing_file():
+    # Arrange
+    file = existing_file()
+
+    # Act
+    file.write_text('banana')
+
+    # Assert
+    assert file.read_text() == 'banana'
+```
+
+  </TabItem>
+  <TabItem value="structured" label="Structured" default>
+
+```python
+from vedro import scenario, given, when, then
+from contexts.existing_file import existing_file
+
+@scenario()
+def write_data_to_existing_file():
+    with given('existing file'):
+        file = existing_file()
+
+    with when('writing data'):
+        file.write_text('banana')
+
+    with then('file should contain written data'):
+        assert file.read_text() == 'banana'
+```
+
+  </TabItem>
+  <TabItem value="expressive" label="Expressive">
 
 ```python
 import vedro
@@ -202,25 +264,6 @@ class Scenario(vedro.Scenario):
 
     def then_file_should_contain_written_data(self):
         assert self.file.read_text() == 'banana'
-```
-
-  </TabItem>
-  <TabItem value="function-based" label="Function-based">
-
-```python
-from vedro import scenario, given, when, then
-from contexts.existing_file import existing_file
-
-@scenario()
-def write_data_to_existing_file():
-    with given('existing file'):
-        file = existing_file()
-
-    with when('writing data'):
-        file.write_text('banana')
-
-    with then('file should contain written data'):
-        assert file.read_text() == 'banana'
 ```
 
   </TabItem>
@@ -249,7 +292,53 @@ However, that action may ripple through your system and produce several observab
 Because every effect is still rooted in the same action, it is perfectly reasonable to check them together inside the same scenario:
 
 <Tabs groupId="test-style">
-  <TabItem value="class-based" label="Class-based" default>
+  <TabItem value="minimal" label="Minimal">
+
+```python
+from vedro import scenario
+from contexts.existing_file import existing_file
+
+@scenario()
+def rename_existing_file():
+    # Arrange
+    original_file = existing_file('file.txt')
+
+    # Act
+    renamed_file = original_file.rename('new_file.txt')
+    
+    # Assert - multiple effects of the single action
+    assert renamed_file.name == 'new_file.txt'
+    assert renamed_file.exists()
+    assert not original_file.exists()
+```
+
+  </TabItem>
+  <TabItem value="structured" label="Structured" default>
+
+```python
+from vedro import scenario, given, when, then
+from contexts.existing_file import existing_file
+
+@scenario()
+def rename_existing_file():
+    with given('existing file'):
+        original_file = existing_file('file.txt')
+
+    with when('renaming file'):
+        renamed_file = original_file.rename('new_file.txt')
+
+    with then('renamed file should have correct name'):
+        assert renamed_file.name == 'new_file.txt'
+
+    with then('renamed file should exist'):
+        assert renamed_file.exists()
+
+    with then('original file should no longer exist'):
+        assert not original_file.exists()
+```
+
+  </TabItem>
+  <TabItem value="expressive" label="Expressive">
 
 ```python
 import vedro
@@ -275,31 +364,6 @@ class Scenario(vedro.Scenario):
 ```
 
   </TabItem>
-  <TabItem value="function-based" label="Function-based">
-
-```python
-from vedro import scenario, given, when, then
-from contexts.existing_file import existing_file
-
-@scenario()
-def rename_existing_file():
-    with given('existing file'):
-        original_file = existing_file('file.txt')
-
-    with when('renaming file'):
-        renamed_file = original_file.rename('new_file.txt')
-
-    with then('renamed file should have correct name'):
-        assert renamed_file.name == 'new_file.txt'
-
-    with then('renamed file should exist'):
-        assert renamed_file.exists()
-
-    with then('original file should no longer exist'):
-        assert not original_file.exists()
-```
-
-  </TabItem>
 </Tabs>
 
 Each assertion here focuses on a distinct but related aspect of the same action's outcome:
@@ -313,7 +377,7 @@ The scenario remains atomic. It tests just one thing (file renaming), while veri
 
 You've just built your first test suite with Vedro, from a single passing scenario to reusable contexts and rich, effect-driven assertions.
 
-This flow wasn't accidental. It reflects Vedro's three core design principles:
+This flow wasn't accidental. It reflects Vedro's core design principles:
 - **Readable**: Scenarios are easy to understand at a glance. The `Arrange–Act–Assert` structure, clear subject lines, and step names make intent obvious and reduce cognitive overhead.
 - **Scalable**: Contexts and effects keep your suite organized as it grows. Modular setup logic and atomic tests reduce duplication and make refactoring safe and painless.
 - **Pragmatic**: Vedro favors explicitness over magic. You stay in control of dependencies, state, and execution: writing plain Python, not bending to framework conventions.
