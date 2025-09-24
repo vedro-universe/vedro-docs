@@ -12,7 +12,7 @@ import SubscribeTip from '../_subscribe_for_updates.md';
 
 # What's New in Vedro v1.15
 
-<Link to="https://pypi.org/project/vedro/">Vedro v1.15</Link> brings cleaner scenario authoring, powerful reusable assertions, and richer reporting. Plus a handful of Quality of Life (QoL) upgrades that make everyday testing smoother.
+<Link to="https://pypi.org/project/vedro/">Vedro v1.15</Link> brings cleaner scenario authoring, powerful reusable assertions, and richer reporting. Plus a handful of QoL (Quality of Life) upgrades that make everyday testing smoother.
 
 <!--truncate-->
 
@@ -45,7 +45,6 @@ Introduce reusable test logic with the new `@effect` decorator, perfect for comp
 ```python
 # ./effects/dir_was_created.py
 from vedro import effect
-from pathlib import Path
 
 @effect
 def dir_was_created(d: Path):
@@ -57,7 +56,6 @@ Use it in scenarios just like a tiny test helper:
 
 ```python
 # ./scenarios/export_user_data.py
-from pathlib import Path
 from vedro import scenario, given, when, then
 from effects.dir_was_created import dir_was_created
 
@@ -77,21 +75,41 @@ def _():
 
 Gain precise control over randomness at the scenario level:
 
+<Tabs groupId="test-style">
+  <TabItem value="structured" label="Structured" default>
+
+```python
+from vedro import scenario, seed
+
+@scenario[seed("value-123")]
+def create_user():
+    ...
+```
+
+  </TabItem>
+  <TabItem value="expressive" label="Expressive">
+
 ```python
 import vedro
 from vedro import seed
 
 @seed("value-123")
 class Scenario(vedro.Scenario):
-    pass
+    subject = "create user"
 ```
+
+  </TabItem>
+</Tabs>
 
 Vedro v1.15 also adopts a more readable seed style:
 
-```
-# --seed r4ir-3sg5o-keye
-# 1 scenario, 1 passed, 0 failed, 0 skipped (0.00s)
-```
+<TerminalOutput>
+{`
+[38;5;249m# --seed rdx3-36ep6-2ijo[0m[38;5;249m
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.00s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
 ## Output Capture (stdout/stderr)
 
@@ -116,11 +134,15 @@ See what’s about to run before it runs:
 - Scheduled to run
 - Skipped (if any)
 
-```shell
-$ vedro run
->> running: 0 of 1 scenarios (1 skipped)
-Scenarios
-```
+<TerminalOutput>
+{`
+[38;5;249m>> running: 2 of 6 scenarios (1 skipped, 3 ignored)[0m[38;5;249m
+[0mScenarios
+[1m* [0m[1m
+[0m [32m✔ create user[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m ...
+`}
+</TerminalOutput>
 
 Toggle via config:
 
@@ -142,15 +164,22 @@ External plugins can add their own preamble sections to surface critical info ea
 
 `--show-paths` now includes line numbers:
 
-```shell
-$ vedro run --show-paths
-Scenarios
-*
- ✔ update user info (0.00s)
-   |> scenarios/update_user.py:5
-```
+<TerminalOutput>
+{`
+[1;37m$ vedro run --show-paths[0m[1;37m
+[0m
+[0mScenarios
+[1m* [0m[1m
+[0m [32m✔ update user[0m[38;5;244m (0.00s)[0m[38;5;244m
+[0m   [38;5;244m|> scenarios/update_user.py:5[0m[38;5;244m
+[0m 
+[38;5;249m# --seed 35ee-zgkjp-wlgo[0m[38;5;249m
+[0m[1;32m# 1 scenario, 1 passed, 0 failed, 0 skipped[0m[34m (0.00s)[0m[34m
+[0m
+`}
+</TerminalOutput>
 
-:::tip
+:::info
 Many terminals/IDEs support cmd/ctrl+click to jump straight to the definition.
 :::
 
@@ -192,7 +221,7 @@ class RichReporter(rich_reporter.RichReporter):
     no_color: bool = True
 ```
 
-## Machine-Readable Test Results
+## JSON Reporter (Machine-Readable Events)
 
 A new `JsonReporter` streams structured events: perfect for IDE integrations, AI agents, MCP, or custom dashboards:
 
