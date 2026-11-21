@@ -10,7 +10,11 @@ const config = {
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   favicon: 'img/favicon.png',
 
   presets: [
